@@ -22,7 +22,7 @@ const webProjects = [
     image: "/images/banners/KapeBanner.png",
     link: "#",
     progress: 5,
-    tags: ["PHP", "Laravel", "HTML", "CSS", "MySQL", "JavaScript", "Vue", "Docker"]
+    tags: ["PHP", "Laravel",  "HTML", "CSS", "MySQL", "JavaScript", "Vue", "Docker"]
   }
 ]
 

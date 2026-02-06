@@ -64,26 +64,27 @@ export default {
   letter-spacing: 0.02em;
   text-decoration: none;
   color: #fafafa;
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.nav-links a:hover {
-  color: #111827;
-  transform: translateY(-1px);
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .nav-links a::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
-  bottom: -6px;
-  width: 0;
+  bottom: -3px;
+  width: 0%;
   height: 2px;
-  background: #111827;
-  transition: width 0.25s ease;
+  background-color: #e5ffed;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #e5ffed;
+  transform: translateY(-2px) scale(1.05);
 }
 
 .nav-links a:hover::after {
   width: 100%;
 }
+
 </style>
