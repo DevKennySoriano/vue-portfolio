@@ -6,12 +6,10 @@ const routes = [
   { path: '/', name: 'Home', component: Home },
   { path: '/projects', name: 'Projects', component: Projects },
 ];
-
 const router = createRouter({
   history: createWebHistory(),
   routes,
   scrollBehavior(to, from, savedPosition) {
-
     if (savedPosition) {
       return savedPosition;
     } else {
