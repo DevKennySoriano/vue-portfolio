@@ -1,44 +1,38 @@
 <script setup>
-import dumpCat from '@/images/brandstyling/Dump-Cat.png'
-import homeHiveBanner from '@/images/banners/HomeHiveBanner.png'
-import AllAboutPets from '@/images/banners/PetsBanner.png'
-import Kape from '@/images/banners/KapeBanner.png'
-
-
-
 const webProjects = [
   {
     title: "All About Pets",
-    description: "A client-based mini-thesis web system built for a pet care business, focusing on service management and user experience. Although discontinued, the project demonstrates real-world client collaboration, system architecture planning, and interface design.",
-    image: AllAboutPets,
+    description: "A client-based mini-thesis web system built for a pet care business...",
+    image: "/images/banners/PetsBanner.png",
     link: "#",
     progress: 10,
-    tags: ["PHP", "HTML", "CSS", "MySQL", "JavaScript" ]
+    tags: ["PHP", "HTML", "CSS", "MySQL", "JavaScript"]
   },
   {
     title: "HomeHive",
-    description: "A long-term rental management platform developed for property owners and administrators. The system handles contract creation, tenant and admin management, and uses AI-powered predictive maintenance to support data-driven decisions for property owners.",
-    image: homeHiveBanner,
+    description: "A long-term rental management platform developed for property owners...",
+    image: "/images/banners/HomeHiveBanner.png",
     link: "#",
     progress: 100,
-    tags: ["PHP", "HTML", "CSS", "AI", "MySQL", "JavaScript" ]
+    tags: ["PHP", "HTML", "CSS", "AI", "MySQL", "JavaScript"]
   },
   {
     title: "Kape't Bahala na",
-    description: "A practice project built to explore and improve my skills in Laravel. Focused on learning backend development, routing, and database interactions while experimenting with dynamic web features.",
-    image: Kape,
+    description: "A practice project built to explore and improve my skills in Laravel...",
+    image: "/images/banners/KapeBanner.png",
     link: "#",
     progress: 5,
-    tags: ["PHP", "Laravel", "HTML", "CSS", "MySQL"," JavaScript","Vue","Docker" ]
+    tags: ["PHP", "Laravel", "HTML", "CSS", "MySQL", "JavaScript", "Vue", "Docker"]
   }
 ]
 
 const brandingWorks = [
-  dumpCat
+  "/images/brandstyling/Dump-Cat.png"
 ]
 
 const statusText = (value) => value === 100 ? 'Completed' : 'In Progress'
 </script>
+
 
 <template>
 <section class="projects">
