@@ -3,11 +3,12 @@
     <div class="navbar">
       <a href="#" class="logo">Ken</a>
 
-      <ul class="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+        <ul class="nav-links">
+      <li><router-link to="/">Home</router-link></li>
+      <li><router-link to="/projects">Projects</router-link></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
     </div>
   </nav>
 </template>

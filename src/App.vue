@@ -1,21 +1,19 @@
 <script setup>
 import Navbar from '@/components/layout/Navbar.vue'
 import Footer from '@/components/layout/Footer.vue'
-
 </script>
 
 <template>
   <div class="page">
     <Navbar />
     <main class="content">
-      <Navbar/>
+      <router-view />
     </main>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
 <style>
-
 html, body, #app {
   margin: 0;
   height: 100%;
@@ -40,5 +38,4 @@ body {
 .content {
   flex: 1; 
 }
-
 </style>
