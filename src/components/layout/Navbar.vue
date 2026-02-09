@@ -1,7 +1,9 @@
 <template>
   <nav class="navbar-wrapper">
     <div class="navbar">
-      <a href="#" class="logo">Ken</a>
+      <a href="#" class="logo">
+        <img src="/images/icons/K.png" alt="Ken" class="logo-img" />
+      </a>
 
       <ul class="nav-links">
         <li>
@@ -126,6 +128,46 @@ export default {
   align-items: center;
   justify-content: center;
 }
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+/* Base logo sizing */
+.logo-img {
+  height: 36px;          /* desktop size */
+  width: auto;           /* keep aspect ratio */
+  max-width: 100%;
+  object-fit: contain;
+  transition: height 0.3s ease, transform 0.3s ease;
+}
+
+/* Optional hover micro-interaction */
+.logo:hover .logo-img {
+  transform: scale(1.05);
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .logo-img {
+    height: 30px;
+  }
+}
+
+/* Phones */
+@media (max-width: 768px) {
+  .logo-img {
+    height: 26px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 480px) {
+  .logo-img {
+    height: 22px;
+  }
+}
+
 
 @media (max-width: 1024px) {
   .navbar-wrapper {
