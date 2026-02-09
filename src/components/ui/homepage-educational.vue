@@ -1,4 +1,7 @@
 <script setup>
+import { onMounted, nextTick } from 'vue'
+import AOS from 'aos'
+
 const education = [
   {
     date: "2022 – 2026",
@@ -9,7 +12,7 @@ const education = [
     image: "/images/edu/stinova.jpeg"
   },
   {
-    date: "2021 – 2026",
+    date: "2021 – 2022",
     title: "BS - Computer Science",
     school: "STI College - Calamba, Laguna",
     description:
@@ -25,11 +28,20 @@ const education = [
     image: "/images/edu/shs.jpeg"
   }
 ]
-</script>
 
+onMounted(async () => {
+  await nextTick()
+  AOS.refresh()
+})
+</script>
 <template>
 <section class="education">
-  <h2 class="section-title fade-up">Educational Background</h2>
+  <h2
+    class="section-title"
+    data-aos="fade-up"
+  >
+    Educational Background
+  </h2>
 
   <div class="timeline">
     <div
@@ -38,13 +50,20 @@ const education = [
       class="timeline-item"
       :class="{ reverse: index % 2 !== 0 }"
     >
-      <div class="timeline-image fade-left">
+      <div
+        class="timeline-image"
+        :data-aos="index % 2 === 0 ? 'fade-right' : 'fade-left'"
+      >
         <div class="image-wrapper">
           <img :src="item.image" alt="Education image" />
         </div>
       </div>
 
-      <div class="timeline-content fade-right">
+      <div
+        class="timeline-content"
+        :data-aos="index % 2 === 0 ? 'fade-left' : 'fade-right'"
+        data-aos-delay="100"
+      >
         <div class="content-card">
           <span class="date">{{ item.date }}</span>
           <h3 class="title">{{ item.title }}</h3>
@@ -56,6 +75,7 @@ const education = [
   </div>
 </section>
 </template>
+
 
 <style scoped>
 .education {

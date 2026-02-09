@@ -14,21 +14,21 @@ const cards = [
     },
 ]
 </script>
-
 <template>
-    <section class="card-wrapper">
-        <div class="card-row">
-            <div
-                v-for="(card, i) in cards"
-                :key="card.title"
-                class="info-card fade-up"
-                :style="{ animationDelay: `${i * 0.2}s` }"
-            >
-                <span class="label">{{ card.title }}</span>
-                <p>{{ card.content }}</p>
-            </div>
-        </div>
-    </section>
+<section class="card-wrapper">
+  <div class="card-row">
+    <div
+      v-for="(card, i) in cards"
+      :key="card.title"
+      class="info-card"
+      data-aos="fade-up"
+      :data-aos-delay="i * 200"
+    >
+      <span class="label">{{ card.title }}</span>
+      <p>{{ card.content }}</p>
+    </div>
+  </div>
+</section>
 </template>
 
 <style scoped>
@@ -54,7 +54,6 @@ const cards = [
     border: 2px solid #445d48;
     box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
     text-align: center;
-    opacity: 0;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -77,20 +76,5 @@ const cards = [
     background: #445d48;
     color: #FAFAFA;
     border-radius: 999px;
-}
-
-.fade-up {
-    animation: fadeUp 0.8s ease forwards;
-}
-
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 </style>

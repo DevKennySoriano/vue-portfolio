@@ -35,8 +35,8 @@ export default {
   border-radius: 999px;
   background: linear-gradient(
     180deg,
-    #2a3d31,
-    #1f2f26
+    #435f4d,
+    #2a3e32
   );
   border: 1px solid rgba(255, 255, 255, 0.28);
   box-shadow:
