@@ -82,6 +82,8 @@ onMounted(async () => {
   background: #445d48;
   padding: 3.5rem 2rem;
   color: #fafafa;
+  width: auto;
+
 }
 
 .section-title {
