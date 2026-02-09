@@ -105,9 +105,10 @@ const statusText = value => value === 100 ? 'Completed' : 'In Progress'
 
 .web-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.6rem;
 }
+
 
 .web-card {
   border-radius: 16px;
@@ -141,7 +142,9 @@ const statusText = value => value === 100 ? 'Completed' : 'In Progress'
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+  flex: 1;
 }
+
 
 .text h4 {
   font-size: 1.1rem;
@@ -152,7 +155,13 @@ const statusText = value => value === 100 ? 'Completed' : 'In Progress'
   font-size: 0.9rem;
   opacity: 0.85;
   line-height: 1.5;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
+
 
 .tags {
   margin-top: 0.6rem;
@@ -218,8 +227,7 @@ const statusText = value => value === 100 ? 'Completed' : 'In Progress'
 }
 
 .view-btn {
-  margin-top: 0.8rem;
-  display: inline-block;
+  margin-top: 50px;
   align-self: flex-start;
   padding: 0.45rem 1.2rem;
   font-size: 0.8rem;
@@ -229,6 +237,7 @@ const statusText = value => value === 100 ? 'Completed' : 'In Progress'
   text-decoration: none;
   transition: all 0.3s ease;
 }
+
 
 .view-btn:hover {
   background: #556d58;
