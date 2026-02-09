@@ -5,7 +5,7 @@ const profileImg = "https://imgs.search.brave.com/Jf3zTfPSqN0LdkdaMAKeC6u2OaELjt
 const description =
   "Pogi lang."
 
-const tags = ["he/him","student","STI College"]
+const tags = ["he/him","STI College"]
 </script>
 
 <template>
@@ -21,7 +21,7 @@ const tags = ["he/him","student","STI College"]
     </p>
 
     <div class="buttons delay-4">
-      <button class="btn primary">View Projects</button>
+      <button class="btn primary"><router-link to="/projects" class = "routerProjects">View Projects</router-link></button>
       <button class="btn outline">Download Resume</button>
     </div>
   </div>
@@ -111,7 +111,10 @@ const tags = ["he/him","student","STI College"]
     transform: translateY(-2px);
     box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
-
+.routerProjects{
+    text-decoration: none;
+    color:white;
+}
 
 .primary {
     background: #445d48;
