@@ -13,13 +13,14 @@ const tags = ["he/him","STI College"]
     class="about-left"
     data-aos="fade-right"
   >
-    <span
-      class="status"
-      data-aos="fade-up"
-      data-aos-delay="100"
-    >
-      {{ status }}
-    </span>
+<span
+  class="status"
+  data-aos="fade-up"
+  data-aos-delay="100"
+>
+  {{ status }}
+</span>
+
 
     <h2
       class="name"
@@ -96,21 +97,70 @@ const tags = ["he/him","STI College"]
 }
 
 .status {
-        display: inline-block;
-        margin-bottom: 1rem;
-        padding: 0.4rem 1rem;
-        font-size: 1.1rem;
-        background: #445d48;
-        border-radius: 999px;
-        color: #FAFAFA;
-        transition: all 0.3s ease;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 1rem;
+  padding: 0.4rem 1rem 0.4rem 1.6rem;
+
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #e5ffed;
+
+  background: #445d48;
+  border-radius: 999px;
+  transition: all 0.3s ease;
 }
 
 .status:hover {
-        background: #556d58;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(68, 93, 72, 0.3);
+  background: #556d58;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(68, 93, 72, 0.3);
 }
+/* Solid dot */
+.status::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 10px;
+  height: 8px;
+  background-color: #4ade80; /* green */
+  border-radius: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+/* Pulsing ring */
+.status::after {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: rgba(74, 222, 128, 0.5);
+  transform: translateY(-50%);
+  animation: pulse 1.8s ease-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateY(-50%) scale(0.6);
+    opacity: 0.8;
+  }
+  70% {
+    transform: translateY(-50%) scale(1.4);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 
 .name {
         font-size: 3.5rem;
@@ -208,6 +258,9 @@ const tags = ["he/him","STI College"]
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(68, 93, 72, 0.3);
 }
+
+
+
 
 /* Tablet (768px and below) */
 @media (max-width: 768px) {
