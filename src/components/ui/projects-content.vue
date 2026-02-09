@@ -22,17 +22,12 @@ const webProjects = [
     image: "/images/banners/KapeBanner.png",
     link: "#",
     progress: 5,
-    tags: ["PHP", "Laravel",  "HTML", "CSS", "MySQL", "JavaScript", "Vue", "Docker"]
+    tags: ["PHP", "Laravel", "HTML", "CSS", "MySQL", "JavaScript", "Vue", "Docker"]
   }
 ]
 
-const brandingWorks = [
-  "/images/brandstyling/Dump-Cat.png"
-]
-
-const statusText = (value) => value === 100 ? 'Completed' : 'In Progress'
+const statusText = value => value === 100 ? 'Completed' : 'In Progress'
 </script>
-
 
 <template>
 <section class="projects">
@@ -69,21 +64,14 @@ const statusText = (value) => value === 100 ? 'Completed' : 'In Progress'
 
           <div class="progress-circle">
             <svg viewBox="0 0 36 36">
-              <path
-                class="bg"
-                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-              />
+              <path class="bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
               <path
                 class="progress"
                 :stroke-dasharray="`${project.progress}, 100`"
                 d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
               />
-              <text x="18" y="18" class="percentage">
-                {{ project.progress }}%
-              </text>
-              <text x="18" y="23" class="status">
-                {{ statusText(project.progress) }}
-              </text>
+              <text x="18" y="18" class="percentage">{{ project.progress }}%</text>
+              <text x="18" y="23" class="status">{{ statusText(project.progress) }}</text>
             </svg>
           </div>
         </div>
@@ -92,23 +80,10 @@ const statusText = (value) => value === 100 ? 'Completed' : 'In Progress'
       </div>
     </div>
   </div>
-
-  <h3 class="sub-title">Layout & Styling</h3>
-  <div class="branding-grid">
-    <div
-      v-for="(img, i) in brandingWorks"
-      :key="i"
-      class="branding-card fade-card"
-      :style="{ animationDelay: `${i * 0.05}s` }"
-    >
-      <img :src="img" alt="Brand styling work" />
-    </div>
-  </div>
 </section>
 </template>
 
 <style>
-
 .projects {
   margin: 120px auto;
   padding: 3rem 2.5rem;
@@ -243,7 +218,7 @@ const statusText = (value) => value === 100 ? 'Completed' : 'In Progress'
 }
 
 .view-btn {
-margin-top: 0.8rem;
+  margin-top: 0.8rem;
   display: inline-block;
   align-self: flex-start;
   padding: 0.45rem 1.2rem;
@@ -260,32 +235,6 @@ margin-top: 0.8rem;
   transform: translateY(-2px);
 }
 
-.branding-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.2rem;
-}
-
-.branding-card {
-  border-radius: 14px;
-  overflow: hidden;
-  background: rgba(255,255,255,0.05);
-  width: 60%;
-  margin: 0 auto;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.branding-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 32px rgba(0,0,0,0.16);
-}
-
-.branding-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .fade-up {
   opacity: 0;
   animation: fadeUp 0.8s ease forwards;
@@ -297,98 +246,16 @@ margin-top: 0.8rem;
 }
 
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeCard {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes progressAnim {
-  from {
-    stroke-dasharray: 0, 100;
-  }
+  from { stroke-dasharray: 0, 100; }
 }
-/* ===== TABLET ===== */
-@media (max-width: 1024px) {
-  .projects {
-    padding: 2.5rem 2rem;
-  }
-
-  .web-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .text h4 {
-    font-size: 1rem;
-  }
-
-  .text p {
-    font-size: 0.85rem;
-    line-height: 1.45;
-  }
-
-  .progress-circle {
-    width: 56px;
-    height: 56px;
-  }
-}
-
-/* ===== MOBILE ===== */
-@media (max-width: 640px) {
-  .projects {
-    margin: 80px auto;
-    padding: 2rem 1.4rem;
-  }
-
-  .web-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .content-top {
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-
-  .progress-circle {
-    align-self: flex-start;
-    width: 52px;
-    height: 52px;
-  }
-
-  .text h4 {
-    font-size: 0.95rem;
-  }
-
-  .text p {
-    font-size: 0.8rem;
-    line-height: 1.4;
-  }
-
-  .view-btn {
-    font-size: 0.75rem;
-    padding: 0.4rem 1rem;
-  }
-
-  .branding-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .branding-card {
-    width: 100%;
-  }
-}</style>
+</style>
