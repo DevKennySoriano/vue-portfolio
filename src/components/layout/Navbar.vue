@@ -3,20 +3,19 @@
     <div class="navbar">
       <a href="#" class="logo">Ken</a>
 
-        <ul class="nav-links">
-      <li><router-link to="/">Home</router-link></li>
-      <li><router-link to="/projects">Projects</router-link></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-
+      <ul class="nav-links">
+        <li><router-link to="/">Home</router-link></li>
+        <li><router-link to="/projects">Projects</router-link></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
   </nav>
 </template>
 
 <script>
 export default {
-  name: 'PortfolioNavbar',
-};
+  name: "PortfolioNavbar"
+}
 </script>
 
 <style scoped>
@@ -32,21 +31,27 @@ export default {
   display: flex;
   align-items: center;
   gap: 48px;
-  padding: 14px 32px;
+  padding: 15px 36px;
   border-radius: 999px;
-  background:#445d48;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-    font-family: "Inter", sans-serif;
-   
+  background: linear-gradient(
+    180deg,
+    #2a3d31,
+    #1f2f26
+  );
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(14px);
+  font-family: "Inter", sans-serif;
 }
 
 .logo {
-   margin: 0;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 800;
   color: #fafafa;
-    text-decoration: none;
+  letter-spacing: 0.4px;
+  text-decoration: none;
 }
 
 .nav-links {
@@ -86,5 +91,4 @@ export default {
 .nav-links a:hover::after {
   width: 100%;
 }
-
 </style>

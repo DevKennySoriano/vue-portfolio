@@ -1,7 +1,7 @@
 <script setup>
 const status = "Currently OJT at Wizzard Technologies INC."
 const name = "Kenny Soriano"
-const profileImg = "https://imgs.search.brave.com/Jf3zTfPSqN0LdkdaMAKeC6u2OaELjtf3JQU5u2PslZg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdDMu/ZGVwb3NpdHBob3Rv/cy5jb20vOTk5ODQz/Mi8xMzMzNS92LzQ1/MC9kZXBvc2l0cGhv/dG9zXzEzMzM1NDQ5/MC1zdG9jay1pbGx1/c3RyYXRpb24tZGVm/YXVsdC1wbGFjZWhv/bGRlci1wcm9maWxl/LWljb24uanBn"
+const profileImg = "/images/ken/about-img.jpeg"
 const description =
   "Pogi lang."
 
