@@ -80,7 +80,6 @@ const tags = ["he/him","STI College"]
 </section>
 </template>
 
-
 <style scoped>
 
 .about {
@@ -89,7 +88,7 @@ const tags = ["he/him","STI College"]
         padding: 2.5rem;
         margin: 120px auto;   
         max-width: 1000px;    
-        align-items: center;  
+        align-items: center;
 }
 
 .about-left {
@@ -130,6 +129,7 @@ const tags = ["he/him","STI College"]
 .buttons {
         display: flex;
         gap: 1.2rem;
+        flex-wrap: wrap;
 }
 
 .btn {
@@ -138,12 +138,14 @@ const tags = ["he/him","STI College"]
         border-radius: 8px;
         font-family: inherit;
         cursor: pointer;
-         transition: transform 0.2s ease, box-shadow 0.2s ease;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
 .btn:hover {
         transform: translateY(-2px);
         box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
+
 .routerProjects{
         text-decoration: none;
         color:white;
@@ -203,8 +205,75 @@ const tags = ["he/him","STI College"]
 
 .tag:hover {
         background: #556d58;
-        transform: translateY(-px);
+        transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(68, 93, 72, 0.3);
+}
+
+/* Tablet (768px and below) */
+@media (max-width: 768px) {
+        .about {
+                flex-direction: column;
+                padding: 1.5rem;
+                margin: 60px auto;
+        }
+
+        .name {
+                font-size: 2.5rem;
+        }
+
+        .description {
+                font-size: 1rem;
+        }
+
+        .profile-cube {
+                width: 220px;
+                height: 220px;
+        }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+        .about {
+                padding: 1rem;
+                margin: 40px auto;
+                gap: 1.5rem;
+        }
+
+        .name {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+        }
+
+        .status {
+                font-size: 0.9rem;
+                padding: 0.3rem 0.8rem;
+        }
+
+        .description {
+                font-size: 0.95rem;
+                margin-bottom: 1.5rem;
+        }
+
+        .buttons {
+                flex-direction: column;
+                gap: 0.8rem;
+        }
+
+        .btn {
+                width: 100%;
+                padding: 0.7rem 1.5rem;
+                font-size: 1rem;
+        }
+
+        .profile-cube {
+                width: 180px;
+                height: 180px;
+        }
+
+        .tag {
+                font-size: 0.85rem;
+                padding: 0.3rem 0.7rem;
+        }
 }
 
 </style>
