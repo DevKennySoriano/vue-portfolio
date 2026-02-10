@@ -1,32 +1,32 @@
 <script setup>
 import { ref } from 'vue'
-
 const webProjects = [
   {
+    slug: "all-about-pets",
     title: "All About Pets",
+   progress: 10,
     description: "A client-based mini-thesis web system built for a pet care business...",
     image: "/images/banners/PetsBanner.png",
-    link: "#",
-    progress: 10,
     tags: ["PHP", "HTML", "CSS", "MySQL", "JavaScript"]
   },
   {
+    slug: "homehive",
     title: "HomeHive",
+    progress: 100,
     description: "A long-term rental management platform developed for property owners...",
     image: "/images/banners/HomeHiveBanner.png",
-    link: "#",
-    progress: 100,
     tags: ["PHP", "HTML", "CSS", "AI", "MySQL", "JavaScript"]
   },
   {
+    slug: "kapet-bahala-na",
     title: "Kape't Bahala na",
+    progress: 5,
     description: "A practice project built to explore and improve my skills in Laravel...",
     image: "/images/banners/KapeBanner.png",
-    link: "#",
-    progress: 5,
     tags: ["PHP", "Laravel", "HTML", "CSS", "MySQL", "JavaScript", "Vue", "Docker"]
   }
 ]
+
 
 const loadedImages = ref([])
 
@@ -40,9 +40,9 @@ const statusText = value => value === 100 ? 'Completed' : 'In Progress'
 
 <template>
 <section class="projects">
-  <h2 class="section-title fade-up">Projects</h2>
 
-  <h3 class="sub-title">Web Projects</h3>
+
+  <h3 class="sub-title">Web-based Projects</h3>
   <div class="web-grid">
     <div
       v-for="(project, i) in webProjects"
@@ -97,7 +97,14 @@ const statusText = value => value === 100 ? 'Completed' : 'In Progress'
           </div>
         </div>
 
-        <a :href="project.link" class="view-btn">View Project</a>
+    <router-link
+  :to="{ name: 'ProjectsView', params: { slug: project.slug } }"
+  class="view-btn"
+>
+  View Project
+</router-link>
+
+
       </div>
     </div>
   </div>

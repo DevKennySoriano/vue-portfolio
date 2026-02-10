@@ -1,15 +1,20 @@
 <script setup>
+import { useRoute } from 'vue-router'
 import Navbar from '@/components/layout/Navbar.vue'
 import Footer from '@/components/layout/Footer.vue'
+
+const route = useRoute()
 </script>
 
 <template>
   <div class="page">
-    <Navbar />
+    <Navbar v-if="!route.meta.hideLayout" />
+
     <main class="content">
       <router-view />
     </main>
-    <Footer />
+
+    <Footer v-if="!route.meta.hideLayout" />
   </div>
 </template>
 

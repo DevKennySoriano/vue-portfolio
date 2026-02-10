@@ -1,25 +1,31 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../views/Home.vue';
-import Projects from '../views/Projects.vue';
-import Contactpage from '../views/Contactpage.vue';
+import { createRouter, createWebHistory } from 'vue-router'
+import Home from '../views/Home.vue'
+import Projects from '../views/Projects.vue'
+import Contactpage from '../views/Contactpage.vue'
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
-  { path: '/projects', name: 'Projects', component: Projects },
-   { path: '/contact', name: 'Contactpage', component: Contactpage },
-];
 
+  { path: '/projects', name: 'Projects', component: Projects },
+
+
+ {
+  path: '/projects/:slug',
+  name: 'ProjectsView',
+  component: () => import('../views/projects-view.vue'),
+  meta: { hideLayout: true }
+},
+
+  { path: '/contact', name: 'Contactpage', component: Contactpage }
+]
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
   scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
-    } else {
-      return { top: 0 };
-    }
-  },
-});
+    if (savedPosition) return savedPosition
+    return { top: 0 }
+  }
+})
 
-export default router;
+export default router
