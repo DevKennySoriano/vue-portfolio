@@ -106,9 +106,9 @@ Contributions, issues, and feature requests are welcome. Feel free to fork this 
 
 ## 📬 Contact & Social Links
 
-* 💼 **LinkedIn:** [https://linkedin.com/in/your-profile](https://linkedin.com/in/your-profile)
-* 🐙 **GitHub:** [https://github.com/your-username](https://github.com/your-username)
-* 🌐 **Portfolio:** [https://your-portfolio-link.com](https://your-portfolio-link.com)
-* ✉️ **Email:** [your.email@example.com](mailto:your.email@example.com)
+* 💼 **LinkedIn:** [https://www.linkedin.com/in/kennysoriano/](https://www.linkedin.com/in/kennysoriano/)
+* 🐙 **GitHub:** [https://github.com/DevKennySoriano](https://github.com/DevKennySoriano)
+* 🌐 **Portfolio:** [https://devkennysoriano.vercel.app/](https://devkennysoriano.vercel.app/)
+* ✉️ **Email:** [devkennysoriano@gmail.com](mailto:devkennysoriano@gmail.com)
 
 ---
