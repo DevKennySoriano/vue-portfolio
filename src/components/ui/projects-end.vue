@@ -3,13 +3,12 @@
 
 <template>
 <div class="collab" data-aos="fade-up" data-aos-duration="900">
-<h2 class="title">Curious what I’ve been working on?</h2>
-<p class="text">
- Explore a curated selection of my projects, showcasing my skills,
-  creativity, and attention to detail.
-</p>
-<router-link to="/projects"><a href="/projects" class="cta">View projects</a></router-link>
-
+  <h2 class="title">Ready to collaborate?</h2>
+  <p class="text">
+    I’m open to internships, freelance work, and exciting projects.  
+    Let’s build something meaningful together.
+  </p>
+  <a href="#contact" class="cta">Get in touch</a>
 </div>
 </template>
 

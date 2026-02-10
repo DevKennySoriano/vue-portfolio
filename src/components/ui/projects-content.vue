@@ -85,7 +85,7 @@ const statusText = value => value === 100 ? 'Completed' : 'In Progress'
 
 <style>
 .projects {
-  margin: 120px auto;
+  margin-top:120px;
   padding: 3rem 2.5rem;
   background-color: #445d48;
 }
@@ -158,6 +158,7 @@ const statusText = value => value === 100 ? 'Completed' : 'In Progress'
 
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

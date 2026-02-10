@@ -27,14 +27,14 @@
           </router-link>
         </li>
         <li>
-          <a href="#contact">
+           <router-link to="/contact">
             <span class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M21 8V7l-3 2-2-2-3 2V7H6v10h12V8z"/>
               </svg>
             </span>
             <span class="text">Contact</span>
-          </a>
+             </router-link>
         </li>
       </ul>
     </div>
