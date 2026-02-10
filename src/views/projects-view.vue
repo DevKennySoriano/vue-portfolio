@@ -6,17 +6,14 @@ import { webProjects } from '@/data/projects'
 const route = useRoute()
 const router = useRouter()
 
-const project = computed(() => {
-  return webProjects.find(p => p.slug === route.params.slug)
-})
+const project = computed(() =>
+  webProjects.find(p => p.slug === route.params.slug)
+)
 
-// optional safety redirect
 if (!project.value) {
   router.push('/projects')
 }
 </script>
-
-
 
 <template>
   <div class="project-view">
@@ -31,55 +28,91 @@ if (!project.value) {
       </div>
 
       <div class="links">
-        <a :href="project.github" target="_blank">View on GitHub</a>
-        <a :href="project.live" target="_blank" class="primary">View Live</a>
+        <a v-if="project.github" :href="project.github" target="_blank">
+          GitHub
+        </a>
+        <a v-if="project.live" :href="project.live" target="_blank" class="primary">
+          Live Demo
+        </a>
       </div>
     </aside>
 
     <!-- CONTENT -->
     <main class="content">
+      <!-- TITLE -->
       <header class="doc-header">
         <h1>{{ project.title }}</h1>
-        <p class="description">{{ project.description }}</p>
+
+        <p v-if="project.date" class="date">
+          {{ project.date }}
+        </p>
 
         <div class="tags">
-          <span
-            v-for="tag in project.tags"
-            :key="tag"
-            :class="['tag', tag.toLowerCase()]"
-          >
+          <span v-for="tag in project.tags" :key="tag" class="tag">
             {{ tag }}
           </span>
         </div>
       </header>
 
-      <section class="project">
-        <img :src="project.project" :alt="project.title" />
-      </section>
-
-      <section class="screenshots">
-        <h2>Screenshots</h2>
-
-        <div
-          v-for="(shot, i) in project.screenshots"
-          :key="i"
-          class="screenshot"
-        >
-          <img :src="shot.image" :alt="shot.caption" />
-          <p>{{ shot.caption }}</p>
+      <!-- HERO IMAGE -->
+      <section class="hero">
+        <div class="ratio-16x9">
+          <img :src="project.project" :alt="project.title" />
         </div>
       </section>
+
+      <!-- OVERVIEW -->
+      <section class="section">
+        <h2>Overview</h2>
+        <p>
+          {{ project.overview || project.description }}
+        </p>
+      </section>
+
+      <!-- BACKGROUND -->
+      <section v-if="project.background" class="section">
+        <h2>Background</h2>
+        <p>
+          {{ project.background }}
+        </p>
+      </section>
+
+      <!-- IMAGES -->
+      <section v-if="project.screenshots?.length" class="section">
+        <h2>Images</h2>
+
+        <div class="images-grid">
+          <figure
+            v-for="(shot, i) in project.screenshots"
+            :key="i"
+            class="image-card"
+          >
+            <div class="ratio-16x9">
+              <img :src="shot.image" :alt="shot.caption" />
+            </div>
+            <figcaption>{{ shot.caption }}</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer v-if="project.footer" class="research-footer">
+        <h3>Acknowledgements</h3>
+        <p>{{ project.footer }}</p>
+      </footer>
     </main>
   </div>
 </template>
 
 <style scoped>
+/* LAYOUT */
 .project-view {
   display: flex;
   min-height: 100vh;
   background: #f9fafb;
 }
 
+/* SIDEBAR */
 .sidebar {
   width: 260px;
   background: #445d48;
@@ -93,10 +126,8 @@ if (!project.value) {
 .back-btn {
   background: none;
   border: none;
-  color: #fafafa;
-  font-size: 0.9rem;
+  color: inherit;
   cursor: pointer;
-  text-align: left;
   opacity: 0.85;
 }
 
@@ -105,7 +136,6 @@ if (!project.value) {
 }
 
 .logo img {
-  width: 100%;
   max-width: 160px;
 }
 
@@ -116,40 +146,34 @@ if (!project.value) {
 }
 
 .links a {
-  text-decoration: none;
   color: #fafafa;
-  padding: 0.55rem 1rem;
+  text-decoration: none;
+  padding: 0.6rem;
   border-radius: 8px;
-  background: rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.15);
   text-align: center;
-  transition: background 0.3s ease;
-}
-
-.links a:hover {
-  background: rgba(255,255,255,0.2);
 }
 
 .links a.primary {
-  background: #fafafa;
+  background: #fff;
   color: #445d48;
   font-weight: 600;
 }
 
+/* CONTENT */
 .content {
-  flex: 1;
+  flex: 2;
   padding: 3rem 4rem;
-  overflow-y: auto;
 }
 
 .doc-header h1 {
-  font-size: 2.2rem;
-  margin-bottom: 0.6rem;
+  font-size: 2.4rem;
 }
 
-.description {
-  max-width: 720px;
-  line-height: 1.7;
-  opacity: 0.85;
+.date {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  opacity: 0.7;
 }
 
 .tags {
@@ -161,39 +185,62 @@ if (!project.value) {
 
 .tag {
   font-size: 0.7rem;
-  font-weight: 600;
   padding: 0.3rem 0.7rem;
-  border-radius: 999px;
   background: #e5e7eb;
+  border-radius: 999px;
 }
 
-.project {
-  margin: 3rem 0;
+/* SECTIONS */
+.section {
+  max-width: 820px;
+  margin-top: 3rem;
 }
 
-.project img {
-  width: 100%;
+.section h2 {
+  margin-bottom: 0.8rem;
+}
+
+.section p {
+  line-height: 1.75;
+  opacity: 0.9;
+}
+
+/* IMAGES */
+.images-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.image-card figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+/* 16:9 */
+.ratio-16x9 {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
   border-radius: 18px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.12);
 }
 
-/* SCREENSHOTS */
-.screenshots h2 {
-  margin-bottom: 1.5rem;
-}
-
-.screenshot {
-  margin-bottom: 2.5rem;
-}
-
-.screenshot img {
+.ratio-16x9 img {
   width: 100%;
-  border-radius: 14px;
-  margin-bottom: 0.6rem;
+  height: 100%;
+  object-fit: cover;
 }
 
-.screenshot p {
-  font-size: 0.85rem;
-  opacity: 0.8;
+/* FOOTER */
+.research-footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e5e7eb;
+  max-width: 820px;
+}
+
+.research-footer h3 {
+  margin-bottom: 0.6rem;
 }
 </style>
