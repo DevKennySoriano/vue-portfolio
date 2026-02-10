@@ -8,7 +8,7 @@
     I’m open to internships, freelance work, and exciting projects.  
     Let’s build something meaningful together.
   </p>
-  <a href="#contact" class="cta">Get in touch</a>
+  <a href="/contact" class="cta">Get in touch</a>
 </div>
 </template>
 
