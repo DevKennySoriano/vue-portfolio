@@ -5,29 +5,30 @@ import AOS from 'aos'
 const education = [
   {
     date: "2022 – 2026",
-    title: "BS - Computer Science",
-    school: "STI College - Novaliches, Quezon City",
+    title: "Bachelor of Science in Computer Science",
+    school: "STI College – Novaliches, Quezon City",
     description:
-      "Currently pursuing a Bachelor of Science in Information Technology, focusing on web development, UI/UX, and modern frontend frameworks.",
+      "Currently pursuing a degree in Computer Science with studies covering software development, cybersecurity fundamentals, ISO standards awareness, system design principles, and modern web technologies.",
     image: "/images/edu/stinova.jpeg"
   },
   {
     date: "2021 – 2022",
-    title: "BS - Computer Science",
-    school: "STI College - Calamba, Laguna",
+    title: "Bachelor of Science in Computer Science",
+    school: "STI College – Calamba, Laguna",
     description:
-      "Currently pursuing a Bachelor of Science in Information Technology, focusing on web development, UI/UX, and modern frontend frameworks.",
+      "Built a strong programming foundation through hands-on projects using multiple programming languages and core web technologies, focusing on problem-solving and application development.",
     image: "/images/edu/sticalamba.jpg"
   },
   {
-    date: "2019 - 2021",
+    date: "2019 – 2021",
     title: "Senior High School – ICT Strand",
-    school: "Mabalacat National Senior High School - Dau, Mabalacat Pampanga",
+    school: "Mabalacat National Senior High School – Dau, Mabalacat, Pampanga",
     description:
-      "Specialized in Information and Communications Technology with hands-on experience in basic programming and system fundamentals.",
+      "Specialized in Information and Communications Technology with practical experience in basic programming, computer systems, networking concepts, and technical fundamentals.",
     image: "/images/edu/shs.jpeg"
   }
 ]
+
 
 onMounted(async () => {
   await nextTick()
