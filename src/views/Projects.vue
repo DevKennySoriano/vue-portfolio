@@ -1,8 +1,7 @@
 <template>
   <div>
-    
-       <Brand />
       <Content />
+      <Brand />
       <End/>
 
   </div>

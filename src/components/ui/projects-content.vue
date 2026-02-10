@@ -40,9 +40,9 @@ const statusText = value => value === 100 ? 'Completed' : 'In Progress'
 
 <template>
 <section class="projects">
+  <h2 class="section-title fade-up">Projects</h2>
 
-
-  <h3 class="sub-title">Web-based Projects</h3>
+  <h3 class="sub-title">Web Projects</h3>
   <div class="web-grid">
     <div
       v-for="(project, i) in webProjects"

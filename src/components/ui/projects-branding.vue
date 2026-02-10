@@ -59,7 +59,6 @@ onUnmounted(() => {
 
 <template>
   <section class="branding">
-      <h2 class="section-title fade-up">Projects</h2>
     <h3 class="sub-title">Layout & Styling</h3>
 
     <div class="marquee">
@@ -99,16 +98,9 @@ onUnmounted(() => {
   margin-top:100px;
 }
 
-.section-title {
-  font-size: 2.4rem;
-  text-align: center;
-  margin-bottom: 3rem;
-  color: #262626;
-}
-
 .sub-title {
   margin-bottom: 1.5rem;
-  color: #262626;
+  color: #445d48;
 }
 
 .marquee {
