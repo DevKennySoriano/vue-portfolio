@@ -1,4 +1,6 @@
 <script setup>
+import { ref } from 'vue'
+
 const webProjects = [
   {
     title: "All About Pets",
@@ -26,8 +28,15 @@ const webProjects = [
   }
 ]
 
+const loadedImages = ref([])
+
+const onImageLoad = index => {
+  loadedImages.value[index] = true
+}
+
 const statusText = value => value === 100 ? 'Completed' : 'In Progress'
 </script>
+
 
 <template>
 <section class="projects">
@@ -41,9 +50,21 @@ const statusText = value => value === 100 ? 'Completed' : 'In Progress'
       class="web-card fade-card"
       :style="{ animationDelay: `${i * 0.08}s` }"
     >
-      <div class="web-image">
-        <img :src="project.image" :alt="project.title" />
-      </div>
+<div class="web-image">
+  <div
+    class="image-skeleton"
+    :class="{ hidden: loadedImages[i] }"
+  ></div>
+
+  <img
+    :src="project.image"
+    :alt="project.title"
+    loading="lazy"
+    @load="loadedImages[i] = true"
+    :class="{ loaded: loadedImages[i] }"
+  />
+</div>
+
 
       <div class="web-content">
         <div class="content-top">
@@ -125,10 +146,56 @@ const statusText = value => value === 100 ? 'Completed' : 'In Progress'
   box-shadow: 0 18px 40px rgba(0,0,0,0.18);
 }
 
+.web-image {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+}
+
+/* Skeleton */
+.image-skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #e5e7eb 30%,
+    #f3f4f6 50%,
+    #e5e7eb 70%
+  );
+  background-size: 600% 100%;
+  animation: shimmer 2.2s linear infinite;
+  transition: opacity 0.45s ease;
+  z-index: 1;
+}
+
+.image-skeleton.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Image */
 .web-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  z-index: 0;
+}
+
+.web-image img.loaded {
+  opacity: 1;
+}
+
+/* Shimmer */
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 .web-content {
