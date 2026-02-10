@@ -69,6 +69,28 @@ export default {
   backdrop-filter: blur(14px);
   font-family: "Inter", sans-serif;
 }
+.nav-links a.router-link-exact-active {
+  color: #e5ffed;
+}
+
+.nav-links a.router-link-exact-active::before {
+  content: "";
+  position: absolute;
+  inset: -6px -12px;
+  border-radius: 999px;
+  background: rgba(229, 255, 237, 0.15);
+  box-shadow:
+    inset 0 0 0 1px rgba(229, 255, 237, 0.25),
+    0 6px 18px rgba(0, 0, 0, 0.35);
+  z-index: -1;
+}
+@media (max-width: 1024px) {
+  .nav-links a.router-link-exact-active::before {
+    inset: -8px;
+    border-radius: 16px;
+  }
+}
+
 
 .logo {
   font-size: 20px;

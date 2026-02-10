@@ -10,15 +10,13 @@ const brandingWorks = [
 ]
 
 const track = ref(null)
-const groups = ref([
-  brandingWorks,
-  brandingWorks, // start with two sets
-])
+const groups = ref([brandingWorks, brandingWorks])
+const loadedImages = ref({})
 
 let rafId
 let lastTime = 0
 let x = 0
-const speed = 100 // px per second
+const speed = 100
 
 let groupWidth = 0
 let gap = 0
@@ -32,18 +30,14 @@ const animate = (time) => {
   track.value.style.transform = `translate3d(${x}px, 0, 0)`
 
   maybeAppendGroup()
-
   rafId = requestAnimationFrame(animate)
 }
 
 const maybeAppendGroup = () => {
   const trackEl = track.value
   const viewportWidth = trackEl.parentElement.offsetWidth
-
-  // distance from right edge of content to viewport right
   const remaining = trackEl.scrollWidth + x - viewportWidth
 
-  // when almost done → append another set
   if (remaining < groupWidth * 1.5) {
     groups.value.push(brandingWorks)
   }
@@ -51,13 +45,10 @@ const maybeAppendGroup = () => {
 
 onMounted(async () => {
   await nextTick()
-
   const firstGroup = track.value.querySelector(".group")
   const styles = getComputedStyle(track.value)
-
   gap = parseFloat(styles.gap)
   groupWidth = firstGroup.offsetWidth + gap
-
   rafId = requestAnimationFrame(animate)
 })
 
@@ -82,7 +73,17 @@ onUnmounted(() => {
             :key="gi + '-' + i"
             class="branding-card"
           >
-            <img :src="img" alt="" />
+            <div
+              class="image-skeleton"
+              :class="{ hidden: loadedImages[gi + '-' + i] }"
+            ></div>
+
+            <img
+              :src="img"
+              loading="lazy"
+              @load="loadedImages[gi + '-' + i] = true"
+              :class="{ loaded: loadedImages[gi + '-' + i] }"
+            />
           </div>
         </div>
       </div>
@@ -111,19 +112,41 @@ onUnmounted(() => {
   gap: 2rem;
   width: max-content;
   will-change: transform;
-  transform: translate3d(0, 0, 0);
 }
 
 .group {
   display: flex;
+  gap:30px;
 }
 
 .branding-card {
+  position: relative;
   width: 220px;
+  height: auto;
   flex: 0 0 auto;
   border-radius: 14px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.05);
+  background: #e5e7eb;
+}
+
+.image-skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #e5e7eb 30%,
+    #f3f4f6 50%,
+    #e5e7eb 70%
+  );
+  background-size: 600% 100%;
+  animation: shimmer 2.2s linear infinite;
+  transition: opacity 0.45s ease;
+  z-index: 1;
+}
+
+.image-skeleton.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .branding-card img {
@@ -131,5 +154,20 @@ onUnmounted(() => {
   height: 100%;
   object-fit: cover;
   display: block;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.branding-card img.loaded {
+  opacity: 1;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 </style>

@@ -119,47 +119,7 @@ const tags = ["he/him","STI College"]
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(68, 93, 72, 0.3);
 }
-/* Solid dot */
-.status::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 10px;
-  height: 8px;
-  background-color: #4ade80; /* green */
-  border-radius: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
-}
 
-/* Pulsing ring */
-.status::after {
-  content: "";
-  position: absolute;
-  left: -6px;
-  top: 50%;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background-color: rgba(74, 222, 128, 0.5);
-  transform: translateY(-50%);
-  animation: pulse 1.8s ease-out infinite;
-}
-
-@keyframes pulse {
-  0% {
-    transform: translateY(-50%) scale(0.6);
-    opacity: 0.8;
-  }
-  70% {
-    transform: translateY(-50%) scale(1.4);
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
-}
 
 
 .name {
