@@ -1,14 +1,19 @@
 /**
  * Web Projects Data
  * -----------------
- * Each project follows a research / case-study structure:
+ * General Academic + Personal Case Study Structure
  *
- * - date: When the project was completed or published
- * - overview: Short abstract / summary
- * - background: Context, problem statement, or motivation
+ * - date: Completion / publication date
+ * - overview: Project summary / abstract
+ * - background: Context and motivation
+ * - objectives: List of project goals
+ * - methodology: Development approach / process
+ * - features: Key system features
+ * - challenges: Problems encountered + learnings
+ * - conclusion: Final outcome and impact
  * - project: Main banner image (16:9)
- * - screenshots: Supporting figures with descriptions
- * - footer: Acknowledgements / special thanks
+ * - screenshots: Supporting figures
+ * - footer: Acknowledgements
  */
 
 export const webProjects = [
@@ -16,12 +21,37 @@ export const webProjects = [
     slug: "all-about-pets",
     title: "All About Pets",
     date: "March 2024",
+    
 
     overview:
-      "A client-based mini-thesis web system developed for a pet care business to manage services, appointments, and client records through a centralized dashboard.",
+      "A client-based academic web system developed for a pet care business to manage services, appointments, and client records through a centralized administrative dashboard.",
 
     background:
-      "This project was created as part of an academic requirement involving a real-world client. The business previously relied on manual record keeping, which led to scheduling conflicts and data inconsistency. The system was designed to automate operations and improve service efficiency.",
+      "The project was developed as part of a mini-thesis requirement involving a real-world client. Prior to system implementation, the business relied on manual logbooks and spreadsheets, resulting in scheduling conflicts, delayed service processing, and inconsistent record management.",
+
+    objectives: [
+      "Digitize client and pet records.",
+      "Automate appointment scheduling and service tracking.",
+      "Improve operational efficiency and reduce human error.",
+      "Provide an administrative dashboard for business insights."
+    ],
+
+    methodology:
+      "The system was developed using a structured development approach, beginning with client consultation and requirements analysis. Database schema design was conducted prior to backend implementation. The application was built using PHP and MySQL, followed by iterative testing and user validation with the client.",
+
+    features: [
+      "Administrative dashboard with service statistics.",
+      "Appointment approval and scheduling system.",
+      "Client and pet record management.",
+      "Search and filtering functionality.",
+      "Secure login authentication system."
+    ],
+
+    challenges:
+      "One of the primary challenges was aligning system features with real-world workflow practices of the client. Additionally, database normalization and ensuring data consistency required multiple refinements during development.",
+
+    conclusion:
+      "The system successfully transitioned the client from manual record-keeping to a digital management platform. It improved scheduling accuracy, reduced data redundancy, and enhanced overall operational efficiency.",
 
     logo: "/images/logos/pets-logo.png",
     github: "https://github.com/yourname/all-about-pets",
@@ -35,22 +65,22 @@ export const webProjects = [
       {
         image: "/images/screenshots/pets-dashboard.png",
         caption:
-          "Figure 1. Administrative dashboard presenting service statistics, appointment summaries, and recent activity."
+          "Administrative dashboard presenting service statistics and recent activity."
       },
       {
         image: "/images/screenshots/pets-appointments.png",
         caption:
-          "Figure 2. Appointment management interface allowing staff to approve, reschedule, or cancel bookings."
+          "Appointment management interface for approving or rescheduling bookings."
       },
       {
         image: "/images/screenshots/pets-records.png",
         caption:
-          "Figure 3. Client and pet records module used for maintaining historical data."
+          "Client and pet records module for maintaining historical data."
       }
     ],
 
     footer:
-      "Special thanks to the project client, academic advisers, and peer reviewers for their guidance and feedback throughout development."
+      "Special thanks to the project client, academic advisers, and peer reviewers for their guidance and valuable feedback."
   },
 
   {
@@ -59,10 +89,34 @@ export const webProjects = [
     date: "January 2024",
 
     overview:
-      "An experimental café ordering and management system designed to streamline order processing, menu updates, and daily sales tracking.",
+      "A café ordering and management system designed to streamline order processing, menu updates, and daily sales tracking for small businesses.",
 
     background:
-      "The project explored improving small café operations through digital point-of-sale systems. The goal was to reduce order errors, speed up transactions, and provide daily sales insights for business owners.",
+      "This project explored how small-scale café operations can benefit from digital transformation. Many local cafés rely on handwritten receipts and manual tracking, which often leads to inaccurate sales monitoring and operational inefficiencies.",
+
+    objectives: [
+      "Develop a digital point-of-sale system.",
+      "Enable menu and pricing management.",
+      "Generate daily sales reports automatically.",
+      "Reduce order processing time."
+    ],
+
+    methodology:
+      "The system was developed using a modular approach. UI design focused on usability for café staff. Backend functionality was implemented using PHP and MySQL, with testing conducted through simulated daily café transactions.",
+
+    features: [
+      "Interactive point-of-sale interface.",
+      "Menu management module.",
+      "Daily sales reporting dashboard.",
+      "Transaction history tracking.",
+      "Revenue computation automation."
+    ],
+
+    challenges:
+      "Ensuring fast order processing while maintaining data accuracy was a key challenge. Optimizing queries for daily sales summaries also required backend adjustments.",
+
+    conclusion:
+      "The project demonstrated how even small businesses can benefit from lightweight digital systems. It improved transaction accuracy and provided clear daily revenue insights.",
 
     logo: "/images/logos/kapet-logo.png",
     github: "",
@@ -76,22 +130,22 @@ export const webProjects = [
       {
         image: "/images/screenshots/kapet-orders.png",
         caption:
-          "Figure 1. Point-of-sale interface used by café staff to process customer orders."
+          "Point-of-sale interface used by café staff to process customer orders."
       },
       {
         image: "/images/screenshots/kapet-menu.png",
         caption:
-          "Figure 2. Menu management screen for updating items, pricing, and availability."
+          "Menu management screen for updating items and pricing."
       },
       {
         image: "/images/screenshots/kapet-sales.png",
         caption:
-          "Figure 3. Daily sales report view summarizing transactions and revenue."
+          "Daily sales report summarizing transactions and revenue."
       }
     ],
 
     footer:
-      "Developed as a personal experimental project inspired by small local cafés and informal business workflows."
+      "Developed as a personal experimental project inspired by local café operations."
   },
 
   {
@@ -100,10 +154,34 @@ export const webProjects = [
     date: "2024 – 2025",
 
     overview:
-      "A long-term rental management platform designed for property owners to manage tenants, leases, and payments while providing analytics and AI-assisted insights.",
+      "A rental property management platform designed to centralize tenant management, lease tracking, and payment monitoring while integrating data-driven insights.",
 
     background:
-      "Managing rental properties often involves fragmented tools for payments, communication, and record keeping. HomeHive was designed to centralize these processes into a single platform while offering data-driven insights to help owners make informed decisions.",
+      "Property owners often rely on fragmented tools for communication, billing, and record keeping. HomeHive was conceptualized to unify these processes into a single platform while leveraging analytics to support informed decision-making.",
+
+    objectives: [
+      "Centralize rental property data management.",
+      "Provide tenant and lease tracking modules.",
+      "Enable payment monitoring and reporting.",
+      "Incorporate analytics for property insights."
+    ],
+
+    methodology:
+      "The project followed an iterative development cycle, incorporating feedback from potential users. System architecture was planned to ensure scalability. Frontend and backend modules were developed in parallel and integrated through API-based communication.",
+
+    features: [
+      "Property occupancy dashboard.",
+      "Tenant management module.",
+      "Lease and contract tracking.",
+      "Payment and balance monitoring.",
+      "Analytical insights for property performance."
+    ],
+
+    challenges:
+      "Designing a scalable database structure capable of supporting multiple properties and tenants required careful planning. Another challenge involved ensuring secure authentication and data protection.",
+
+    conclusion:
+      "HomeHive demonstrates how digital platforms can modernize rental management. The system centralizes data, enhances transparency, and supports property owners with actionable insights.",
 
     logo: "/images/homehive/homehive-logo.jpeg",
     github: "https://github.com/yourname/homehive",
@@ -117,21 +195,21 @@ export const webProjects = [
       {
         image: "/images/homehive/display-1.png",
         caption:
-          "Figure 1. Main dashboard showing property occupancy, tenant status, and revenue metrics."
+          "Main dashboard showing property occupancy and revenue metrics."
       },
       {
         image: "/images/homehive/tenants.png",
         caption:
-          "Figure 2. Tenant management module displaying lease details and payment history."
+          "Tenant management module displaying lease details."
       },
       {
         image: "/images/homehive/payments.png",
         caption:
-          "Figure 3. Payment tracking interface summarizing rent status and outstanding balances."
+          "Payment tracking interface summarizing rent status."
       }
     ],
 
     footer:
-      "Special Thanks to our Adviser who guided us "
+      "Special thanks to our academic adviser and development team members for their guidance throughout the project lifecycle."
   }
 ]
