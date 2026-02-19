@@ -436,13 +436,13 @@ watchEffect(() => {
 }
 
 .footer h3 {
-  display: inline-block;              /* important */
+  display: inline-block;         
   font-size: 1.1rem;
   font-weight: 600;
   color: #2f3e46;
   margin-bottom: 1rem;
   padding-bottom: 0.4rem;
-  border-bottom: 3px solid #445d48;   /* your green accent */
+  border-bottom: 3px solid #445d48;   
 }
 
 .footer p {
@@ -450,6 +450,8 @@ watchEffect(() => {
   line-height: 1.8;
   color: #4b5563;
   opacity: 0.9;
+  white-space: pre-line;
+
 }
 
 

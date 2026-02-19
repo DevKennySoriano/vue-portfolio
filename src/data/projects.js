@@ -185,11 +185,16 @@ export const webProjects = [
   }
 ],
 
-   footer: `
-Special thanks to our academic adviser, Juville Agpaoa, for the continuous guidance, support, and valuable insights throughout the entire project lifecycle. His mentorship helped us improve both the technical and conceptual aspects of the system.
+footer: `
+Special thanks to our academic adviser, Juville Agpaoa,
+for the continuous guidance and support.
 
-This project was collaboratively developed by Angelo Flores, Zachary Estacio, Elijah Daguro, and Kenny Soriano. Through teamwork, shared responsibility, and consistent communication, the team successfully designed, developed, tested, and refined the system to meet its intended objectives.
+This project was collaboratively developed by
+Angelo Flores, Zachary Estacio, Elijah Daguro, and Kenny Soriano.
+
+Bee Smart. Bee Secure. Bee Home with HomeHive.
 `
+
 
 
   }
