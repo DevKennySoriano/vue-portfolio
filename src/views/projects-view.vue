@@ -1,5 +1,5 @@
 <script setup>
-import { computed, watchEffect } from 'vue'
+import { computed, watchEffect, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { webProjects } from '@/data/projects'
 
@@ -10,12 +10,26 @@ const project = computed(() =>
   webProjects.find(p => p.slug === route.params.slug)
 )
 
+const isPreviewOpen = ref(false)
+const selectedImage = ref(null)
+
+const openPreview = (shot) => {
+  selectedImage.value = shot
+  isPreviewOpen.value = true
+}
+
+const closePreview = () => {
+  isPreviewOpen.value = false
+  selectedImage.value = null
+}
+
 watchEffect(() => {
   if (!project.value) {
     router.push('/projects')
   }
 })
 </script>
+
 
 <template>
   <div class="project-layout">
@@ -24,7 +38,6 @@ watchEffect(() => {
     <aside class="sidebar">
 
       <button class="back-btn" @click="router.push('/projects')">
-        <span class="arrow">←</span>
         <span>Back to Projects</span>
       </button>
 
@@ -127,24 +140,28 @@ watchEffect(() => {
         </section>
 
         <!-- SCREENSHOTS -->
-        <section v-if="project.screenshots?.length" class="section">
-          <h2>Implementation & Output</h2>
+          <section v-if="project.screenshots?.length" class="section">
+        <h2>Implementation & Output</h2>
 
-          <div class="images-grid">
-            <figure
-              v-for="(shot, i) in project.screenshots"
-              :key="i"
-              class="image-card"
-            >
-              <div class="ratio-16x9">
-                <img :src="shot.image" :alt="shot.caption" />
+        <div class="images-grid">
+          <figure
+            v-for="(shot, i) in project.screenshots"
+            :key="i"
+            class="image-card"
+            @click="openPreview(shot)"
+          >
+            <div class="ratio-16x9 image-wrapper">
+              <img :src="shot.image" :alt="shot.caption" />
+              <div class="overlay">
+                <span>Click to View</span>
               </div>
-              <figcaption>
-                Figure {{ i + 1 }}. {{ shot.caption }}
-              </figcaption>
-            </figure>
-          </div>
-        </section>
+            </div>
+            <figcaption>
+              Figure {{ i + 1 }}. {{ shot.caption }}
+            </figcaption>
+          </figure>
+        </div>
+      </section>
 
         <!-- CHALLENGES -->
         <section v-if="project.challenges" class="section">
@@ -165,6 +182,21 @@ watchEffect(() => {
         </footer>
 
       </div>
+
+
+
+      <!-- IMAGE PREVIEW MODAL -->
+<div v-if="isPreviewOpen" class="image-modal" @click="closePreview">
+  <div class="modal-content" @click.stop>
+    <button class="close-btn" @click="closePreview">✕</button>
+    <img :src="selectedImage.image" :alt="selectedImage.caption" />
+    <p class="modal-caption">
+      {{ selectedImage.caption }}
+    </p>
+  </div>
+</div>
+
+
     </main>
 
   </div>
@@ -392,16 +424,34 @@ watchEffect(() => {
 
 /* ================= FOOTER ================= */
 .footer {
-  margin-top: 4rem;
-  margin-bottom: 4rem;
-  padding-top: 2rem;
+  margin-top: 5rem;
+  padding: 3rem 0 2rem;
   border-top: 1px solid #dbe5dc;
+  text-align: center;
+}
+
+.footer-section {
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .footer h3 {
-  margin-bottom: 0.8rem;
+  display: inline-block;              /* important */
+  font-size: 1.1rem;
+  font-weight: 600;
   color: #2f3e46;
+  margin-bottom: 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 3px solid #445d48;   /* your green accent */
 }
+
+.footer p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #4b5563;
+  opacity: 0.9;
+}
+
 
 /* ================= SCROLLBAR ================= */
 .content-wrapper::-webkit-scrollbar {
@@ -415,6 +465,110 @@ watchEffect(() => {
 
 .content-wrapper::-webkit-scrollbar-thumb:hover {
   background: #8fa896;
+}
+
+/* ================= IMAGE HOVER EFFECT ================= */
+.image-card {
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.image-card:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+.image-wrapper {
+  position: relative;
+}
+
+.image-wrapper img {
+  transition: transform 0.4s ease;
+}
+
+.image-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 16px;
+}
+
+.image-card:hover .overlay {
+  opacity: 1;
+}
+
+/* ================= MODAL ================= */
+.image-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 2rem;
+  backdrop-filter: blur(6px);
+}
+
+.modal-content {
+  max-width: 1000px;
+  width: 100%;
+  animation: fadeIn 0.3s ease;
+  text-align: center;
+}
+
+.modal-content img {
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+}
+
+.modal-caption {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #f1f1f1;
+}
+
+.close-btn {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.close-btn:hover {
+  background: white;
+  color: #000;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 </style>

@@ -1,44 +1,20 @@
-/**
- * Web Projects Data
- * -----------------
- * General Academic + Personal Case Study Structure
- *
- * - date: Completion / publication date
- * - overview: Project summary / abstract
- * - background: Context and motivation
- * - objectives: List of project goals
- * - methodology: Development approach / process
- * - features: Key system features
- * - challenges: Problems encountered + learnings
- * - conclusion: Final outcome and impact
- * - project: Main banner image (16:9)
- * - screenshots: Supporting figures
- * - footer: Acknowledgements
- */
-
 export const webProjects = [
   {
     slug: "all-about-pets",
     title: "All About Pets",
     date: "March 2024",
-    
-
     overview:
       "A client-based academic web system developed for a pet care business to manage services, appointments, and client records through a centralized administrative dashboard.",
-
     background:
       "The project was developed as part of a mini-thesis requirement involving a real-world client. Prior to system implementation, the business relied on manual logbooks and spreadsheets, resulting in scheduling conflicts, delayed service processing, and inconsistent record management.",
-
     objectives: [
       "Digitize client and pet records.",
       "Automate appointment scheduling and service tracking.",
       "Improve operational efficiency and reduce human error.",
       "Provide an administrative dashboard for business insights."
     ],
-
     methodology:
       "The system was developed using a structured development approach, beginning with client consultation and requirements analysis. Database schema design was conducted prior to backend implementation. The application was built using PHP and MySQL, followed by iterative testing and user validation with the client.",
-
     features: [
       "Administrative dashboard with service statistics.",
       "Appointment approval and scheduling system.",
@@ -46,21 +22,15 @@ export const webProjects = [
       "Search and filtering functionality.",
       "Secure login authentication system."
     ],
-
     challenges:
       "One of the primary challenges was aligning system features with real-world workflow practices of the client. Additionally, database normalization and ensuring data consistency required multiple refinements during development.",
-
     conclusion:
       "The system successfully transitioned the client from manual record-keeping to a digital management platform. It improved scheduling accuracy, reduced data redundancy, and enhanced overall operational efficiency.",
-
     logo: "/images/logos/pets-logo.png",
     github: "https://github.com/yourname/all-about-pets",
     live: "#",
-
     tags: ["PHP", "HTML", "CSS", "MySQL", "JavaScript"],
-
     project: "/images/banners/PetsBanner.png",
-
     screenshots: [
       {
         image: "/images/screenshots/pets-dashboard.png",
@@ -78,32 +48,25 @@ export const webProjects = [
           "Client and pet records module for maintaining historical data."
       }
     ],
-
     footer:
       "Special thanks to the project client, academic advisers, and peer reviewers for their guidance and valuable feedback."
   },
-
   {
     slug: "kapet-bahala-na",
     title: "Kapet Bahala Na",
     date: "January 2024",
-
     overview:
       "A café ordering and management system designed to streamline order processing, menu updates, and daily sales tracking for small businesses.",
-
     background:
       "This project explored how small-scale café operations can benefit from digital transformation. Many local cafés rely on handwritten receipts and manual tracking, which often leads to inaccurate sales monitoring and operational inefficiencies.",
-
     objectives: [
       "Develop a digital point-of-sale system.",
       "Enable menu and pricing management.",
       "Generate daily sales reports automatically.",
       "Reduce order processing time."
     ],
-
     methodology:
       "The system was developed using a modular approach. UI design focused on usability for café staff. Backend functionality was implemented using PHP and MySQL, with testing conducted through simulated daily café transactions.",
-
     features: [
       "Interactive point-of-sale interface.",
       "Menu management module.",
@@ -111,21 +74,15 @@ export const webProjects = [
       "Transaction history tracking.",
       "Revenue computation automation."
     ],
-
     challenges:
       "Ensuring fast order processing while maintaining data accuracy was a key challenge. Optimizing queries for daily sales summaries also required backend adjustments.",
-
     conclusion:
       "The project demonstrated how even small businesses can benefit from lightweight digital systems. It improved transaction accuracy and provided clear daily revenue insights.",
-
     logo: "/images/logos/kapet-logo.png",
     github: "",
     live: "#",
-
     tags: ["PHP", "HTML", "CSS", "MySQL", "JavaScript"],
-
     project: "/images/banners/kapet-banner.png",
-
     screenshots: [
       {
         image: "/images/screenshots/kapet-orders.png",
@@ -143,73 +100,97 @@ export const webProjects = [
           "Daily sales report summarizing transactions and revenue."
       }
     ],
-
     footer:
       "Developed as a personal experimental project inspired by local café operations."
   },
-
   {
     slug: "homehive",
     title: "HomeHive",
     date: "2024 – 2025",
-
     overview:
-      "A rental property management platform designed to centralize tenant management, lease tracking, and payment monitoring while integrating data-driven insights.",
-
+      "HomeHive is an innovative web-based rental property management system that connects tenants and property owners with secure property listings, integrated payment processing, intelligent communication tools, and AI-powered predictive maintenance for long-term rentals.",
     background:
-      "Property owners often rely on fragmented tools for communication, billing, and record keeping. HomeHive was conceptualized to unify these processes into a single platform while leveraging analytics to support informed decision-making.",
-
+      "Tenants struggle with finding reliable apartments through fragmented listings, while property owners lack efficient digital tools for payment tracking, lease management, and property maintenance. HomeHive addresses these challenges by providing a unified platform with role-based access, automated payment management, comprehensive lease tracking, and AI-assisted predictive maintenance to enhance the rental experience and streamline property operations.",
     objectives: [
-      "Centralize rental property data management.",
-      "Provide tenant and lease tracking modules.",
-      "Enable payment monitoring and reporting.",
-      "Incorporate analytics for property insights."
+      "Design and develop an integrated rental management system with contract, payment, and dashboard modules.",
+      "Implement role-based access control for admins, property owners, and tenants.",
+      "Develop AI-powered predictive maintenance assistant for property owners.",
+      "Integrate secure payment processing and automated rent tracking.",
+      "Ensure long-term rental support with comprehensive lease and occupancy management.",
+      "Evaluate system quality using ISO 25010 standards for functionality, usability, reliability, security, and data privacy."
     ],
-
     methodology:
-      "The project followed an iterative development cycle, incorporating feedback from potential users. System architecture was planned to ensure scalability. Frontend and backend modules were developed in parallel and integrated through API-based communication.",
-
+      "The project followed an iterative development cycle with user feedback integration. System architecture was designed for scalability and security. Frontend and backend modules were developed in parallel using API-based communication with role-based authentication implemented at every layer.",
     features: [
-      "Property occupancy dashboard.",
-      "Tenant management module.",
-      "Lease and contract tracking.",
-      "Payment and balance monitoring.",
-      "Analytical insights for property performance."
+      "Dashboard with property occupancy and revenue metrics.",
+      "Contract and lease management with digital signatures.",
+      "Secure payment processing with balance tracking.",
+      "AI predictive assistant for maintenance recommendations.",
+      "Tenant management module with communication tools.",
+      "Role-based access control (Admin, Owner, Tenant).",
+      "Automated payment reminders and receipts.",
+      "Analytical insights for property performance.",
+      "Long-term rental support with renewal tracking.",
+      "Encrypted data storage and transaction logging."
     ],
-
     challenges:
-      "Designing a scalable database structure capable of supporting multiple properties and tenants required careful planning. Another challenge involved ensuring secure authentication and data protection.",
-
+      `Developing HomeHive was both challenging and rewarding. One of the main challenges was organizing the system to manage properties, tenants, payments, and contracts in one platform. We had to make sure the data was secure and accurate, especially for user accounts and payment tracking. Connecting the frontend and backend properly also required careful testing to avoid errors. Another challenge was building the analytics and maintenance features in a way that was easy to understand and useful for users. Through this project, we improved our skills in full-stack development, database management, and problem-solving. We also learned the importance of clean code, proper planning, and teamwork when building a complete system.`,
     conclusion:
-      "HomeHive demonstrates how digital platforms can modernize rental management. The system centralizes data, enhances transparency, and supports property owners with actionable insights.",
-
+  "HomeHive shows how a digital platform can improve and simplify rental property management. The system combines important features such as contract management, payment tracking, tenant records, and property analytics in one centralized platform. By integrating secure authentication and AI-powered insights, HomeHive helps property owners make better decisions and maintain their properties more efficiently. Overall, the system creates a more organized, transparent, and secure environment for property owners, tenants, and administrators.",
     logo: "/images/homehive/homehive-logo.jpeg",
     github: "https://github.com/yourname/homehive",
     live: "https://homehive.app",
-
-    tags: ["PHP", "HTML", "CSS", "JavaScript", "MySQL", "AI"],
-
-    project: "/images/homehive/display-1.png",
-
+    tags: ["PHP", "HTML", "CSS", "JavaScript", "MySQL", "AI", "Payment Gateway", "JWT"],
+    project: "/images/homehive/homehive-landing-page-sample.png",
     screenshots: [
-      {
-        image: "/images/homehive/display-1.png",
-        caption:
-          "Main dashboard showing property occupancy and revenue metrics."
-      },
-      {
-        image: "/images/homehive/tenants.png",
-        caption:
-          "Tenant management module displaying lease details."
-      },
-      {
-        image: "/images/homehive/payments.png",
-        caption:
-          "Payment tracking interface summarizing rent status."
-      }
-    ],
+  {
+    image: "/images/homehive/homehive-userdashboard-sample.png",
+    caption:
+      "Main dashboard displaying property occupancy rates, revenue metrics, and overall performance insights."
+  },
+  {
+    image: "/images/homehive/homehive-receipt-sample.png",
+    caption:
+      "Secure payment tracking interface with automated rent collection and digital receipt management."
+  },
+  {
+    image: "/images/homehive/homehive-sign-in-sample.png",
+    caption:
+      "User authentication page with secure sign-in and access control."
+  },
+  {
+    image: "/images/homehive/homehive-property-analytics-sample.png",
+    caption:
+      "Property analytics dashboard with AI-powered insights and predictive maintenance recommendations."
+  },
+  {
+    image: "/images/homehive/homehive-forgot-password-sample.png",
+    caption:
+      "Forgot password interface with secure password reset functionality."
+  },
+  {
+    image: "/images/homehive/homehive-analytics-report-sample.png",
+    caption:
+      "Generate report interface with detailed property performance and financial insights with printable report."
+  },
+   {
+    image: "/images/homehive/homehive-ai-predictive-chat-sample.png",
+    caption:
+      "AI-powered predictive assistant providing maintenance recommendations and property insights."
+  },
+  {
+    image: "/images/homehive/homehive-map-sample.png",
+    caption:
+      "Interactive property map view showing locations, listings, and geospatial insights."
+  }
+],
 
-    footer:
-      "Special thanks to our academic adviser and development team members for their guidance throughout the project lifecycle."
+   footer: `
+Special thanks to our academic adviser, Juville Agpaoa, for the continuous guidance, support, and valuable insights throughout the entire project lifecycle. His mentorship helped us improve both the technical and conceptual aspects of the system.
+
+This project was collaboratively developed by Angelo Flores, Zachary Estacio, Elijah Daguro, and Kenny Soriano. Through teamwork, shared responsibility, and consistent communication, the team successfully designed, developed, tested, and refined the system to meet its intended objectives.
+`
+
+
   }
 ]
