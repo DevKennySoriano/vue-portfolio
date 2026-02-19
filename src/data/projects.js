@@ -140,7 +140,7 @@ export const webProjects = [
     logo: "/images/homehive/homehive-logo.jpeg",
     github: "https://github.com/yourname/homehive",
     live: "https://homehive.app",
-    tags: ["PHP", "HTML", "CSS", "JavaScript", "MySQL", "AI", "Payment Gateway", "JWT"],
+    tags: ["PHP", "HTML", "CSS", "JavaScript", "MySQL", "AI Integration", "Payment Gateway"],
     project: "/images/homehive/homehive-landing-page-sample.png",
     screenshots: [
   {
