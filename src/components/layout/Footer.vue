@@ -14,7 +14,7 @@ export default {
             </div>
             <div class="socials">
                 <a
-                    href="https://facebook.com/yourusername"
+                    href=""
                     target="_blank"
                     rel="noopener"
                     aria-label="Facebook"
@@ -27,7 +27,7 @@ export default {
                 </a>
 
                 <a
-                    href="https://linkedin.com/in/yourusername"
+                    href=""
                     target="_blank"
                     rel="noopener"
                     aria-label="LinkedIn"
@@ -40,7 +40,7 @@ export default {
                 </a>
 
                 <a
-                    href="mailto:youremail@gmail.com"
+                    href="mailto:devkennysoriano@gmail.com"
                     aria-label="Gmail"
                 >
                     <svg viewBox="0 0 24 24">
