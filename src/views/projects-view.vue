@@ -37,10 +37,6 @@ watchEffect(() => {
     <!-- ================= SIDEBAR ================= -->
     <aside class="sidebar">
 
-      <button class="back-btn" @click="router.push('/projects')">
-        <span>Back to Projects</span>
-      </button>
-
       <div class="logo-wrapper">
         <img :src="project.logo" :alt="project.title" />
       </div>
