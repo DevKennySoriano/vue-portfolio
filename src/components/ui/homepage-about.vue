@@ -12,10 +12,12 @@ const tags = ["he/him","STI College"]
   <div
     class="about-left"
     data-aos="fade-right"
+    data-aos-once="true"
   >
 <span
   class="status"
   data-aos="fade-up"
+  data-aos-once="true"
   data-aos-delay="100"
 >
   {{ status }}
@@ -25,6 +27,7 @@ const tags = ["he/him","STI College"]
     <h2
       class="name"
       data-aos="fade-up"
+      data-aos-once="true"
       data-aos-delay="200"
     >
       {{ name }}
@@ -33,6 +36,7 @@ const tags = ["he/him","STI College"]
     <p
       class="description"
       data-aos="fade-up"
+      data-aos-once="true"
       data-aos-delay="300"
     >
       {{ description }}
@@ -41,6 +45,7 @@ const tags = ["he/him","STI College"]
     <div
       class="buttons"
       data-aos="fade-up"
+      data-aos-once="true"
       data-aos-delay="400"
     >
       <button class="btn primary">
@@ -57,10 +62,12 @@ const tags = ["he/him","STI College"]
   <div
     class="about-right"
     data-aos="fade-left"
+    data-aos-once="true"
   >
     <div
       class="profile-cube"
       data-aos="zoom-in"
+      data-aos-once="true"
       data-aos-delay="200"
     >
       <img :src="profileImg" alt="Profile picture" />
@@ -72,6 +79,7 @@ const tags = ["he/him","STI College"]
         :key="tag"
         class="tag"
         data-aos="zoom-in"
+        data-aos-once="true"
         :data-aos-delay="i * 100 + 300"
       >
         {{ tag }}

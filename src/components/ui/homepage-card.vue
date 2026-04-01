@@ -22,6 +22,7 @@ const cards = [
       :key="card.title"
       class="info-card"
       data-aos="fade-up"
+      data-aos-once="true"
       :data-aos-delay="i * 200"
     >
       <span class="label">{{ card.title }}</span>

@@ -2,7 +2,7 @@
 </script>
 
 <template>
-<div class="collab" data-aos="fade-up" data-aos-duration="900">
+<div class="collab" data-aos="fade-up" data-aos-duration="900" data-aos-once="true">
 <h2 class="title">Curious what I’ve been working on?</h2>
 <p class="text">
  Explore a curated selection of my projects, showcasing my skills,

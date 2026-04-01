@@ -2,7 +2,7 @@
 </script>
 
 <template>
-<div class="collab" data-aos="fade-up" data-aos-duration="900">
+<div class="collab" data-aos="fade-up" data-aos-duration="900" data-aos-once="true">
   <h2 class="title">Ready to collaborate?</h2>
   <p class="text">
     I’m open to internships, freelance work, and exciting projects.  

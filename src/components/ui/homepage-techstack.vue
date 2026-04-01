@@ -51,6 +51,7 @@ onMounted(async () => {
   <h2
     class="section-title"
     data-aos="fade-up"
+    data-aos-once="true"
   >
     Tech Stack
   </h2>
@@ -61,6 +62,7 @@ onMounted(async () => {
       :key="stack.title"
       class="tech-card"
       data-aos="fade-up"
+      data-aos-once="true"
       :data-aos-delay="index * 150"
     >
       <h3 class="tech-title">{{ stack.title }}</h3>
@@ -71,6 +73,7 @@ onMounted(async () => {
           :key="item.name"
           class="icon-item"
           data-aos="fade-up"
+          data-aos-once="true"
           :data-aos-delay="i * 80 + index * 150"
         >
           <div class="icon-box">

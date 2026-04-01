@@ -47,7 +47,7 @@ onUnmounted(stopAutoSlide)
 </script>
 
 <template>
-<section class="certificates" data-aos="fade-up">
+<section class="certificates" data-aos="fade-up" data-aos-once="true">
   <h2 class="section-title">Certificates</h2>
 
   <div
@@ -67,6 +67,7 @@ onUnmounted(stopAutoSlide)
           :key="index"
           class="slide"
           data-aos="fade-up"
+          data-aos-once="true"
           :data-aos-delay="index * 150"
         >
           <div class="card">
