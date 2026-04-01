@@ -13,7 +13,7 @@ const routes = [
   path: '/projects/:slug',
   name: 'ProjectsView',
   component: () => import('../views/projects-view.vue'),
-  meta: { hideLayout: true }
+  meta: { flushTop: true, hideFooter: true }
 },
 
   { path: '/contact', name: 'Contactpage', component: Contactpage }

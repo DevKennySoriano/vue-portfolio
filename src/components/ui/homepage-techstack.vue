@@ -97,7 +97,7 @@ onMounted(async () => {
   margin-bottom: 3.5rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #262626;
+  color: var(--text);
 }
 
 .tech-grid {
@@ -108,10 +108,10 @@ onMounted(async () => {
 
 .tech-card {
   position: relative;
-  background: #445d48;
+  background: var(--surface-strong);
   border-radius: 20px;
   padding: 2.2rem 1.8rem;
-  color: #f9fafb;
+  color: var(--text-inverse);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
@@ -146,7 +146,7 @@ onMounted(async () => {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #e5e7eb;
+  color: color-mix(in srgb, var(--text-inverse) 92%, transparent);
 }
 
 .icon-grid {
@@ -161,13 +161,13 @@ onMounted(async () => {
   align-items: center;
   gap: 0.5rem;
   font-size: 0.8rem;
-  color: #e5e7eb;
+  color: color-mix(in srgb, var(--text-inverse) 90%, transparent);
   transition: transform 0.25s ease, color 0.25s ease;
 }
 
 .icon-item:hover {
   transform: translateY(-4px);
-  color: #ffffff;
+  color: var(--text-inverse);
 }
 
 .icon-box {
@@ -221,6 +221,14 @@ onMounted(async () => {
 }
 
 @media (max-width: 500px) {
+  .tech {
+    padding: 2.8rem 1rem;
+  }
+
+  .tech-card {
+    padding: 1.4rem 1rem;
+  }
+
   .tech-grid {
     grid-template-columns: 1fr;
   }

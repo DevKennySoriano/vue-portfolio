@@ -1,9 +1,9 @@
 <script setup>
-const status = "Currently OJT at Wizzard Technologies INC."
+const status = "Available for Work"
 const name = "Kenny Soriano"
 const profileImg = "/images/ken/about-img.jpeg"
 const description =
-    "Pogi lang."
+        "I build responsive and user-focused web interfaces with Vue and modern frontend practices."
 
 const tags = ["he/him","STI College"]
 </script>
@@ -87,7 +87,7 @@ const tags = ["he/him","STI College"]
         display: flex;
         gap: 1rem;
         padding: 2.5rem;
-        margin: 120px auto;   
+        margin: 120px auto 80px;
         max-width: 1000px;    
         align-items: center;
 }
@@ -107,17 +107,31 @@ const tags = ["he/him","STI College"]
 
   font-size: 1.05rem;
   font-weight: 500;
-  color: #e5ffed;
+        color: var(--text-inverse);
 
-  background: #445d48;
+        background: var(--surface-strong);
   border-radius: 999px;
   transition: all 0.3s ease;
 }
 
+.status::before {
+        content: "";
+        position: absolute;
+        left: 0.7rem;
+        top: 50%;
+        width: 9px;
+        height: 9px;
+        border-radius: 999px;
+        background: #22c55e;
+        transform: translateY(-50%);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55);
+        animation: pulseStatus 1.8s infinite;
+}
+
 .status:hover {
-  background: #556d58;
+        background: color-mix(in srgb, var(--surface-strong) 90%, white);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(68, 93, 72, 0.3);
+        box-shadow: var(--shadow);
 }
 
 
@@ -132,7 +146,7 @@ const tags = ["he/him","STI College"]
         max-width: 500px;
         font-size: 1.25rem;
         line-height: 1.8;
-        opacity: 0.9;
+        color: var(--text-muted);
         margin-bottom: 2rem;
 }
 
@@ -153,24 +167,40 @@ const tags = ["he/him","STI College"]
 
 .btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        box-shadow: var(--shadow);
 }
 
 .routerProjects{
         text-decoration: none;
-        color:white;
+        color:var(--text-inverse);
 }
 
 .primary {
-        background: #445d48;
-        color: #FAFAFA;
+        background: var(--surface-strong);
+        color: var(--text-inverse);
         border: none;
 }
 
 .outline {
-        background: transparent;
-        color: #262626;
-        border: 1px solid #445d48;
+        background: color-mix(in srgb, var(--bg-elevated) 88%, var(--bg-soft));
+        color: var(--text);
+        border: 1px solid var(--border);
+        font-weight: 600;
+}
+
+.outline:hover {
+        background: var(--surface-strong);
+        color: var(--text-inverse);
+        border-color: var(--surface-strong);
+}
+
+.outline:focus-visible {
+        outline: 3px solid color-mix(in srgb, var(--surface-strong) 45%, transparent);
+        outline-offset: 2px;
+}
+
+.outline:active {
+        transform: translateY(0);
 }
 
 .about-right {
@@ -185,9 +215,9 @@ const tags = ["he/him","STI College"]
         height: 280px;
         border-radius: 14px;
         overflow: hidden;
-        background: rgba(255, 255, 255, 0.2);
+        background: color-mix(in srgb, var(--bg-elevated) 85%, transparent);
         margin-bottom: 1.5rem;
-        border: 2px solid #445d48;
+        border: 2px solid var(--surface-strong);
 }
 
 .profile-cube img {
@@ -207,16 +237,28 @@ const tags = ["he/him","STI College"]
         font-size: 0.95rem;
         padding: 0.4rem 0.85rem;
         border-radius: 999px;
-        background: #445d48;
-        color: #FAFAFA;
+        background: var(--surface-strong);
+        color: var(--text-inverse);
         transition: all 0.3s ease;
         cursor: pointer;
 }
 
 .tag:hover {
-        background: #556d58;
+        background: color-mix(in srgb, var(--surface-strong) 90%, white);
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(68, 93, 72, 0.3);
+        box-shadow: var(--shadow);
+}
+
+@keyframes pulseStatus {
+        0% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55);
+        }
+        70% {
+                box-shadow: 0 0 0 9px rgba(34, 197, 94, 0);
+        }
+        100% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+        }
 }
 
 
@@ -228,6 +270,7 @@ const tags = ["he/him","STI College"]
                 flex-direction: column;
                 padding: 1.5rem;
                 margin: 60px auto;
+                text-align: center;
         }
 
         .name {
@@ -236,6 +279,7 @@ const tags = ["he/him","STI College"]
 
         .description {
                 font-size: 1rem;
+                margin-inline: auto;
         }
 
         .profile-cube {
@@ -250,6 +294,11 @@ const tags = ["he/him","STI College"]
                 padding: 1rem;
                 margin: 40px auto;
                 gap: 1.5rem;
+        }
+
+        .about-left,
+        .about-right {
+                width: 100%;
         }
 
         .name {

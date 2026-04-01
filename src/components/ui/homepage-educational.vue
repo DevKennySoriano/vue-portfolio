@@ -80,9 +80,9 @@ onMounted(async () => {
 
 <style scoped>
 .education {
-  background: #445d48;
+  background: var(--surface-strong);
   padding: 3.5rem 2rem;
-  color: #fafafa;
+  color: var(--text-inverse);
   width: auto;
 
 }
@@ -120,8 +120,8 @@ onMounted(async () => {
   aspect-ratio: 16 / 9;
   border-radius: 14px;
   overflow: hidden;
-  border: 2px solid #fafafa;
-  background: #2f4034;
+  border: 2px solid color-mix(in srgb, var(--text-inverse) 90%, transparent);
+  background: color-mix(in srgb, var(--surface-strong-2) 90%, black);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -141,11 +141,11 @@ onMounted(async () => {
 }
 
 .content-card {
-  background: rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--bg-elevated) 12%, transparent);
   border-radius: 16px;
   padding: 1.8rem 1.8rem;
   backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid color-mix(in srgb, var(--text-inverse) 22%, transparent);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -158,8 +158,8 @@ onMounted(async () => {
   display: inline-block;
   margin-bottom: 0.7rem;
   padding: 0.35rem 0.9rem;
-  background: #fcfcfc;
-  color:#262626;
+  background: var(--bg-elevated);
+  color: var(--text);
   border-radius: 999px;
   font-size: 0.85rem;
 }
@@ -232,6 +232,27 @@ onMounted(async () => {
   .timeline-item.reverse {
     flex-direction: column;
     text-align: center;
+  }
+
+  .education {
+    padding: 2.8rem 1rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .timeline {
+    gap: 2rem;
+  }
+
+  .content-card {
+    padding: 1.2rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
   }
 }
 </style>

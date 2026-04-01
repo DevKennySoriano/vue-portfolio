@@ -8,7 +8,7 @@
  Explore a curated selection of my projects, showcasing my skills,
   creativity, and attention to detail.
 </p>
-<router-link to="/projects"><a href="/projects" class="cta">View projects</a></router-link>
+<router-link to="/projects" class="cta">View projects</router-link>
 
 </div>
 </template>
@@ -19,7 +19,7 @@
   margin: 5rem auto 4rem;
   padding: 0 2rem;
   text-align: center;
-  color: #262626;
+  color: var(--text);
 }
 
 .title {
@@ -30,7 +30,7 @@
 .text {
   font-size: 1.05rem;
   line-height: 1.7;
-  opacity: 0.85;
+  color: var(--text-muted);
   margin-bottom: 2rem;
 }
 
@@ -38,20 +38,25 @@
   display: inline-block;
   padding: 0.7rem 1.6rem;
   border-radius: 999px;
-  border: 2px solid #445d48;
-  color: #445d48;
+  border: 2px solid var(--surface-strong);
+  color: var(--surface-strong);
   font-weight: 500;
   text-decoration: none;
   transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 .cta:hover {
-  background: #445d48;
-  color: #fafafa;
+  background: var(--surface-strong);
+  color: var(--text-inverse);
   transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
+  .collab {
+    margin-top: 3rem;
+    padding: 0 1rem;
+  }
+
   .title {
     font-size: 1.9rem;
   }

@@ -113,22 +113,22 @@ const statusText = value => value === 100 ? 'Completed' : 'In Progress'
 
 <style>
 .projects {
-  margin-top:120px;
+  margin-top: 0;
   padding: 3rem 2.5rem;
-  background-color: #445d48;
+  background-color: var(--surface-strong);
 }
 
 .section-title {
   font-size: 2.4rem;
   text-align: center;
   margin-bottom: 3rem;
-  color: #FAFAFA;
+  color: var(--text-inverse);
 }
 
 .sub-title {
   font-size: 1.4rem;
   margin: 2.5rem 0 1.5rem;
-  color: #FAFAFA;
+  color: var(--text-inverse);
 }
 
 .web-grid {
@@ -141,7 +141,7 @@ const statusText = value => value === 100 ? 'Completed' : 'In Progress'
 .web-card {
   border-radius: 16px;
   overflow: hidden;
-  background: #fafafa;
+  background: var(--bg-elevated);
   display: flex;
   flex-direction: column;
   min-height: 350px;
@@ -227,7 +227,7 @@ const statusText = value => value === 100 ? 'Completed' : 'In Progress'
 
 .text p {
   font-size: 0.9rem;
-  opacity: 0.85;
+  color: var(--text-muted);
   line-height: 1.5;
 
   display: -webkit-box;
@@ -282,40 +282,40 @@ const statusText = value => value === 100 ? 'Completed' : 'In Progress'
 
 .progress-circle .progress {
   fill: none;
-  stroke: #445d48;
+  stroke: var(--surface-strong);
   stroke-width: 3;
   stroke-linecap: round;
   animation: progressAnim 1.2s ease forwards;
 }
 
 .percentage {
-  fill: #111827;
+  fill: var(--text);
   font-size: 0.42rem;
   font-weight: 600;
   text-anchor: middle;
 }
 
 .status {
-  fill: #6b7280;
+  fill: var(--text-muted);
   font-size: 0.28rem;
   text-anchor: middle;
 }
 
 .view-btn {
-  margin-top: 50px;
+  margin-top: 1.2rem;
   align-self: flex-start;
   padding: 0.45rem 1.2rem;
   font-size: 0.8rem;
   border-radius: 999px;
-  background: #445d48;
-  color: #FAFAFA;
+  background: var(--surface-strong);
+  color: var(--text-inverse);
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
 
 .view-btn:hover {
-  background: #556d58;
+  background: color-mix(in srgb, var(--surface-strong) 90%, white);
   transform: translateY(-2px);
 }
 
@@ -341,5 +341,48 @@ const statusText = value => value === 100 ? 'Completed' : 'In Progress'
 
 @keyframes progressAnim {
   from { stroke-dasharray: 0, 100; }
+}
+
+@media (max-width: 768px) {
+  .projects {
+    padding: 2.2rem 1rem;
+  }
+
+  .section-title {
+    font-size: 1.9rem;
+    margin-bottom: 2rem;
+  }
+
+  .sub-title {
+    font-size: 1.1rem;
+    margin: 1.6rem 0 1rem;
+  }
+
+  .web-image {
+    height: 220px;
+  }
+
+  .view-btn {
+    margin-top: 1.2rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .content-top {
+    flex-direction: column;
+  }
+
+  .progress-circle {
+    width: 54px;
+    height: 54px;
+  }
+
+  .text h4 {
+    font-size: 1rem;
+  }
+
+  .text p {
+    font-size: 0.85rem;
+  }
 }
 </style>

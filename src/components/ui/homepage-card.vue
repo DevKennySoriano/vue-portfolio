@@ -10,7 +10,7 @@ const cards = [
     },
     {
         title: "Experience",
-        content: "OJT at Wizzard Technologies INC. - 300 Hours",
+        content: "Completed 300-hour OJT at Wizzard Technologies INC.",
     },
 ]
 </script>
@@ -36,7 +36,8 @@ const cards = [
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 200px;
+    margin-bottom: 120px;
+    padding: 0 1rem;
 }
 
 .card-row {
@@ -47,11 +48,11 @@ const cards = [
 }
 
 .info-card {
-    width: 350px;
+    width: min(350px, 100%);
     padding: 1.8rem;
     border-radius: 16px;
-    background: #ffffff;
-    border: 2px solid #445d48;
+    background: var(--bg-elevated);
+    border: 2px solid var(--surface-strong);
     box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -59,22 +60,32 @@ const cards = [
 
 .info-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 16px 36px rgba(68, 93, 72, 0.25);
+    box-shadow: var(--shadow);
 }
 
 .info-card p {
     margin-top: 1.2rem;
     font-size: 1.15rem;
     line-height: 1.7;
-    opacity: 0.9;
+    color: var(--text-muted);
 }
 
 .label {
     display: inline-block;
     padding: 0.4rem 1.4rem;
     font-size: 0.9rem;
-    background: #445d48;
-    color: #FAFAFA;
+    background: var(--surface-strong);
+    color: var(--text-inverse);
     border-radius: 999px;
+}
+
+@media (max-width: 768px) {
+    .card-wrapper {
+        margin-bottom: 80px;
+    }
+
+    .info-card {
+        padding: 1.4rem;
+    }
 }
 </style>

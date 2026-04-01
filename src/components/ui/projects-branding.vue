@@ -95,12 +95,12 @@ onUnmounted(() => {
 .branding {
   padding: 1rem 2.5rem;
   overflow: hidden;
-  margin-top:100px;
+  margin-top: 1.2rem;
 }
 
 .sub-title {
   margin-bottom: 1.5rem;
-  color: #445d48;
+  color: var(--text);
 }
 
 .marquee {
@@ -127,7 +127,7 @@ onUnmounted(() => {
   flex: 0 0 auto;
   border-radius: 14px;
   overflow: hidden;
-  background: #e5e7eb;
+  background: color-mix(in srgb, var(--bg-elevated) 85%, var(--bg-soft));
 }
 
 .image-skeleton {
@@ -169,6 +169,22 @@ onUnmounted(() => {
   }
   100% {
     background-position: -200% 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .branding {
+    margin-top: 0.6rem;
+    padding: 1rem;
+  }
+
+  .marquee-track,
+  .group {
+    gap: 14px;
+  }
+
+  .branding-card {
+    width: 160px;
   }
 }
 </style>

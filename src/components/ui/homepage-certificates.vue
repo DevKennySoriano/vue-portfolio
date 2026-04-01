@@ -89,9 +89,9 @@ onUnmounted(stopAutoSlide)
 
 <style scoped>
 .certificates {
-  background: #445d48;
+  background: var(--surface-strong);
   padding: 3.5rem 2rem;
-  color: #fafafa;
+  color: var(--text-inverse);
 }
 
 .section-title {
@@ -127,11 +127,11 @@ onUnmounted(stopAutoSlide)
 .card {
   width: 100%;
   max-width: 520px;
-  background: rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--bg-elevated) 12%, transparent);
   border-radius: 16px;
   padding: 1.8rem;
   backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid color-mix(in srgb, var(--text-inverse) 22%, transparent);
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -146,8 +146,8 @@ onUnmounted(stopAutoSlide)
   aspect-ratio: 16 / 10;
   border-radius: 14px;
   overflow: hidden;
-  border: 2px solid #fafafa;
-  background: #2f4034;
+  border: 2px solid color-mix(in srgb, var(--text-inverse) 88%, transparent);
+  background: color-mix(in srgb, var(--surface-strong-2) 90%, black);
   margin-bottom: 1.2rem;
 }
 
@@ -161,8 +161,8 @@ onUnmounted(stopAutoSlide)
   display: inline-block;
   margin-bottom: 0.6rem;
   padding: 0.35rem 0.9rem;
-  background: #fcfcfc;
-  color: #262626;
+  background: var(--bg-elevated);
+  color: var(--text);
   border-radius: 999px;
   font-size: 0.85rem;
 }
@@ -179,8 +179,8 @@ onUnmounted(stopAutoSlide)
 
 .nav {
   background: transparent;
-  border: 2px solid #fafafa;
-  color: #fafafa;
+  border: 2px solid color-mix(in srgb, var(--text-inverse) 88%, transparent);
+  color: var(--text-inverse);
   font-size: 2rem;
   padding: 0.3rem 0.8rem;
   border-radius: 10px;
@@ -189,7 +189,7 @@ onUnmounted(stopAutoSlide)
 }
 
 .nav:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: color-mix(in srgb, var(--bg-elevated) 18%, transparent);
   transform: scale(1.05);
 }
 
@@ -209,12 +209,25 @@ onUnmounted(stopAutoSlide)
 }
 
 @media (max-width: 768px) {
+  .certificates {
+    padding: 2.8rem 1rem;
+  }
+
   .slider {
     gap: 0.6rem;
   }
 
   .nav {
     font-size: 1.6rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .issuer {
+    font-size: 0.92rem;
   }
 }
 </style>
