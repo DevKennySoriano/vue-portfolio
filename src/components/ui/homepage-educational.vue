@@ -84,6 +84,8 @@ onMounted(async () => {
   padding: 3.5rem 2rem;
   color: var(--text-inverse);
   width: auto;
+  box-sizing: border-box;
+  overflow-x: clip;
 
 }
 
@@ -253,6 +255,13 @@ onMounted(async () => {
 
   .title {
     font-size: 1.25rem;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 375px) {
+  .education {
+    padding: 2.8rem 0.5rem;
   }
 }
 </style>

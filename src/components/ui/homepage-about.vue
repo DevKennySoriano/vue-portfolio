@@ -96,8 +96,11 @@ const tags = ["he/him","STI College"]
         gap: 1rem;
         padding: 2.5rem;
         margin: 120px auto 80px;
-        max-width: 1000px;    
+        max-width: 1000px;
+        width: 100%;
+        box-sizing: border-box;
         align-items: center;
+        overflow-x: clip;
 }
 
 .about-left {
@@ -169,6 +172,7 @@ const tags = ["he/him","STI College"]
         font-size: 1.1rem;
         border-radius: 8px;
         font-family: inherit;
+        box-sizing: border-box;
         cursor: pointer;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -343,6 +347,13 @@ const tags = ["he/him","STI College"]
         .tag {
                 font-size: 0.85rem;
                 padding: 0.3rem 0.7rem;
+        }
+}
+
+/* Extra small screens */
+@media (max-width: 375px) {
+        .about {
+                padding: 1rem 0.5rem;
         }
 }
 

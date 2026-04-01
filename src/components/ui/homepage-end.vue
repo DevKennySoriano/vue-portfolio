@@ -20,6 +20,8 @@
   padding: 0 2rem;
   text-align: center;
   color: var(--text);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .title {
@@ -59,6 +61,16 @@
 
   .title {
     font-size: 1.9rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .collab {
+    padding: 0 0.5rem;
+  }
+
+  .title {
+    font-size: 1.6rem;
   }
 }
 </style>

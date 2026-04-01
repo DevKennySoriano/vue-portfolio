@@ -93,6 +93,7 @@ onUnmounted(stopAutoSlide)
   background: var(--surface-strong);
   padding: 3.5rem 2rem;
   color: var(--text-inverse);
+  box-sizing: border-box;
 }
 
 .section-title {
@@ -107,6 +108,8 @@ onUnmounted(stopAutoSlide)
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .slider-window {
@@ -135,6 +138,7 @@ onUnmounted(stopAutoSlide)
   border: 1px solid color-mix(in srgb, var(--text-inverse) 22%, transparent);
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
 }
 
 .card:hover {
@@ -171,6 +175,7 @@ onUnmounted(stopAutoSlide)
 .title {
   font-size: 1.5rem;
   margin: 0.6rem 0;
+  overflow-wrap: anywhere;
 }
 
 .issuer {
@@ -215,12 +220,30 @@ onUnmounted(stopAutoSlide)
   }
 
   .slider {
-    gap: 0.6rem;
+    gap: 0;
+    position: relative;
   }
 
   .nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    background: color-mix(in srgb, var(--surface-strong-2) 85%, transparent);
     font-size: 1.6rem;
     padding: 0.2rem 0.6rem;
+  }
+
+  .nav.left {
+    left: 0.35rem;
+  }
+
+  .nav.right {
+    right: 0.35rem;
+  }
+
+  .card {
+    padding: 1.3rem 1rem;
   }
 
   .title {
@@ -229,6 +252,17 @@ onUnmounted(stopAutoSlide)
 
   .issuer {
     font-size: 0.92rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .certificates {
+    padding: 2.5rem 0.5rem;
+  }
+
+  .nav {
+    font-size: 1.3rem;
+    padding: 0.15rem 0.45rem;
   }
 }
 </style>

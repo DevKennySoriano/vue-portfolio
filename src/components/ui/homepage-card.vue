@@ -39,6 +39,8 @@ const cards = [
     align-items: center;
     margin-bottom: 120px;
     padding: 0 1rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .card-row {
@@ -46,6 +48,7 @@ const cards = [
     gap: 2rem;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
 }
 
 .info-card {
@@ -57,6 +60,7 @@ const cards = [
     box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
 }
 
 .info-card:hover {
@@ -87,6 +91,21 @@ const cards = [
 
     .info-card {
         padding: 1.4rem;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 375px) {
+    .card-wrapper {
+        padding: 0 0.5rem;
+    }
+
+    .card-row {
+        gap: 1rem;
+    }
+
+    .info-card p {
+        font-size: 1rem;
     }
 }
 </style>

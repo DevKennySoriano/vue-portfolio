@@ -19,9 +19,21 @@ const route = useRoute()
 </template>
 
 <style>
-html, body, #app {
+html, body {
   margin: 0;
   height: 100%;
+  width: 100%;
+}
+
+#app {
+  min-height: 100%;
+  width: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 :root {

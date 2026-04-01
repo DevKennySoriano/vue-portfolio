@@ -1,5 +1,6 @@
 <template>
-  <nav class="navbar-wrapper">
+  <!-- Desktop Navbar -->
+  <nav class="navbar-wrapper navbar-desktop">
     <div class="navbar">
       <router-link to="/" class="logo" aria-label="Go to home">
         <img src="/images/icons/K.png" alt="Ken" class="logo-img" />
@@ -52,6 +53,68 @@
     </div>
   </nav>
 
+  <!-- Mobile Navbar Top Bar -->
+  <nav class="navbar-mobile-top">
+    <div class="mobile-header">
+      <router-link to="/" class="mobile-logo" aria-label="Go to home">
+        <img src="/images/icons/K.png" alt="Ken" class="logo-img" />
+      </router-link>
+      <button class="mobile-theme-toggle" @click="toggleTheme" :aria-label="`Switch to ${isDark ? 'light' : 'dark'} mode`">
+        <span class="icon" aria-hidden="true">
+          <svg v-if="isDark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2.3M12 19.7V22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2 12h2.3M19.7 12H22M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6" />
+          </svg>
+          <svg v-else xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </nav>
+
+  <nav class="navbar-mobile-bottom">
+    <!-- Mobile Menu Items -->
+    <ul class="mobile-nav-links">
+      <li>
+        <router-link to="/">
+          <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 10.5L12 3l9 7.5" />
+              <path d="M5 9.5V20h14V9.5" />
+              <path d="M9.5 20v-5h5v5" />
+            </svg>
+          </span>
+          <span class="text">Home</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/projects">
+          <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3.5" y="4" width="17" height="5.5" rx="1.5" />
+              <rect x="3.5" y="14.5" width="10.5" height="5.5" rx="1.5" />
+              <path d="M17.5 15.5h3" />
+              <path d="M17.5 18.5h3" />
+            </svg>
+          </span>
+          <span class="text">Projects</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/contact">
+          <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path d="M3 8l8.2 6a1.3 1.3 0 0 0 1.6 0L21 8" />
+            </svg>
+          </span>
+          <span class="text">Contact</span>
+        </router-link>
+      </li>
+    </ul>
+  </nav>
+
   <button class="theme-fab" @click="toggleTheme" :aria-label="`Switch to ${isDark ? 'light' : 'dark'} mode`">
     <svg v-if="isDark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M6.76 4.84 5.34 3.42l-1.4 1.4 1.42 1.42 1.4-1.4zm10.5 0 1.42-1.42 1.4 1.4-1.42 1.42-1.4-1.4zM12 5a1 1 0 0 0 1-1V2h-2v2a1 1 0 0 0 1 1zm7 8a1 1 0 0 0 1-1h2v-2h-2a1 1 0 0 0-1 1v2zM4 11a1 1 0 0 0-1-1H1v2h2a1 1 0 0 0 1-1zm1.34 9.58 1.42-1.42-1.4-1.4-1.42 1.42 1.4 1.4zm13.32 0 1.4-1.4-1.42-1.42-1.4 1.4 1.42 1.42zM12 19a1 1 0 0 0-1 1v2h2v-2a1 1 0 0 0-1-1zm0-12a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/>
@@ -79,13 +142,14 @@ const toggleTheme = () => {
 
 onMounted(() => {
   const storedTheme = localStorage.getItem('portfolio-theme')
-  const preferredDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-  applyTheme(storedTheme || (preferredDark ? 'dark' : 'light'))
+  // Default to light theme
+  applyTheme(storedTheme || 'light')
 })
 </script>
 
 <style scoped>
-.navbar-wrapper {
+/* Desktop Navbar */
+.navbar-desktop {
   position: fixed;
   top: 24px;
   left: 50%;
@@ -135,6 +199,8 @@ onMounted(() => {
   color: var(--text-inverse);
   letter-spacing: 0.4px;
   text-decoration: none;
+  display: flex;
+  align-items: center;
 }
 
 .nav-links {
@@ -245,15 +311,10 @@ onMounted(() => {
   box-shadow: 0 16px 28px rgba(0, 0, 0, 0.4);
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-}
-
 /* Base logo sizing */
 .logo-img {
-  height: 36px;          /* desktop size */
-  width: auto;           /* keep aspect ratio */
+  height: 36px;
+  width: auto;
   max-width: 100%;
   object-fit: contain;
   transition: height 0.3s ease, transform 0.3s ease;
@@ -264,79 +325,228 @@ onMounted(() => {
   transform: scale(1.05);
 }
 
+/* Mobile Navbar */
+.navbar-mobile-top {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: linear-gradient(180deg, var(--surface-strong), var(--surface-strong-2));
+  border-bottom: 1px solid color-mix(in srgb, var(--text-inverse) 30%, transparent);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(14px);
+  font-family: "Inter", sans-serif;
+}
+
+.navbar-mobile-bottom {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1001;
+  background: linear-gradient(180deg, var(--surface-strong), var(--surface-strong-2));
+  border-top: 1px solid color-mix(in srgb, var(--text-inverse) 20%, transparent);
+  box-shadow: 0 -10px 24px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(14px);
+  font-family: "Inter", sans-serif;
+}
+
+.mobile-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 10px 16px 8px;
+  min-height: 52px;
+}
+
+.mobile-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  border: 1px solid color-mix(in srgb, var(--text-inverse) 24%, transparent);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-inverse);
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.mobile-theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #e5ffed;
+}
+
+.mobile-theme-toggle:active {
+  transform: translateY(-50%) scale(0.96);
+}
+
+.mobile-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.mobile-logo .logo-img {
+  height: 32px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.mobile-logo:hover .logo-img {
+  transform: scale(1.05);
+}
+
+/* Mobile Menu */
+.mobile-nav-links {
+  display: flex;
+  list-style: none;
+  padding: 8px 10px 12px;
+  margin: 0;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: transparent;
+}
+
+.mobile-nav-links li {
+  display: flex;
+  flex: 1;
+}
+
+.mobile-nav-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex-direction: column;
+  width: 100%;
+  min-height: 58px;
+  padding: 8px 6px;
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--text-inverse) 22%, transparent);
+  border-radius: 14px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  color: var(--text-inverse);
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.mobile-nav-links a.router-link-exact-active {
+  background: rgba(229, 255, 237, 0.14);
+  border-color: rgba(229, 255, 237, 0.45);
+  color: #e5ffed;
+}
+
+.mobile-nav-links a:hover,
+.mobile-nav-links a:focus-visible,
+.mobile-theme-toggle:focus-visible {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #e5ffed;
+}
+
+.mobile-nav-links .icon,
+.mobile-theme-toggle .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-nav-links .icon svg,
+.mobile-theme-toggle .icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.mobile-nav-links .text {
+  font-size: 11px;
+  letter-spacing: 0.01em;
+}
+
 /* Tablets */
 @media (max-width: 1024px) {
-  .logo-img {
-    height: 30px;
-  }
-}
-
-/* Phones */
-@media (max-width: 768px) {
-  .logo-img {
-    height: 26px;
-  }
-}
-
-/* Very small phones */
-@media (max-width: 480px) {
-  .logo-img {
-    height: 22px;
-  }
-}
-
-
-@media (max-width: 1024px) {
-  .navbar-wrapper {
-    top: auto;
-    bottom: 0;
-    left: 0;
-    transform: none;
-    width: 100%;
-  }
-
-  .navbar {
-    border-radius: 0;
-    justify-content: space-around;
-    padding: 10px 0;
-    gap: 0;
-    box-shadow: 0 -10px 25px rgba(0,0,0,0.5);
-  }
-
-  .nav-links {
-    gap: 0;
-    flex: 1;
-    justify-content: space-around;
-  }
-
-  .nav-links a {
-    justify-content: center;
-    flex-direction: column;
-    font-size: 12px;
-  }
-
-  .theme-toggle {
-    display: flex;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
+  .navbar-desktop {
+    display: none;
   }
 
   .theme-fab {
     display: none;
   }
 
-  .icon {
+  .navbar-mobile-top {
     display: flex;
-    margin-bottom: 4px;
+    flex-direction: column;
   }
 
-  .nav-links a::after {
-    display: none;
+  .navbar-mobile-bottom {
+    display: block;
+  }
+}
+
+/* Phones */
+@media (max-width: 768px) {
+  .mobile-logo .logo-img {
+    height: 28px;
+  }
+  
+  .mobile-nav-links a {
+    min-height: 56px;
+    padding: 7px 6px;
+    font-size: 11px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 480px) {
+  .mobile-logo .logo-img {
+    height: 24px;
   }
 
-  .theme-toggle::after {
-    display: none;
+  .mobile-header {
+    min-height: 46px;
+    padding: 8px 10px 6px;
+  }
+
+  .mobile-nav-links a {
+    min-height: 54px;
+    padding: 6px 5px;
+    font-size: 11px;
+  }
+}
+
+/* Desktop: hide mobile elements, show desktop navbar */
+@media (min-width: 1025px) {
+  .navbar-mobile-top {
+    display: none !important;
+  }
+
+  .navbar-mobile-bottom {
+    display: none !important;
+  }
+
+  .navbar-desktop {
+    display: block;
+  }
+
+  .theme-fab {
+    display: inline-flex;
   }
 }
 </style>
