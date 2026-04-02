@@ -37,9 +37,8 @@
   display: inline-block;
   padding: 0.7rem 1.6rem;
   border-radius: 999px;
-  border: 2px solid var(--border);
-  background: color-mix(in srgb, var(--bg-elevated) 92%, var(--bg-soft));
-  color: var(--text);
+  border: 2px solid var(--surface-strong);
+  color: var(--surface-strong);
   font-weight: 500;
   text-decoration: none;
   transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;

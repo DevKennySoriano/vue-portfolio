@@ -1,3 +1,7 @@
+<script setup>
+import ContactpageEnd from '@/components/ui/contactpage-end.vue'
+</script>
+
 <template>
   <section class="contact-page">
     <div class="contact-shell">
@@ -88,6 +92,8 @@
           </div>
         </article>
       </div>
+
+      <ContactpageEnd />
     </div>
   </section>
 </template>

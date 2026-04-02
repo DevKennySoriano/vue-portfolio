@@ -368,6 +368,16 @@ const statusText = value => value === 100 ? 'Completed' : 'In Progress'
 }
 
 @media (max-width: 560px) {
+  .web-image {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .web-image img {
+    object-fit: cover;
+    object-position: center;
+  }
+
   .content-top {
     flex-direction: column;
   }

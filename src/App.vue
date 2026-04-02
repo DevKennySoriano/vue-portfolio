@@ -1,12 +1,38 @@
 <script setup>
+import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import Navbar from '@/components/layout/Navbar.vue'
 import Footer from '@/components/layout/Footer.vue'
 
 const route = useRoute()
+const isLoading = ref(true)
+
+onMounted(() => {
+  const hideLoader = () => {
+    window.setTimeout(() => {
+      isLoading.value = false
+    }, 3000)
+  }
+
+  if (document.readyState === 'complete') {
+    hideLoader()
+    return
+  }
+
+  window.addEventListener('load', hideLoader, { once: true })
+})
 </script>
 
 <template>
+  <transition name="preloader-fade">
+    <div v-if="isLoading" class="preloader" aria-label="Loading page" role="status">
+      <div class="preloader-box">
+        <img src="/images/icons/K.png" alt="" class="preloader-logo" />
+        <p class="preloader-text">Loading...</p>
+      </div>
+    </div>
+  </transition>
+
   <div class="page">
     <Navbar v-if="!route.meta.hideLayout" />
 
@@ -86,6 +112,62 @@ body {
 
 .content--flush-top {
   padding-top: 0;
+}
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 25% 20%, color-mix(in srgb, var(--surface-strong) 20%, transparent), transparent 55%),
+    radial-gradient(circle at 78% 78%, color-mix(in srgb, var(--surface-strong-2) 24%, transparent), transparent 52%),
+    var(--bg);
+}
+
+.preloader-box {
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+}
+
+.preloader-logo {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 12px rgba(10, 40, 28, 0.24));
+  animation: pulse 1.15s ease-in-out infinite;
+}
+
+.preloader-text {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+}
+
+.preloader-fade-enter-active,
+.preloader-fade-leave-active {
+  transition: opacity 0.35s ease;
+}
+
+.preloader-fade-enter-from,
+.preloader-fade-leave-to {
+  opacity: 0;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
 }
 
 @media (max-width: 1024px) {
