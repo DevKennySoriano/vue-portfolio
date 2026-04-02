@@ -38,6 +38,16 @@
           </router-link>
         </li>
         <li>
+          <router-link to="/testimonials">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M5 5h14v10H8l-3 3V5Zm3.3 3.2a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2Zm4 0a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2Zm4 0a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2Z"/>
+              </svg>
+            </span>
+            <span class="text">Testimonials</span>
+          </router-link>
+        </li>
+        <li>
           <button class="theme-toggle" @click="toggleTheme" :aria-label="`Switch to ${isDark ? 'light' : 'dark'} mode`">
             <span class="icon" aria-hidden="true">
               <svg v-if="isDark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
@@ -110,6 +120,17 @@
             </svg>
           </span>
           <span class="text">Contact</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/testimonials">
+          <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 6h14v9H8l-3 3V6z" />
+              <path d="M8.5 9.8h.01M12 9.8h.01M15.5 9.8h.01" />
+            </svg>
+          </span>
+          <span class="text">Testimonials</span>
         </router-link>
       </li>
     </ul>

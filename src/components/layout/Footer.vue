@@ -1,6 +1,11 @@
 <script>
 export default {
     name: "FooterComponent",
+    data() {
+        return {
+            lastUpdated: typeof __LAST_UPDATED__ !== "undefined" ? __LAST_UPDATED__ : "Unknown",
+        };
+    },
 };
 </script>
 
@@ -10,7 +15,7 @@ export default {
             <!-- Brand / Name -->
             <div class="brand">
                 <h2>Ken</h2>
-                <p>© 2026. All rights reserved.</p>
+                <p>Last Updated: {{ lastUpdated }}</p>
             </div>
             <div class="socials">
                 <a
