@@ -336,7 +336,14 @@ const tags = ["he/him","STI College"]
 
         .status {
                 font-size: 0.9rem;
-                padding: 0.3rem 0.8rem;
+                padding: 0.35rem 0.8rem 0.35rem 1.45rem;
+                gap: 0.45rem;
+        }
+
+        .status::before {
+                left: 0.55rem;
+                width: 8px;
+                height: 8px;
         }
 
         .description {
