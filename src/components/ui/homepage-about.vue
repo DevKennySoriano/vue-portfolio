@@ -41,22 +41,6 @@ const tags = ["he/him","STI College"]
     >
       {{ description }}
     </p>
-
-    <div
-      class="buttons"
-      data-aos="fade-up"
-      data-aos-once="true"
-      data-aos-delay="400"
-    >
-      <button class="btn primary">
-        <router-link to="/projects" class="routerProjects">
-          View Projects
-        </router-link>
-      </button>
-      <button class="btn outline">
-        Download Resume
-      </button>
-    </div>
   </div>
 
   <div
@@ -86,14 +70,35 @@ const tags = ["he/him","STI College"]
       </span>
     </div>
   </div>
+
+        <div
+                class="buttons"
+                data-aos="fade-up"
+                data-aos-once="true"
+                data-aos-delay="400"
+        >
+                <button class="btn primary">
+                        <router-link to="/projects" class="routerProjects">
+                                View Projects
+                        </router-link>
+                </button>
+                <button class="btn outline">
+                        Download Resume
+                </button>
+        </div>
 </section>
 </template>
 
 <style scoped>
 
 .about {
-        display: flex;
-        gap: 1rem;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        grid-template-areas:
+                "left right"
+                "buttons right";
+        column-gap: 1rem;
+        row-gap: 1.2rem;
         padding: 2.5rem;
         margin: 120px auto 80px;
         max-width: 1000px;
@@ -104,6 +109,7 @@ const tags = ["he/him","STI College"]
 }
 
 .about-left {
+        grid-area: left;
         flex: 1;
 }
 
@@ -162,6 +168,7 @@ const tags = ["he/him","STI College"]
 }
 
 .buttons {
+        grid-area: buttons;
         display: flex;
         gap: 1.2rem;
         flex-wrap: wrap;
@@ -216,6 +223,7 @@ const tags = ["he/him","STI College"]
 }
 
 .about-right {
+        grid-area: right;
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -279,10 +287,18 @@ const tags = ["he/him","STI College"]
 /* Tablet (768px and below) */
 @media (max-width: 768px) {
         .about {
-                flex-direction: column;
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                        "left"
+                        "right"
+                        "buttons";
                 padding: 1.5rem;
                 margin: 60px auto;
                 text-align: center;
+        }
+
+        .buttons {
+                justify-content: center;
         }
 
         .name {

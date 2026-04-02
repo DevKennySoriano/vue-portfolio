@@ -676,7 +676,10 @@ const toggleExpand = (index) => {
   }
 
   .section-subtitle {
-    margin-left: calc(32px + 1.5rem);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    max-width: 34rem;
     font-size: 0.9rem;
   }
 
