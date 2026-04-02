@@ -198,6 +198,9 @@ const toggleExpand = (index) => {
   <section class="experience">
     <div class="experience-shell">
       <h2 class="section-title" data-aos="fade-up" data-aos-once="true">Experience</h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-once="true">
+        This section highlights not only my professional work experience, but also my continuous journey through the programming world, including technical training, hands-on practice, and key learning milestones that shaped my growth as a developer.
+      </p>
 
       <div class="timeline">
         <button
@@ -355,9 +358,18 @@ const toggleExpand = (index) => {
 }
 
 .section-title {
-  margin: 0 0 2rem;
+  margin: 0 0 0.55rem;
   font-size: clamp(1.6rem, 3.5vw, 2.2rem);
   color: var(--text);
+}
+
+.section-subtitle {
+  margin: 0 0 1.6rem;
+  margin-left: calc(40px + 1.5rem);
+  max-width: 760px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-muted);
 }
 
 .timeline {
@@ -661,6 +673,11 @@ const toggleExpand = (index) => {
 
   .timeline-marker {
     min-width: 32px;
+  }
+
+  .section-subtitle {
+    margin-left: calc(32px + 1.5rem);
+    font-size: 0.9rem;
   }
 
   .bullet {
