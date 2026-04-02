@@ -43,10 +43,10 @@ const timeline = [
       }
     ],
     description:
-      "Completed a 300-hour On-the-Job Training program at Wizzard Technologies INC. as a formal academic requirement of STI College for the completion of my Bachelor of Science in Computer Science degree. Since I was already knowledgeable in frontend development, my mentor assigned me backend-focused responsibilities to further develop my technical range. This included contributing to system logic, database integration, and server-side implementation while collaborating with the team on full-system delivery in a professional development environment."
+      "Completed a 300-hour On-the-Job Training at Wizzard Technologies Inc. as a requirement for my BS Computer Science degree at STI College. I was given backend tasks like system logic, database work, and server-side coding. I also worked with a team to build and complete a full system in a professional setting."
   },
   {
-    period: "July 2025",
+    period: "2025",
     title: "Front End Development Libraries",
     company: "FreeCodeCamp",
     duration: "Completed 300 hours",
@@ -75,9 +75,70 @@ const timeline = [
     isSimple: false
   },
   {
+    period: "2024 - 2025",
+    title: "Programming, Networking, and Cybersecurity Foundations",
+    company: "STI College",
+    sti: "https://www.sti.edu/",
+    dateRange: "2024",
+    description:
+      "Expanded my STI College training by learning Python and PHP for practical software development, cybersecurity principles aligned with ISO standards, and core networking concepts including IPv4 and IPv6.",
+    tech: [
+      {
+        name: "Python",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+      },
+      {
+        name: "PHP",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
+      },
+      {
+        name: "Cybersecurity",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
+      },
+      {
+        name: "IPv4",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/networkx/networkx-original.svg"
+      },
+      {
+        name: "IPv6",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/networkx/networkx-original.svg"
+      }
+    ],
+    isSimple: false
+  },
+  {
+    period: "2023",
+    title: "Data Structures and Algorithms",
+    company: "STI College",
+    sti: "https://www.sti.edu/",
+    dateRange: "2023",
+    description:
+      "Studied core data structures and algorithmic thinking at STI College, with hands-on practice in sorting techniques and related efficiency concepts for writing better-performing programs.",
+    tech: [
+      {
+        name: "Algorithms",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"
+      },
+      {
+        name: "Sorting",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"
+      },
+      {
+        name: "Data Structures",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"
+      },
+      {
+        name: "JavaScript",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+      }
+    ],
+    isSimple: false
+  },
+  {
     period: "2022 - 2023",
     title: "Oracle Java Fundamentals",
     company: "STI College",
+    sti: "https://www.sti.edu/",
     dateRange: "2022 - 2023",
     description:
       "Completed comprehensive Oracle Java Fundamentals course at STI College. Developed strong foundation in object-oriented programming principles, data structures, and Java development best practices. Mastered core Java concepts including exception handling, collections, and multi-threading.",
@@ -105,6 +166,8 @@ const timeline = [
     period: "2021",
     title: "Hello World",
     company: "Started Learning Programming",
+    sti: "https://www.sti.edu/",
+    w3schools: "https://www.w3schools.com/",
     dateRange: "2021",
     description:
       "Began my journey into software development with passion and curiosity. Started learning the fundamentals of programming and web development, laying the foundation for my career in tech.",
@@ -192,7 +255,7 @@ const toggleExpand = (index) => {
                     </div>
                   </div>
 
-                  <div v-if="item.facebook || item.maps || item.freecodecamp" class="full-section">
+                  <div v-if="item.facebook || item.maps || item.freecodecamp || item.sti || item.w3schools" class="full-section">
                     <p class="block-title">Links</p>
                     <div class="brand-row">
                       <a
@@ -238,6 +301,36 @@ const toggleExpand = (index) => {
                           <path d="M4.5 10.5h3v7h-3zm7-7h3v14h-3zm-7 14h3v3h-3zm3 0h3v3h-3zm10-14h3v7h-3zm0 10h3v4h-3z"/>
                         </svg>
                         <span>FreeCodeCamp</span>
+                      </a>
+
+                      <a
+                        v-if="item.sti"
+                        class="sti-link"
+                        :href="item.sti"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        @click.stop
+                        aria-label="STI College"
+                      >
+                        <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+                          <path d="M12 3 3 7.5v1.2l9 4.5 7-3.5V16h2V7.5L12 3Zm-6.8 8.7V15c0 2.3 3.1 4 6.8 4s6.8-1.7 6.8-4v-3.3L12 15l-6.8-3.3Z"/>
+                        </svg>
+                        <span>STI College</span>
+                      </a>
+
+                      <a
+                        v-if="item.w3schools"
+                        class="w3schools-link"
+                        :href="item.w3schools"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        @click.stop
+                        aria-label="W3Schools"
+                      >
+                        <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+                          <path d="M2 3h20L19 21H5L2 3Zm6.5 4.2 1.7 8.5 1.8-5.1 1.8 5.1 1.7-8.5h2l-2.7 11.1h-2L12 12.7l-1.8 5.6h-2L5.5 7.2h3Z"/>
+                        </svg>
+                        <span>W3Schools</span>
                       </a>
                     </div>
                   </div>
@@ -485,7 +578,9 @@ const toggleExpand = (index) => {
 
 .facebook-link,
 .maps-link,
-.freecodecamp-link {
+.freecodecamp-link,
+.sti-link,
+.w3schools-link {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
@@ -502,7 +597,9 @@ const toggleExpand = (index) => {
 
 .facebook-link:hover,
 .maps-link:hover,
-.freecodecamp-link:hover {
+.freecodecamp-link:hover,
+.sti-link:hover,
+.w3schools-link:hover {
   transform: translateY(-1px);
 }
 
@@ -516,6 +613,14 @@ const toggleExpand = (index) => {
 
 .freecodecamp-link:hover {
   border-color: color-mix(in srgb, #004d99 50%, var(--border));
+}
+
+.sti-link:hover {
+  border-color: color-mix(in srgb, #f59e0b 50%, var(--border));
+}
+
+.w3schools-link:hover {
+  border-color: color-mix(in srgb, #04aa6d 50%, var(--border));
 }
 
 .facebook-link svg {
@@ -534,6 +639,18 @@ const toggleExpand = (index) => {
   width: 14px;
   height: 14px;
   fill: #004d99;
+}
+
+.sti-link svg {
+  width: 14px;
+  height: 14px;
+  fill: #f59e0b;
+}
+
+.w3schools-link svg {
+  width: 14px;
+  height: 14px;
+  fill: #04aa6d;
 }
 
 @media (max-width: 640px) {
@@ -606,13 +723,18 @@ const toggleExpand = (index) => {
 
   .facebook-link,
   .maps-link,
-  .freecodecamp-link {
+  .freecodecamp-link,
+  .sti-link,
+  .w3schools-link {
     padding: 0.35rem 0.6rem;
     font-size: 0.75rem;
   }
 
   .facebook-link svg,
-  .maps-link svg {
+  .maps-link svg,
+  .freecodecamp-link svg,
+  .sti-link svg,
+  .w3schools-link svg {
     width: 12px;
     height: 12px;
   }
