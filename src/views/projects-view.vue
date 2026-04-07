@@ -1,5 +1,5 @@
 <script setup>
-import { computed, watchEffect, ref } from 'vue'
+import { computed, watchEffect, ref, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { webProjects } from '@/data/projects'
 
@@ -12,6 +12,24 @@ const project = computed(() =>
 
 const isPreviewOpen = ref(false)
 const selectedImage = ref(null)
+const isPageLoading = ref(true)
+let loadingTimeout
+
+const runLoader = () => {
+  isPageLoading.value = true
+  window.clearTimeout(loadingTimeout)
+  loadingTimeout = window.setTimeout(() => {
+    isPageLoading.value = false
+  }, 700)
+}
+
+onMounted(() => {
+  runLoader()
+})
+
+watch(() => route.params.slug, () => {
+  runLoader()
+})
 
 const openPreview = (shot) => {
   selectedImage.value = shot
@@ -32,7 +50,18 @@ watchEffect(() => {
 
 
 <template>
-  <div class="project-layout">
+  <div class="project-view-shell">
+
+    <transition name="page-loader-fade">
+      <div v-if="isPageLoading" class="page-loader" aria-label="Loading project details" role="status">
+        <div class="page-loader-box">
+          <img src="/images/icons/K.png" alt="" class="page-loader-logo" />
+          <p class="page-loader-text">Loading project details...</p>
+        </div>
+      </div>
+    </transition>
+
+  <div v-if="!isPageLoading" class="project-layout">
 
     <!-- ================= SIDEBAR ================= -->
     <aside class="sidebar">
@@ -196,9 +225,69 @@ watchEffect(() => {
     </main>
 
   </div>
+  </div>
 </template>
 
 <style scoped>
+
+.project-view-shell {
+  position: relative;
+}
+
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 20% 15%, color-mix(in srgb, var(--surface-strong) 22%, transparent), transparent 52%),
+    radial-gradient(circle at 80% 82%, color-mix(in srgb, var(--surface-strong-2) 24%, transparent), transparent 50%),
+    var(--bg);
+}
+
+.page-loader-box {
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+}
+
+.page-loader-logo {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 12px rgba(10, 40, 28, 0.24));
+  animation: pagePulse 1.15s ease-in-out infinite;
+}
+
+.page-loader-text {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.page-loader-fade-enter-active,
+.page-loader-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.page-loader-fade-enter-from,
+.page-loader-fade-leave-to {
+  opacity: 0;
+}
+
+@keyframes pagePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
 
 /* ================= LAYOUT ================= */
 .project-layout {

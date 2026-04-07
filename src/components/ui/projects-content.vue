@@ -168,10 +168,10 @@ const statusValue = project => project.status === 'archived' ? '-' : `${project.
 .web-image {
   position: relative;
   width: 100%;
-  height: 280px;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #ffffff;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0;
 }
 
 /* Skeleton */
@@ -190,6 +190,20 @@ const statusValue = project => project.status === 'archived' ? '-' : `${project.
   z-index: 1;
 }
 
+:root[data-theme='dark'] .web-image {
+  background: var(--bg-soft);
+}
+
+:root[data-theme='dark'] .image-skeleton {
+  background: linear-gradient(
+    90deg,
+    #24352d 30%,
+    #31463c 50%,
+    #24352d 70%
+  );
+  background-size: 600% 100%;
+}
+
 .image-skeleton.hidden {
   opacity: 0;
   pointer-events: none;
@@ -199,8 +213,8 @@ const statusValue = project => project.status === 'archived' ? '-' : `${project.
 .web-image img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: top center;
+  object-fit: cover;
+  object-position: center;
   opacity: 0;
   transition: opacity 0.45s ease;
   z-index: 0;
@@ -221,7 +235,7 @@ const statusValue = project => project.status === 'archived' ? '-' : `${project.
 }
 
 .web-content {
-  padding: 0.7rem 1.3rem 1.4rem;
+  padding: 0 1.3rem 1.4rem;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -375,21 +389,12 @@ const statusValue = project => project.status === 'archived' ? '-' : `${project.
     margin: 1.6rem 0 1rem;
   }
 
-  .web-image {
-    height: 220px;
-  }
-
   .view-btn {
     margin-top: 1.2rem;
   }
 }
 
 @media (max-width: 560px) {
-  .web-image {
-    height: auto;
-    aspect-ratio: 16 / 9;
-  }
-
   .web-image img {
     object-fit: cover;
     object-position: center;
