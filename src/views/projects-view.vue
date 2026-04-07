@@ -120,7 +120,7 @@ watchEffect(() => {
         <!-- SYSTEM OVERVIEW -->
         <section class="section">
           <h2>System Overview</h2>
-          <div class="ratio-16x9">
+          <div class="ratio-16x9 system-overview-image">
             <img :src="project.project" :alt="project.title" />
           </div>
         </section>
@@ -412,6 +412,14 @@ watchEffect(() => {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.system-overview-image {
+  background: var(--bg-soft);
+}
+
+.system-overview-image img {
+  object-fit: contain;
 }
 
 .image-card figcaption {

@@ -2,7 +2,7 @@ export const webProjects = [
   {
     slug: "all-about-pets",
     title: "All About Pets",
-    date: "March 2024",
+    date: "2022 - 2023",
     overview:
       "A client-based academic web system developed for a pet care business to manage services, appointments, and client records through a centralized administrative dashboard.",
     background:
@@ -26,30 +26,35 @@ export const webProjects = [
       "One of the primary challenges was aligning system features with real-world workflow practices of the client. Additionally, database normalization and ensuring data consistency required multiple refinements during development.",
     conclusion:
       "The system successfully transitioned the client from manual record-keeping to a digital management platform. It improved scheduling accuracy, reduced data redundancy, and enhanced overall operational efficiency.",
-    logo: "/images/logos/pets-logo.png",
-    github: "https://github.com/yourname/all-about-pets",
-    live: "#",
+    logo: "/images/allaboutpets/allaboutpets-logo.jpg",
+    github: "https://github.com/DevKennySoriano/allaboutpets",
+    live: "https://devkennysoriano-allaboutpets.vercel.app",
     tags: ["PHP", "HTML", "CSS", "MySQL", "JavaScript"],
-    project: "/images/banners/PetsBanner.png",
+    project: "/images/allaboutpets/dashboard.png",
     screenshots: [
       {
-        image: "/images/screenshots/pets-dashboard.png",
+        image: "/images/allaboutpets/services.png",
         caption:
-          "Administrative dashboard presenting service statistics and recent activity."
+          "Main page services section presenting available pet care offerings."
       },
       {
-        image: "/images/screenshots/pets-appointments.png",
+        image: "/images/allaboutpets/nurses.png",
         caption:
-          "Appointment management interface for approving or rescheduling bookings."
+          "Main page nurse details placeholder section for staff information display."
       },
       {
-        image: "/images/screenshots/pets-records.png",
+        image: "/images/allaboutpets/loginpage.png",
         caption:
-          "Client and pet records module for maintaining historical data."
+          "Secure login page for administrator authentication and access control."
+      },
+      {
+        image: "/images/allaboutpets/footer-contact.png",
+        caption:
+          "Footer contact section located at the bottom of the page for inquiries and support."
       }
     ],
     footer:
-      "Special thanks to the project client, academic advisers, and peer reviewers for their guidance and valuable feedback."
+      "Developers: Brizo Daniella, Obina Aldrin, Daguro Elijah, Soriano Kenny."
   },
   {
     slug: "kapet-bahala-na",
