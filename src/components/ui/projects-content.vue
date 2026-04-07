@@ -5,6 +5,7 @@ const webProjects = [
     slug: "all-about-pets",
     title: "All About Pets",
    progress: 10,
+    status: "archived",
     description: "A client-based mini-thesis web system built for a pet care business...",
     image: "/images/banners/PetsBanner.png",
     tags: ["PHP", "HTML", "CSS", "MySQL", "JavaScript"]
@@ -19,11 +20,11 @@ const webProjects = [
   },
   {
     slug: "kapet-bahala-na",
-    title: "Kape't Bahala na",
+    title: "Kape't Bahala Na",
     progress: 5,
-    description: "A practice project built to explore and improve my skills in Laravel...",
+    description: "A technical-task café system built during my Wizzard Technologies Inc. OJT journey, focused on Laravel, Blade components, database integration, and modern frontend tooling.",
     image: "/images/banners/KapeBanner.png",
-    tags: ["PHP", "Laravel", "HTML", "CSS", "MySQL", "JavaScript", "Vue", "Docker"]
+    tags: ["Laravel", "Blade", "PHP", "MySQL", "JavaScript", "Vue", "Vite"]
   }
 ]
 
@@ -34,7 +35,18 @@ const onImageLoad = index => {
   loadedImages.value[index] = true
 }
 
-const statusText = value => value === 100 ? 'Completed' : 'In Progress'
+const statusText = project => {
+  if (project.status === 'archived') return 'Archived'
+  return project.progress === 100 ? 'Completed' : 'In Progress'
+}
+
+const statusClass = project => project.status === 'archived' ? 'archived' : ''
+
+const statusPercentage = project => project.status === 'archived' ? '' : `${project.progress}%`
+
+const statusDasharray = project => project.status === 'archived' ? '100, 100' : `${project.progress}, 100`
+
+const statusValue = project => project.status === 'archived' ? '-' : `${project.progress}%`
 </script>
 
 
@@ -84,15 +96,15 @@ const statusText = value => value === 100 ? 'Completed' : 'In Progress'
           </div>
 
           <div class="progress-circle">
-            <svg viewBox="0 0 36 36">
+            <svg viewBox="0 0 36 36" :class="statusClass(project)">
               <path class="bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
               <path
                 class="progress"
-                :stroke-dasharray="`${project.progress}, 100`"
+                :stroke-dasharray="statusDasharray(project)"
                 d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
               />
-              <text x="18" y="18" class="percentage">{{ project.progress }}%</text>
-              <text x="18" y="23" class="status">{{ statusText(project.progress) }}</text>
+              <text x="18" y="18" class="percentage">{{ statusValue(project) }}</text>
+              <text x="18" y="23" class="status">{{ statusText(project) }}</text>
             </svg>
           </div>
         </div>
@@ -158,6 +170,8 @@ const statusText = value => value === 100 ? 'Completed' : 'In Progress'
   width: 100%;
   height: 280px;
   overflow: hidden;
+  background: #ffffff;
+  margin-bottom: 0.35rem;
 }
 
 /* Skeleton */
@@ -185,7 +199,8 @@ const statusText = value => value === 100 ? 'Completed' : 'In Progress'
 .web-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: top center;
   opacity: 0;
   transition: opacity 0.45s ease;
   z-index: 0;
@@ -206,7 +221,7 @@ const statusText = value => value === 100 ? 'Completed' : 'In Progress'
 }
 
 .web-content {
-  padding: 1.2rem 1.3rem 1.4rem;
+  padding: 0.7rem 1.3rem 1.4rem;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -255,10 +270,12 @@ const statusText = value => value === 100 ? 'Completed' : 'In Progress'
 
 .tag.php { background-color: #8993be; }
 .tag.laravel { background-color: #ff2d20; }
+.tag.blade { background-color: #f05252; }
 .tag.html { background-color: #e44d26; }
 .tag.css { background-color: #264de4; }
 .tag.javascript { background-color: #f0db4f; color: #111; }
 .tag.vue { background-color: #42b883; }
+.tag.vite { background-color: #646cff; }
 .tag.ai { background-color: #6f42c1; }
 .tag.mysql { background-color: #00758f; }
 .tag.docker { background-color: #2496ed; }

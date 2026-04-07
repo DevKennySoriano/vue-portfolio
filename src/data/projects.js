@@ -58,55 +58,80 @@ export const webProjects = [
   },
   {
     slug: "kapet-bahala-na",
-    title: "Kapet Bahala Na",
+    title: "Kape't Bahala Na",
     date: "January 2024",
     overview:
-      "A café ordering and management system designed to streamline order processing, menu updates, and daily sales tracking for small businesses.",
+      "This project was developed as part of a technical task in my Wizzard Technologies Inc. journey (On-the-Job Training). It reflects my practical learning experience in full-stack web development, including Laravel architecture, Blade component design, database integration, and modern frontend tooling.",
     background:
-      "This project explored how small-scale café operations can benefit from digital transformation. Many local cafés rely on handwritten receipts and manual tracking, which often leads to inaccurate sales monitoring and operational inefficiencies.",
+      "Kapet Bahala Na explores how a café workflow can be organized through a structured web application. The system focuses on creating a smoother experience for user authentication, registration, product browsing, feedback collection, and dashboard monitoring while reinforcing the full-stack concepts learned during OJT.",
     objectives: [
-      "Develop a digital point-of-sale system.",
-      "Enable menu and pricing management.",
-      "Generate daily sales reports automatically.",
-      "Reduce order processing time."
+      "Apply Laravel architecture in a practical development task.",
+      "Build reusable Blade-based interface components.",
+      "Integrate database-backed workflows for user and content management.",
+      "Present café operations through a clear and responsive interface."
     ],
     methodology:
-      "The system was developed using a modular approach. UI design focused on usability for café staff. Backend functionality was implemented using PHP and MySQL, with testing conducted through simulated daily café transactions.",
+      "The project was developed using a modular full-stack approach centered on Laravel, Blade components, and database-driven features. Interface behavior and content structure were refined through iterative testing so the system remained easy to use and aligned with the project requirements from the technical task.",
     features: [
-      "Interactive point-of-sale interface.",
-      "Menu management module.",
-      "Daily sales reporting dashboard.",
-      "Transaction history tracking.",
-      "Revenue computation automation."
+      "Secure login and registration screens.",
+      "Dashboard view for monitoring system activity.",
+      "Coffee drink and menu browsing section.",
+      "Customer rating and feedback area.",
+      "Validation and success modals for form handling."
     ],
     challenges:
-      "Ensuring fast order processing while maintaining data accuracy was a key challenge. Optimizing queries for daily sales summaries also required backend adjustments.",
+      "A key challenge was keeping the interface organized while handling authentication, validation feedback, and content sections in a single project. Balancing the Blade component structure with database integration and responsive presentation also required careful refinement.",
     conclusion:
-      "The project demonstrated how even small businesses can benefit from lightweight digital systems. It improved transaction accuracy and provided clear daily revenue insights.",
-    logo: "/images/logos/kapet-logo.png",
-    github: "",
-    live: "#",
-    tags: ["PHP", "HTML", "CSS", "MySQL", "JavaScript"],
-    project: "/images/banners/kapet-banner.png",
+      "Kapet Bahala Na strengthened my understanding of full-stack development through a real technical task environment. The project helped me practice Laravel-based architecture, Blade component design, and database integration while building a polished café-focused web application.",
+    logo: "/images/icons/K.png",
+    github: "https://github.com/DevKennySoriano/KAPE",
+    live: "",
+    tags: ["Laravel", "Blade", "PHP", "MySQL", "JavaScript", "Vue", "Vite"],
+    project: "/images/kape/systemoverview.png",
     screenshots: [
       {
-        image: "/images/screenshots/kapet-orders.png",
+        image: "/images/kape/initial-dashboard-sample.png",
         caption:
-          "Point-of-sale interface used by café staff to process customer orders."
+          "Initial dashboard sample showing the main administration layout for the café system."
       },
       {
-        image: "/images/screenshots/kapet-menu.png",
+        image: "/images/kape/loginpage.png",
         caption:
-          "Menu management screen for updating items and pricing."
+          "Login page used for secure access to the application."
       },
       {
-        image: "/images/screenshots/kapet-sales.png",
+        image: "/images/kape/registerpage.png",
         caption:
-          "Daily sales report summarizing transactions and revenue."
+          "Registration page for creating new user accounts in the system."
+      },
+      {
+        image: "/images/kape/register-success-modal.png",
+        caption:
+          "Success modal displayed after a successful registration submission."
+      },
+      {
+        image: "/images/kape/register-error-validation-sample.png",
+        caption:
+          "Validation example showing form feedback when registration input is incomplete or invalid."
+      },
+      {
+        image: "/images/kape/mustrycoffeedrinks.png",
+        caption:
+          "Coffee drinks section for browsing available menu items and product offerings."
+      },
+      {
+        image: "/images/kape/ratingsection.png",
+        caption:
+          "Customer rating section for collecting feedback and user impressions."
+      },
+      {
+        image: "/images/kape/systemoverview.png",
+        caption:
+          "System overview image presenting the overall Kapet Bahala Na interface and workflow."
       }
     ],
     footer:
-      "Developed as a personal experimental project inspired by local café operations."
+      "Developed as part of a technical task during my Wizzard Technologies Inc. OJT journey."
   },
   {
     slug: "homehive",
@@ -143,8 +168,8 @@ export const webProjects = [
     conclusion:
   "HomeHive shows how a digital platform can improve and simplify rental property management. The system combines important features such as contract management, payment tracking, tenant records, and property analytics in one centralized platform. By integrating secure authentication and AI-powered insights, HomeHive helps property owners make better decisions and maintain their properties more efficiently. Overall, the system creates a more organized, transparent, and secure environment for property owners, tenants, and administrators.",
     logo: "/images/homehive/homehive-logo.jpeg",
-    github: "https://github.com/yourname/homehive",
-    live: "https://homehive.app",
+    github: "",
+    live: "",
     tags: ["PHP", "HTML", "CSS", "JavaScript", "MySQL", "AI Integration", "Payment Gateway"],
     project: "/images/homehive/homehive-landing-page-sample.png",
     screenshots: [
