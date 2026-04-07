@@ -4,9 +4,9 @@ export const webProjects = [
     title: "All About Pets",
     date: "2022 - 2023",
     overview:
-      "A client-based academic web system developed for a pet care business to manage services, appointments, and client records through a centralized administrative dashboard.",
+      "A real-client thesis project proposal for a pet care business, designed to digitize services, appointments, and client records through a centralized administrative dashboard. The project was not completed and is currently archived.",
     background:
-      "The project was developed as part of a mini-thesis requirement involving a real-world client. Prior to system implementation, the business relied on manual logbooks and spreadsheets, resulting in scheduling conflicts, delayed service processing, and inconsistent record management.",
+      "This study was prepared as a thesis project proposal in collaboration with a real-world client. Before the proposed system, the business relied on manual logbooks and spreadsheets, which led to scheduling conflicts, delayed service processing, and inconsistent record management. Due to timeline and institutional constraints, the project was not completed and was formally archived.",
     objectives: [
       "Digitize client and pet records.",
       "Automate appointment scheduling and service tracking.",
@@ -14,7 +14,7 @@ export const webProjects = [
       "Provide an administrative dashboard for business insights."
     ],
     methodology:
-      "The system was developed using a structured development approach, beginning with client consultation and requirements analysis. Database schema design was conducted prior to backend implementation. The application was built using PHP and MySQL, followed by iterative testing and user validation with the client.",
+      "The proposal followed a structured development process that included client consultation, requirements analysis, and system design. A prototype was developed using PHP and MySQL to validate key workflows and interface behavior, followed by iterative testing and client feedback sessions.",
     features: [
       "Administrative dashboard with service statistics.",
       "Appointment approval and scheduling system.",
@@ -25,7 +25,7 @@ export const webProjects = [
     challenges:
       "One of the primary challenges was aligning system features with real-world workflow practices of the client. Additionally, database normalization and ensuring data consistency required multiple refinements during development.",
     conclusion:
-      "The system successfully transitioned the client from manual record-keeping to a digital management platform. It improved scheduling accuracy, reduced data redundancy, and enhanced overall operational efficiency.",
+      "The project produced a client-aligned thesis proposal and initial prototype for digital pet care operations. However, development was not completed, and the project has been archived for possible future continuation.",
     logo: "/images/allaboutpets/allaboutpets-logo.jpg",
     github: "https://github.com/DevKennySoriano/allaboutpets",
     live: "https://devkennysoriano-allaboutpets.vercel.app",
