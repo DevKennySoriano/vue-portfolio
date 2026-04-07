@@ -298,6 +298,7 @@ const statusValue = project => project.status === 'archived' ? '-' : `${project.
   width: 64px;
   height: 64px;
   flex-shrink: 0;
+  margin-top: 0.3rem;
 }
 
 .progress-circle svg {
