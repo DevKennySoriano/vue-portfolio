@@ -45,6 +45,8 @@ onMounted(() => {
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
 html, body {
   margin: 0;
   height: 100%;
@@ -97,6 +99,16 @@ body {
     linear-gradient(90deg, color-mix(in srgb, var(--border) 72%, transparent) 1px, transparent 1px);
   background-size: 24px 24px;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  letter-spacing: -0.02em;
 }
 
 .page {

@@ -3,7 +3,7 @@ const status = "Available for Work"
 const name = "Kenny Soriano"
 const profileImg = "/images/ken/about-img.jpeg"
 const description =
-        "I build responsive and user-focused web interfaces with Vue and modern frontend practices."
+        "Bachelor of Science in Computer Science"
 
 const tags = ["he/him","STI College"]
 </script>
@@ -18,7 +18,7 @@ const tags = ["he/him","STI College"]
   class="status"
   data-aos="fade-up"
   data-aos-once="true"
-  data-aos-delay="100"
+        data-aos-delay="120"
 >
   {{ status }}
 </span>
@@ -28,7 +28,7 @@ const tags = ["he/him","STI College"]
       class="name"
       data-aos="fade-up"
       data-aos-once="true"
-      data-aos-delay="200"
+                data-aos-delay="220"
     >
       {{ name }}
     </h2>
@@ -37,7 +37,7 @@ const tags = ["he/him","STI College"]
       class="description"
       data-aos="fade-up"
       data-aos-once="true"
-      data-aos-delay="300"
+                data-aos-delay="320"
     >
       {{ description }}
     </p>
@@ -75,16 +75,14 @@ const tags = ["he/him","STI College"]
                 class="buttons"
                 data-aos="fade-up"
                 data-aos-once="true"
-                data-aos-delay="400"
+                data-aos-delay="420"
         >
-                <button class="btn primary">
-                        <router-link to="/projects" class="routerProjects">
-                                View Projects
-                        </router-link>
-                </button>
-                <button class="btn outline">
-                        Download Resume
-                </button>
+                <router-link to="/projects" class="btn primary routerProjects">
+                        View Projects
+                </router-link>
+                <router-link to="/contact" class="btn outline routerProjects secondary-link">
+                        Contact Me
+                </router-link>
         </div>
 </section>
 </template>
@@ -99,13 +97,17 @@ const tags = ["he/him","STI College"]
                 "buttons right";
         column-gap: 1rem;
         row-gap: 1.2rem;
-        padding: 2.5rem;
+        padding: 2.75rem;
         margin: 120px auto 80px;
         max-width: 1000px;
         width: 100%;
         box-sizing: border-box;
         align-items: center;
         overflow-x: clip;
+        background: linear-gradient(180deg, color-mix(in srgb, var(--bg-elevated) 95%, transparent), color-mix(in srgb, var(--bg-soft) 70%, transparent));
+        border: 1px solid var(--border);
+        border-radius: 28px;
+        box-shadow: var(--shadow);
 }
 
 .about-left {
@@ -154,14 +156,15 @@ const tags = ["he/him","STI College"]
 
 
 .name {
-        font-size: 3.5rem;
+        font-size: clamp(2.8rem, 5vw, 4rem);
         font-weight: 600;
-        margin-bottom: 1.5rem;
+        line-height: 1.05;
+        margin-bottom: 1.2rem;
 }
 
 .description {
         max-width: 500px;
-        font-size: 1.25rem;
+        font-size: 1.12rem;
         line-height: 1.8;
         color: var(--text-muted);
         margin-bottom: 2rem;
@@ -182,6 +185,10 @@ const tags = ["he/him","STI College"]
         box-sizing: border-box;
         cursor: pointer;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
 }
 
 .btn:hover {
@@ -192,6 +199,10 @@ const tags = ["he/him","STI College"]
 .routerProjects{
         text-decoration: none;
         color:var(--text-inverse);
+}
+
+.secondary-link {
+        color: var(--text);
 }
 
 .primary {
@@ -295,6 +306,7 @@ const tags = ["he/him","STI College"]
                 padding: 1.5rem;
                 margin: 60px auto;
                 text-align: center;
+                border-radius: 22px;
         }
 
         .buttons {
@@ -302,7 +314,7 @@ const tags = ["he/him","STI College"]
         }
 
         .name {
-                font-size: 2.5rem;
+                font-size: clamp(2.3rem, 10vw, 3rem);
         }
 
         .description {

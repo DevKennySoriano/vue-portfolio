@@ -2,15 +2,18 @@
 const cards = [
     {
         title: "Education",
-        content: "BS Computer Science – STI College",
+        content: "Bachelor of Science in Computer Science",
+                tone: "education",
     },
     {
         title: "Focus",
         content: "Frontend Development, UI/UX, Web Design",
+                tone: "focus",
     },
     {
         title: "Experience",
         content: "Completed 300-hour OJT at Wizzard Technologies INC.",
+                tone: "experience",
     },
 ]
 </script>
@@ -20,7 +23,7 @@ const cards = [
     <div
       v-for="(card, i) in cards"
       :key="card.title"
-      class="info-card"
+            class="info-card"
       data-aos="fade-up"
       data-aos-once="true"
       :data-aos-delay="i * 200"
@@ -52,15 +55,27 @@ const cards = [
 }
 
 .info-card {
+    position: relative;
     width: min(350px, 100%);
-    padding: 1.8rem;
-    border-radius: 16px;
-    background: var(--bg-elevated);
+    padding: 2rem 1.8rem 1.8rem;
+    border-radius: 20px;
+    background:
+        linear-gradient(180deg, color-mix(in srgb, var(--bg-elevated) 98%, white), color-mix(in srgb, var(--bg-soft) 36%, var(--bg-elevated)));
     border: 2px solid var(--surface-strong);
     box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-sizing: border-box;
+    overflow: hidden;
+}
+
+.info-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    height: 5px;
+    background: var(--surface-strong);
 }
 
 .info-card:hover {
@@ -70,7 +85,7 @@ const cards = [
 
 .info-card p {
     margin-top: 1.2rem;
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     line-height: 1.7;
     color: var(--text-muted);
 }
@@ -78,7 +93,10 @@ const cards = [
 .label {
     display: inline-block;
     padding: 0.4rem 1.4rem;
-    font-size: 0.9rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     background: var(--surface-strong);
     color: var(--text-inverse);
     border-radius: 999px;
@@ -91,6 +109,7 @@ const cards = [
 
     .info-card {
         padding: 1.4rem;
+        border-radius: 18px;
     }
 }
 
