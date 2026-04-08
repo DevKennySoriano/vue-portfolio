@@ -7,13 +7,13 @@ const cards = [
     },
     {
         title: "Focus",
-        content: "Frontend Development, UI/UX, Web Design",
+        content: "Web Development and UI/UX Design",
                 tone: "focus",
     },
     {
-        title: "Experience",
-        content: "Completed 300-hour OJT at Wizzard Technologies INC.",
-                tone: "experience",
+        title: "Goal",
+        content: "Create meaningful digital projects that solve real-world problems",
+                tone: "goal",
     },
 ]
 </script>

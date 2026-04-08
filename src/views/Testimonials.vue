@@ -6,11 +6,25 @@
       <p class="intro">
         This page will show feedback from mentors, teachers, and teammates.
       </p>
-    </section>
-
-    <section class="empty-state" data-aos="fade-up" data-aos-once="true" aria-label="Testimonials under development">
-      <p class="empty-title">This section is still in progress.</p>
-      <p class="empty-description">I will add testimonials here soon.</p>
+      <div class="submit-card">
+        <div class="submit-copy">
+          <p class="submit-label">Share Your Feedback</p>
+          <p class="submit-text">
+            This page is still in progress. Soon it will highlight feedback from people who know me and how I work.
+          </p>
+        </div>
+        <a
+          class="submit-link"
+          href="https://forms.gle/dzBi7NQGjKAZ54Dj9"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>Submit here</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 12h12.17l-5.58-5.59L13 5l8 8-8 8-1.41-1.41L17.17 13H5v-1Z" />
+          </svg>
+        </a>
+      </div>
     </section>
   </main>
 </template>
@@ -55,29 +69,76 @@ h1 {
   font-size: 1rem;
 }
 
-.empty-state {
+.submit-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  margin: 1.75rem auto 0;
+  max-width: 720px;
+  padding: 1rem 1.1rem;
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 1.2rem;
-  background: color-mix(in srgb, var(--bg-elevated) 90%, var(--bg-soft));
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--bg-elevated) 96%, transparent), color-mix(in srgb, var(--bg-soft) 58%, transparent));
   box-shadow: var(--shadow);
-  max-width: 760px;
-  margin: 0 auto;
-  text-align: center;
+  text-align: left;
 }
 
-.empty-title {
+.submit-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.submit-label {
   margin: 0;
-  color: var(--text);
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--surface-strong);
 }
 
-.empty-description {
-  margin: 0.55rem 0 0;
+.submit-text {
+  margin: 0.35rem 0 0;
   color: var(--text-muted);
   font-size: 0.95rem;
-  line-height: 1.7;
+  line-height: 1.6;
+}
+
+.submit-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 0.8rem 1.3rem;
+  border-radius: 999px;
+  border: 2px solid var(--surface-strong);
+  color: var(--surface-strong);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.submit-link:hover {
+  background: var(--surface-strong);
+  color: var(--text-inverse);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.submit-link svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  transition: transform 0.2s ease;
+}
+
+.submit-link:hover svg {
+  transform: translateX(2px);
 }
 
 @media (max-width: 640px) {
@@ -94,8 +155,19 @@ h1 {
     font-size: 0.95rem;
   }
 
-  .empty-state {
+  .submit-card {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
     padding: 1rem;
+  }
+
+  .submit-copy {
+    text-align: center;
+  }
+
+  .submit-link {
+    width: 100%;
   }
 }
 </style>

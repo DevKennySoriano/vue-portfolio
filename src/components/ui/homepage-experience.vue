@@ -81,7 +81,7 @@ const timeline = [
     sti: "https://www.sti.edu/",
     dateRange: "2024",
     description:
-      "Expanded my STI College training by learning Python and PHP for practical software development, cybersecurity principles aligned with ISO standards, and core networking concepts including IPv4 and IPv6.",
+      "At STI College, I developed practical software skills in Python and PHP, gained exposure to cybersecurity principles aligned with ISO standards, and strengthened my understanding of networking concepts such as IPv4 and IPv6.",
     tech: [
       {
         name: "Python",
@@ -113,7 +113,7 @@ const timeline = [
     sti: "https://www.sti.edu/",
     dateRange: "2023",
     description:
-      "Studied core data structures and algorithmic thinking at STI College, with hands-on practice in sorting techniques and related efficiency concepts for writing better-performing programs.",
+      "My coursework at STI College focused on core data structures and algorithmic thinking, supported by hands-on practice in sorting techniques and performance-oriented problem solving.",
     tech: [
       {
         name: "Algorithms",
@@ -141,7 +141,7 @@ const timeline = [
     sti: "https://www.sti.edu/",
     dateRange: "2022 - 2023",
     description:
-      "Completed comprehensive Oracle Java Fundamentals course at STI College. Developed strong foundation in object-oriented programming principles, data structures, and Java development best practices. Mastered core Java concepts including exception handling, collections, and multi-threading.",
+      "Through Oracle Java Fundamentals at STI College, I built a strong foundation in object-oriented programming, data structures, and Java best practices, including exception handling, collections, and multithreading.",
     tech: [
       {
         name: "Java",
@@ -170,7 +170,7 @@ const timeline = [
     w3schools: "https://www.w3schools.com/",
     dateRange: "2021",
     description:
-      "Began my journey into software development with passion and curiosity. Started learning the fundamentals of programming and web development, laying the foundation for my career in tech.",
+      "This stage marked the beginning of my programming journey, where I learned web development fundamentals and established the technical foundation that continues to support my growth in tech.",
     tech: [
       {
         name: "HTML",

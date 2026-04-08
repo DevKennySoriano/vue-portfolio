@@ -2,58 +2,42 @@
 </script>
 
 <template>
-<div class="collab" data-aos="fade-up" data-aos-duration="900" data-aos-once="true">
-<span class="eyebrow">Selected Work</span>
-<h2 class="title">Curious what I’ve been building?</h2>
-<p class="text">
-  Explore a curated selection of projects that reflect my design sense,
-  technical growth, and attention to detail.
-</p>
-<router-link to="/projects" class="cta">Explore Projects</router-link>
-
-</div>
+  <section class="collab" data-aos="fade-up" data-aos-duration="900" data-aos-once="true">
+    <h2 class="title">Curious what I've been building?</h2>
+    <p class="text">
+      Explore a curated selection of projects that reflect my design sense,
+      technical growth, and attention to detail.
+    </p>
+    <router-link to="/projects" class="cta">Explore projects</router-link>
+  </section>
 </template>
 
 <style scoped>
 .collab {
   max-width: 900px;
-  margin: 5rem auto 4rem;
-  padding: 2.5rem 2rem;
+  margin: 6rem auto 5rem;
+  padding: 0 1rem;
   text-align: center;
   color: var(--text);
-  width: 100%;
-  box-sizing: border-box;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--bg-elevated) 96%, transparent), color-mix(in srgb, var(--bg-soft) 55%, transparent));
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  box-shadow: var(--shadow);
-}
-
-.eyebrow {
-  display: inline-block;
-  margin-bottom: 0.75rem;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--surface-strong);
 }
 
 .title {
-  font-size: clamp(2rem, 4vw, 2.6rem);
-  margin-bottom: 1rem;
+  margin: 0;
+  font-size: clamp(1.55rem, 3.3vw, 2.35rem);
+  line-height: 1.15;
 }
 
 .text {
-  max-width: 680px;
-  margin: 0 auto 2rem;
-  font-size: 1.02rem;
+  margin: 1rem auto 0;
+  max-width: 60ch;
+  font-size: 1rem;
   line-height: 1.7;
   color: var(--text-muted);
 }
 
 .cta {
   display: inline-block;
+  margin-top: 1.75rem;
   padding: 0.7rem 1.6rem;
   border-radius: 999px;
   border: 2px solid var(--surface-strong);
@@ -72,11 +56,8 @@
 
 @media (max-width: 768px) {
   .collab {
-    margin-top: 3rem;
-    padding: 0 1rem;
-    background: transparent;
-    border: none;
-    box-shadow: none;
+    margin: 4rem auto 3.5rem;
+    padding: 0;
   }
 
   .title {
@@ -84,13 +65,13 @@
   }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 560px) {
   .collab {
-    padding: 0 0.5rem;
+    margin: 3.5rem auto 3rem;
   }
 
-  .title {
-    font-size: 1.6rem;
+  .text {
+    font-size: 0.95rem;
   }
 }
 </style>

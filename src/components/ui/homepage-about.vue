@@ -1,9 +1,9 @@
 <script setup>
-const status = "Available for Work"
+const status = "Open to Opportunities"
 const name = "Kenny Soriano"
 const profileImg = "/images/ken/about-img.jpeg"
 const description =
-        "Bachelor of Science in Computer Science"
+        "Bachelor of Science in Computer Science student focused on web applications, improving user experience, and continuously growing through real-world development projects."
 
 const tags = ["he/him","STI College"]
 </script>
@@ -99,7 +99,7 @@ const tags = ["he/him","STI College"]
         row-gap: 1.2rem;
         padding: 2.75rem;
         margin: 120px auto 80px;
-        max-width: 1000px;
+        max-width: 1080px;
         width: 100%;
         box-sizing: border-box;
         align-items: center;
