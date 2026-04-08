@@ -6,6 +6,25 @@ export default {
             lastUpdated: typeof __LAST_UPDATED__ !== "undefined" ? __LAST_UPDATED__ : "Unknown",
         };
     },
+    computed: {
+        formattedLastUpdated() {
+            if (this.lastUpdated === "Unknown") {
+                return this.lastUpdated;
+            }
+
+            const parsedDate = new Date(this.lastUpdated);
+
+            if (Number.isNaN(parsedDate.getTime())) {
+                return this.lastUpdated;
+            }
+
+            return new Intl.DateTimeFormat("en-US", {
+                month: "long",
+                day: "2-digit",
+                year: "numeric",
+            }).format(parsedDate);
+        },
+    },
 };
 </script>
 
@@ -15,7 +34,7 @@ export default {
             <!-- Brand / Name -->
             <div class="brand">
                 <h2>Ken</h2>
-                <p>Last Updated: {{ lastUpdated }}</p>
+                <p>Last Updated: {{ formattedLastUpdated }}</p>
             </div>
             <div class="socials">
                 <a
