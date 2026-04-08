@@ -72,8 +72,8 @@ import ContactpageEnd from '@/components/ui/contactpage-end.vue'
         <article class="contact-card details-card reveal-2">
           <h2>About me</h2>
           <p>
-            Currently doing OJT at Wizzard Technologies INC. and actively improving my
-            skills in Vue, JavaScript, and responsive interface design.
+            I enjoy learning every day, taking on new challenges, and growing through
+            meaningful projects and team collaboration.
           </p>
 
           <div class="details-list">
@@ -87,7 +87,7 @@ import ContactpageEnd from '@/components/ui/contactpage-end.vue'
             </div>
             <div>
               <span class="label">Availability</span>
-              <span class="value">Open for internships and freelance projects</span>
+              <span class="value">Open for internships, work opportunities, freelance projects, and commissions</span>
             </div>
           </div>
         </article>
