@@ -231,7 +231,7 @@ Bee Smart. Bee Secure. Bee Home with HomeHive.
   {
     slug: "swak-cart",
     title: "SWAK-CART",
-    date: "2025",
+    date: "April 2026",
     overview:
       "SWAK-CART is a modern, responsive grocery companion web app built with Vue 3 and Vite to help users shop smarter and stay within budget through real-time tracking and actionable checkout suggestions. It is designed for instant browser use with no download and no account required.",
     background:
