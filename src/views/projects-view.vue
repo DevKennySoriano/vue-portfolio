@@ -55,7 +55,7 @@ watchEffect(() => {
     <transition name="page-loader-fade">
       <div v-if="isPageLoading" class="page-loader" aria-label="Loading project details" role="status">
         <div class="page-loader-box">
-          <img src="/images/icons/K.png" alt="" class="page-loader-logo" />
+          <img :src="project?.logo || '/images/icons/K.png'" alt="" class="page-loader-logo" />
           <p class="page-loader-text">Loading project details...</p>
         </div>
       </div>
@@ -381,6 +381,10 @@ watchEffect(() => {
 
 .links a.primary:hover {
   background: var(--bg-soft);
+}
+
+:root[data-theme='dark'] .links a.primary {
+  color: #ffffff;
 }
 
 /* ================= RIGHT SIDE ================= */

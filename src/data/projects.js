@@ -261,7 +261,7 @@ Bee Smart. Bee Secure. Bee Home with HomeHive.
       "One key challenge was balancing multiple shopping states in real time: budget totals, cart edits, category breakdowns, and recommendation logic all had to remain synchronized. Designing suggestion behavior that is helpful and explainable, while still performant and intuitive on mobile screens, also required repeated tuning and UI iteration.",
     conclusion:
       "SWAK-CART demonstrates how a focused, user-centered grocery workflow can combine budgeting, product discovery, and checkout preparation in one clean web experience. The project strengthened practical frontend architecture, state orchestration, and UX thinking around everyday financial decisions.",
-    logo: "/images/icons/K.png",
+    logo: "/images/swak-cart/logo.png",
     github: "https://github.com/DevKennySoriano/swak-cart",
     live: "https://swak-cart.vercel.app/",
     tags: ["Vue 3", "Vite", "JavaScript", "CSS3", "AOS", "SweetAlert2", "Driver.js", "jsPDF"],
