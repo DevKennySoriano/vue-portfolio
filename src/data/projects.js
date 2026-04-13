@@ -227,5 +227,93 @@ Bee Smart. Bee Secure. Bee Home with HomeHive.
 
 
 
+  },
+  {
+    slug: "swak-cart",
+    title: "SWAK-CART",
+    date: "2025",
+    overview:
+      "SWAK-CART is a modern, responsive grocery companion web app built with Vue 3 and Vite to help users shop smarter and stay within budget through real-time tracking and actionable checkout suggestions. It is designed for instant browser use with no download and no account required.",
+    background:
+      "The project was built to solve common grocery shopping pain points such as unclear spending, lack of budget visibility, and difficulty deciding what to remove or add before checkout. SWAK-CART provides a practical flow from budget setup to receipt export in a single browser-based experience that is easy to access on desktop or mobile.",
+    objectives: [
+      "Provide real-time budget tracking while users build their grocery cart.",
+      "Support a searchable and category-filterable grocery catalog with 100+ items.",
+      "Allow manual item entry with editable price and quantity controls.",
+      "Offer smart suggestions when users are over or under budget.",
+      "Generate a clean, print-friendly PDF receipt upon cart completion."
+    ],
+    methodology:
+      "SWAK-CART follows a modular Composition API architecture where budget, catalog, cart, tutorial, and receipt logic are isolated into composables. UI flows were iteratively refined with responsive testing across desktop and mobile, then enhanced with guided walkthroughs, alerts, and printable output handling.",
+    features: [
+      "No download needed and no account required for immediate use.",
+      "Easy browser access across desktop, tablet, and mobile devices.",
+      "Real-time budget usage, remaining budget, and category spending totals.",
+      "Search and category filtering across a 100+ grocery product catalog.",
+      "Manual product entry for items not found in the catalog.",
+      "Editable cart with quantity and price controls plus item removal.",
+      "Over-budget removal suggestions and under-budget essential recommendations.",
+      "Receipt preview and PDF export with print-friendly layout.",
+      "Guided in-app tutorial for desktop and mobile user flows.",
+      "Responsive UI with section animations and smooth transitions."
+    ],
+    challenges:
+      "One key challenge was balancing multiple shopping states in real time: budget totals, cart edits, category breakdowns, and recommendation logic all had to remain synchronized. Designing suggestion behavior that is helpful and explainable, while still performant and intuitive on mobile screens, also required repeated tuning and UI iteration.",
+    conclusion:
+      "SWAK-CART demonstrates how a focused, user-centered grocery workflow can combine budgeting, product discovery, and checkout preparation in one clean web experience. The project strengthened practical frontend architecture, state orchestration, and UX thinking around everyday financial decisions.",
+    logo: "/images/icons/K.png",
+    github: "https://github.com/DevKennySoriano/swak-cart",
+    live: "https://swak-cart.vercel.app/",
+    tags: ["Vue 3", "Vite", "JavaScript", "CSS3", "AOS", "SweetAlert2", "Driver.js", "jsPDF"],
+    project: "/images/swak-cart/swakcart-system-overview.png",
+    screenshots: [
+      {
+        image: "/images/swak-cart/product-add-to-cart-sample.png",
+        caption:
+          "Product list with add-to-cart actions, search, and category-based browsing."
+      },
+      {
+        image: "/images/swak-cart/category-sort-sample.png",
+        caption:
+          "Category sorting flow for quickly narrowing down grocery products."
+      },
+      {
+        image: "/images/swak-cart/your-cart.png",
+        caption:
+          "Cart panel showing editable prices, quantities, and running totals."
+      },
+      {
+        image: "/images/swak-cart/overbudget-displayed-and-alert.png",
+        caption:
+          "Over-budget state with real-time alert feedback to guide user decisions."
+      },
+      {
+        image: "/images/swak-cart/suggested-esstentials-displayed.png",
+        caption:
+          "Smart essentials recommendation panel displayed when budget remains."
+      },
+      {
+        image: "/images/swak-cart/user-guide-tutorial-manual-sample.png",
+        caption:
+          "Built-in guided tutorial for onboarding key actions on desktop and mobile."
+      },
+      {
+        image: "/images/swak-cart/complete-print-preview.png",
+        caption:
+          "Receipt preview shown before confirming print and cart completion."
+      },
+      {
+        image: "/images/swak-cart/print-receipt-sample-invoice.png",
+        caption:
+          "PDF receipt output in a clean, print-ready invoice format."
+      },
+      {
+        image: "/images/swak-cart/mobile-version-responsiveness-sample.png",
+        caption:
+          "Responsive mobile layout with tab-driven flow for products and cart."
+      }
+    ],
+    footer:
+      "Built and maintained by Kenny Soriano as a production-ready grocery budgeting and cart planning application. Image assets acknowledgements: Pexels contributors."
   }
 ]

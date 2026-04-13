@@ -4,7 +4,7 @@ const webProjects = [
   {
     slug: "all-about-pets",
     title: "All About Pets",
-   progress: 10,
+    progress: 10,
     status: "archived",
     description: "A client-based mini-thesis web system built for a pet care business...",
     image: "/images/banners/PetsBanner.png",
@@ -22,12 +22,20 @@ const webProjects = [
     slug: "kapet-bahala-na",
     title: "Kape't Bahala Na",
     progress: 5,
-    description: "A technical-task café system built during my Wizzard Technologies Inc. OJT journey, focused on Laravel, Blade components, database integration, and modern frontend tooling.",
+    status: "archived",
+    description: "A technical-task cafe system built during my Wizzard Technologies Inc. OJT journey, focused on Laravel, Blade components, database integration, and modern frontend tooling.",
     image: "/images/banners/KapeBanner.png",
     tags: ["Laravel", "Blade", "PHP", "MySQL", "JavaScript", "Vue", "Vite"]
+  },
+  {
+    slug: "swak-cart",
+    title: "SWAK-CART",
+    progress: 100,
+    description: "A modern grocery companion web app focused on budget-aware shopping, real-time tracking, and receipt-ready checkout workflows.",
+    image: "/images/banners/swak-cart-banner.png",
+    tags: ["Vue", "Vite", "JavaScript", "HTML", "CSS"]
   }
 ]
-
 
 const loadedImages = ref([])
 
@@ -42,13 +50,10 @@ const statusText = project => {
 
 const statusClass = project => project.status === 'archived' ? 'archived' : ''
 
-const statusPercentage = project => project.status === 'archived' ? '' : `${project.progress}%`
-
 const statusDasharray = project => project.status === 'archived' ? '100, 100' : `${project.progress}, 100`
 
 const statusValue = project => project.status === 'archived' ? '-' : `${project.progress}%`
 </script>
-
 
 <template>
 <section class="projects">
@@ -62,21 +67,20 @@ const statusValue = project => project.status === 'archived' ? '-' : `${project.
       class="web-card fade-card"
       :style="{ animationDelay: `${i * 0.08}s` }"
     >
-<div class="web-image">
-  <div
-    class="image-skeleton"
-    :class="{ hidden: loadedImages[i] }"
-  ></div>
+      <div class="web-image">
+        <div
+          class="image-skeleton"
+          :class="{ hidden: loadedImages[i] }"
+        ></div>
 
-  <img
-    :src="project.image"
-    :alt="project.title"
-    loading="lazy"
-    @load="loadedImages[i] = true"
-    :class="{ loaded: loadedImages[i] }"
-  />
-</div>
-
+        <img
+          :src="project.image"
+          :alt="project.title"
+          loading="lazy"
+          @load="onImageLoad(i)"
+          :class="{ loaded: loadedImages[i] }"
+        />
+      </div>
 
       <div class="web-content">
         <div class="content-top">
@@ -109,14 +113,12 @@ const statusValue = project => project.status === 'archived' ? '-' : `${project.
           </div>
         </div>
 
-    <router-link
-  :to="{ name: 'ProjectsView', params: { slug: project.slug } }"
-  class="view-btn"
->
-  View Project
-</router-link>
-
-
+        <router-link
+          :to="{ name: 'ProjectsView', params: { slug: project.slug } }"
+          class="view-btn"
+        >
+          View Project
+        </router-link>
       </div>
     </div>
   </div>
@@ -149,7 +151,6 @@ const statusValue = project => project.status === 'archived' ? '-' : `${project.
   gap: 1.6rem;
 }
 
-
 .web-card {
   border-radius: 16px;
   overflow: hidden;
@@ -174,7 +175,6 @@ const statusValue = project => project.status === 'archived' ? '-' : `${project.
   margin-bottom: 0;
 }
 
-/* Skeleton */
 .image-skeleton {
   position: absolute;
   inset: 0;
@@ -209,7 +209,6 @@ const statusValue = project => project.status === 'archived' ? '-' : `${project.
   pointer-events: none;
 }
 
-/* Image */
 .web-image img {
   width: 100%;
   height: 100%;
@@ -224,7 +223,6 @@ const statusValue = project => project.status === 'archived' ? '-' : `${project.
   opacity: 1;
 }
 
-/* Shimmer */
 @keyframes shimmer {
   0% {
     background-position: 200% 0;
@@ -248,7 +246,6 @@ const statusValue = project => project.status === 'archived' ? '-' : `${project.
   flex: 1;
 }
 
-
 .text h4 {
   font-size: 1.1rem;
   margin-bottom: 0.4rem;
@@ -265,7 +262,6 @@ const statusValue = project => project.status === 'archived' ? '-' : `${project.
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-
 
 .tags {
   margin-top: 0.6rem;
@@ -344,7 +340,6 @@ const statusValue = project => project.status === 'archived' ? '-' : `${project.
   text-decoration: none;
   transition: all 0.3s ease;
 }
-
 
 .view-btn:hover {
   background: color-mix(in srgb, var(--surface-strong) 90%, white);
