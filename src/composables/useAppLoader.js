@@ -6,6 +6,7 @@ export function useAppLoader() {
   const hideLoader = () => {
     window.setTimeout(() => {
       isLoading.value = false
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
     }, 3000)
   }
 
