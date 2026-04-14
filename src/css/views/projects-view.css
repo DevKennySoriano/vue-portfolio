@@ -428,6 +428,10 @@
     box-shadow: none;
   }
 
+  .logo-wrapper {
+    margin-top: 4.5rem;
+  }
+
   .content-wrapper {
     padding: 0 1rem;
     overflow: visible;
