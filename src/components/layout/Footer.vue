@@ -1,31 +1,7 @@
-<script>
-export default {
-    name: "FooterComponent",
-    data() {
-        return {
-            lastUpdated: typeof __LAST_UPDATED__ !== "undefined" ? __LAST_UPDATED__ : "Unknown",
-        };
-    },
-    computed: {
-        formattedLastUpdated() {
-            if (this.lastUpdated === "Unknown") {
-                return this.lastUpdated;
-            }
+<script setup>
+import { useFooterMeta } from '@/composables/useFooterMeta'
 
-            const parsedDate = new Date(this.lastUpdated);
-
-            if (Number.isNaN(parsedDate.getTime())) {
-                return this.lastUpdated;
-            }
-
-            return new Intl.DateTimeFormat("en-US", {
-                month: "long",
-                day: "2-digit",
-                year: "numeric",
-            }).format(parsedDate);
-        },
-    },
-};
+const { formattedLastUpdated } = useFooterMeta()
 </script>
 
 <template>
@@ -92,79 +68,4 @@ export default {
 </template>
 
 
-<style scoped>
-.footer {
-    padding: 40px 20px;
-    background: linear-gradient(180deg, var(--surface-strong), var(--surface-strong-2));
-    border-radius: 20px 20px 0 0;
-    text-align: center;
-    font-family: "Inter", sans-serif;
-    border-top: 1px solid color-mix(in srgb, var(--text-inverse) 20%, transparent);
-}
-
-.footer-content {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    align-items: center;
-}
-
-.brand h2 {
-    margin: 0;
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--text-inverse);
-}
-
-.brand p {
-    margin: 4px 0 0 0;
-    font-size: 14px;
-    color: color-mix(in srgb, var(--text-inverse) 86%, transparent);
-}
-
-.socials {
-    display: flex;
-    gap: 16px;
-}
-
-.socials a {
-    color: var(--text-inverse);
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.socials a:hover {
-    color: color-mix(in srgb, var(--text-inverse) 75%, #86efac);
-    transform: translateY(-3px);
-}
-
-.socials svg {
-    width: 24px;
-    height: 24px;
-    fill: currentColor;
-}
-
-
-@media (min-width: 768px) {
-    .footer-content {
-        flex-direction: row;
-        justify-content: space-between;
-        max-width: 1000px;
-        margin: 0 auto;
-    }
-}
-
-@media (max-width: 640px) {
-    .footer {
-        border-radius: 14px 14px 0 0;
-        padding: 28px 16px;
-    }
-
-    .brand h2 {
-        font-size: 20px;
-    }
-
-    .brand p {
-        font-size: 13px;
-    }
-}
-</style>
+<style scoped src="@/css/layout/footer.css"></style>

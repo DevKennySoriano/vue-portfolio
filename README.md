@@ -1,149 +1,85 @@
-# 🌐 Personal Portfolio – Ken
+# Personal Portfolio
 
+## Overview
 
-## 📌 Overview
+This repository contains the source for my personal portfolio website, built with Vue 3 and Vite. It presents my profile, experience, education, projects, certifications, and contact links in a responsive single-page experience with routed project details.
 
-This repository contains the source code for my **personal portfolio website**, built using **Vue.js**. The portfolio is designed to professionally showcase my profile, skills, and projects while maintaining high performance, clean architecture, and a modern user experience.
+The app is organized so visual styling lives in `src/css` and reusable page logic lives in `src/composables`, while the Vue components focus on markup and composition.
 
-The website serves as a central hub for:
+## Features
 
-* Personal and professional information
-* Highlighted projects with descriptions and visuals
-* Skills and technologies
-* Easy access to social and professional links
+* Responsive layout for desktop and mobile
+* Theme toggle with persisted preference
+* Routed project detail pages
+* Project showcase with images, status, and progress indicators
+* Education, experience, tech stack, and certificate sections
+* Contact and social links
+* Loader and image preview interactions
 
----
-
-
-
-## 🧩 Features
-
-* 📱 Fully responsive design
-* 🧭 Smooth navigation and routing
-* 🖼️ Project showcase with images and descriptions
-* ⚡ Fast loading and optimized performance
-* 🎨 Clean, modern UI/UX
-* 🔗 Social media integration
-
----
-
-## 📂 Project Structure
+## Project Structure
 
 ```
 public/
-├── images/
-│   ├── allaboutpets/        # All About Pets project assets
-│   ├── banners/             # Project banner images
-│   ├── brandstyling/        # Branding assets
-│   ├── certs/               # Certification images
-│   ├── edu/                 # Educational assets
-│   ├── homehive/            # HomeHive project assets
-│   ├── icons/               # Navigation and UI icons
-│   ├── kape/                # Kape't Bahala Na project assets
-│   ├── ken/                 # Personal profile images
-│   └── swak-cart/           # SWAK-CART project assets
+├── images/                 # Portfolio assets and project media
 src/
 ├── components/
-│   ├── layout/
-│   │   ├── Footer.vue
-│   │   └── Navbar.vue
-│   └── ui/
-│       ├── contactpage-end.vue
-│       ├── homepage-*.vue   # Homepage sections
-│       ├── projects-*.vue   # Projects page components
-│       └── testimonials.vue
+│   ├── layout/             # Navbar and footer
+│   └── ui/                 # Home, project, contact, and shared sections
+├── composables/            # Reusable state and behavior
+├── css/
+│   ├── app.css             # Global app shell and theme variables
+│   ├── layout/             # Layout-specific styles
+│   ├── home/               # Home page section styles
+│   └── views/              # View-specific styles
+├── data/
+│   └── projects.js         # Project detail data
+├── router/
+│   └── index.js            # Vue Router configuration
 ├── views/
 │   ├── Home.vue
 │   ├── Projects.vue
-│   ├── projects-view.vue   # Individual project detail view
+│   ├── projects-view.vue
 │   ├── Contactpage.vue
 │   └── Testimonials.vue
-├── data/
-│   ├── projects.js         # Project data (All About Pets, HomeHive, Kape't Bahala Na, SWAK-CART)
-│   └── [other data files]
-├── router/
-│   └── index.js            # Vue Router configuration
-├── App.vue                 # Root component
-├── main.js                 # Application entry point
-└── style.css               # Global styles
+├── App.vue                 # Root shell and preloader
+└── main.js                 # App bootstrap
 ```
 
----
-
-## 🛠️ Installation & Setup
+## Setup
 
 ```bash
-# Clone the repository
 git clone https://github.com/DevKennySoriano/vue-portfolio
-
-# Navigate into the project directory
 cd vue-portfolio
-
-# Install dependencies
 npm install
-
-# Run development server
 npm run dev
 ```
 
----
+## Scripts
 
-## 📸 Projects Showcase
+* `npm run dev` - Start the development server
+* `npm run build` - Build the app for production
+* `npm run preview` - Preview the production build locally
 
-The portfolio features **4 key projects**:
+## Projects Highlighted
 
-1. **All About Pets** (Archived) – A thesis proposal system for pet care business operations
-2. **HomeHive** – A comprehensive rental property management platform with AI assistance
-3. **Kape't Bahala Na** (Archived) – A café management system built during OJT with Laravel
-4. **SWAK-CART** – A modern grocery budgeting and cart management web app
+The portfolio currently includes these projects:
 
-Each project section includes:
+1. All About Pets
+2. HomeHive
+3. Kape't Bahala Na
+4. SWAK-CART
 
-* Project title and status (Completed/In Progress/Archived)
-* Comprehensive description and background
-* Objectives, methodology, and key features
-* Technologies and tools used
-* System overview and implementation screenshots
-* Challenges, learnings, and conclusions
-* Live demo and/or repository links
+## Deployment
 
----
-
-## 📈 Performance & Best Practices
-
-* Component-based architecture
-* Optimized asset loading
-* Clean and maintainable codebase
-* SEO-friendly structure
-
----
-
-## 🌍 Deployment
-
-The portfolio can be deployed using:
-
-* **Vercel**
-* **GitHub Pages**
-
-Build command:
+The app can be deployed to Vercel or GitHub Pages after running:
 
 ```bash
 npm run build
 ```
 
----
+## Contact
 
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome. Feel free to fork this repository and submit a pull request.
-
----
-
-## 📬 Contact & Social Links
-
-* 💼 **LinkedIn:** [https://www.linkedin.com/in/kennysoriano/](https://www.linkedin.com/in/kennysoriano/)
-* 🐙 **GitHub:** [https://github.com/DevKennySoriano](https://github.com/DevKennySoriano)
-* 🌐 **Portfolio:** [https://devkennysoriano.vercel.app/](https://devkennysoriano.vercel.app/)
-* ✉️ **Email:** [devkennysoriano@gmail.com](mailto:devkennysoriano@gmail.com)
-
----
+* LinkedIn: https://www.linkedin.com/in/kennysoriano/
+* GitHub: https://github.com/DevKennySoriano
+* Portfolio: https://devkennysoriano.vercel.app/
+* Email: devkennysoriano@gmail.com
