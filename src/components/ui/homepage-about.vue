@@ -82,9 +82,9 @@ const {
                 <router-link to="/projects" class="btn primary routerProjects">
                         View Projects
                 </router-link>
-                <router-link to="/contact" class="btn outline routerProjects secondary-link">
-                        Contact Me
-                </router-link>
+                <a href="/resume/Kenny_Soriano_Resume_April2026.pdf" class="btn outline routerProjects secondary-link" download>
+                  Download Resume
+                </a>
         </div>
 </section>
 </template>
