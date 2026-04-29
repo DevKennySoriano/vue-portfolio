@@ -315,5 +315,18 @@ Bee Smart. Bee Secure. Bee Home with HomeHive.
     ],
     footer:
       "Built and maintained by Kenny Soriano as a production-ready grocery budgeting and cart planning application. Image assets acknowledgements: Pexels contributors."
+  },
+   {
+    slug: "Lutowl",
+    title: "Lutowl",
+    date: "Present",
+    overview:
+      "This project is currently under active development. Some data, features, and visual elements may not yet be fully available or may appear incomplete as improvements are continuously being implemented. This project is being actively refined, and additional content and functionality will be introduced in upcoming updates. In the meantime, you may explore my other projects, which are fully available and showcase completed features and data.",
+    logo: "/images/Lutowl/lutowl-logo-light-purple.png",
+    github: "https://github.com/DevKennySoriano/lutowl",
+    live: "https://lutowl.vercel.app/",
+    tags: ["Vue 3", "Vite", "JavaScript", "CSS3", "AOS", "SweetAlert2", "PLpgSQL", "Supabase","Google API"],
+    project:"/images/Lutowl/System-Overview.png",
   }
+  
 ]

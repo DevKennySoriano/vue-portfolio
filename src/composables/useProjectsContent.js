@@ -36,6 +36,14 @@ export function useProjectsContent() {
       image: '/images/banners/swak-cart-banner.png',
       tags: ['Vue', 'Vite', 'JavaScript', 'HTML', 'CSS'],
     },
+        {
+      slug: 'Lutowl',
+      title: 'Lutowl',
+      progress: 20,
+      description: 'Explore, share, and celebrate traditional recipes from the Philippines',
+      image: '/images/banners/Lutowl-Banner.png',
+      tags: ['Vue', 'Vite', 'JavaScript', 'HTML', 'CSS'],
+    },
   ]
 
   const loadedImages = ref([])

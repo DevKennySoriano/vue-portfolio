@@ -7,6 +7,7 @@ export function useProjectsBranding() {
     '/images/brandstyling/EcoAlert.png',
     '/images/brandstyling/CKMJ.png',
     '/images/brandstyling/All About Pets.png',
+    '/images/brandstyling/Lutowl.png',
   ]
 
   const track = ref(null)
