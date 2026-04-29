@@ -150,6 +150,10 @@
 .tag.ai { background-color: #6f42c1; }
 .tag.mysql { background-color: #00758f; }
 .tag.docker { background-color: #2496ed; }
+.tag.supabase { background-color: #3cd146; }
+.tag.googleoauth { background-color: #eb2020; }
+.tag.plpgsql { background-color: #336791; }
+.tag.tailwindcss { background-color: #38bdf8; color: #111; }
 
 .progress-circle {
   width: 64px;

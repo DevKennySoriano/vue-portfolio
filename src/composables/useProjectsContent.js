@@ -34,7 +34,7 @@ export function useProjectsContent() {
       progress: 100,
       description: 'A modern grocery companion web app focused on budget-aware shopping, real-time tracking, and receipt-ready checkout workflows.',
       image: '/images/banners/swak-cart-banner.png',
-      tags: ['Vue', 'Vite', 'JavaScript', 'HTML', 'CSS'],
+      tags: ['Vue', 'Vite', 'JavaScript', 'CSS'],
     },
         {
       slug: 'Lutowl',
@@ -42,7 +42,7 @@ export function useProjectsContent() {
       progress: 20,
       description: 'Explore, share, and celebrate traditional recipes from the Philippines',
       image: '/images/banners/Lutowl-Banner.png',
-      tags: ['Vue', 'Vite', 'JavaScript', 'HTML', 'CSS'],
+      tags: ['Vue', 'Vite', 'JavaScript', 'PLpgSQL', 'Supabase','Google OAuth','Tailwind CSS'],
     },
   ]
 
