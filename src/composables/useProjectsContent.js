@@ -39,10 +39,10 @@ export function useProjectsContent() {
         {
       slug: 'Lutowl',
       title: 'Lutowl',
-      progress: 60,
+      progress: 85,
       description: 'Explore, share, and celebrate traditional recipes from the Philippines',
       image: '/images/banners/Lutowl-Banner.png',
-      tags: ['Vue', 'Vite', 'JavaScript', 'PLpgSQL', 'Supabase','Google OAuth','Tailwind CSS'],
+      tags: ['Vue', 'Vite', 'JavaScript', 'PLpgSQL', 'Supabase','Google OAuth','Tailwind CSS','AI'],
     },
   ]
 

@@ -316,17 +316,102 @@ Bee Smart. Bee Secure. Bee Home with HomeHive.
     footer:
       "Built and maintained by Kenny Soriano as a production-ready grocery budgeting and cart planning application. Image assets acknowledgements: Pexels contributors."
   },
-   {
-    slug: "Lutowl",
-    title: "Lutowl",
-    date: "Present",
-    overview:
-      "This project is currently under active development. Some data, features, and visual elements may not yet be fully available or may appear incomplete as improvements are continuously being implemented. This project is being actively refined, and additional content and functionality will be introduced in upcoming updates. In the meantime, you may explore my other projects, which are fully available and showcase completed features and data.",
-    logo: "/images/Lutowl/lutowl-logo-light-purple.png",
-    github: "https://github.com/DevKennySoriano/lutowl",
-    live: "https://lutowl.vercel.app/",
-    tags: ["Vue 3", "Vite", "JavaScript", "CSS3", "AOS", "SweetAlert2", "PLpgSQL", "Supabase","Google API"],
-    project:"/images/Lutowl/System-Overview.png",
-  }
-  
+{
+  slug: "Lutowl",
+  title: "Lutowl",
+  date: "2026 – Present",
+  overview:
+    "Lutowl is a modern web-based platform designed to help people decide what to cook quickly and easily, with a strong focus on everyday Filipino cuisine. It brings recipes, meal ideas, and personal collections into one simple platform, making cooking more organized, practical, and less stressful.",
+
+  background:
+    "Many people struggle with deciding what to cook, especially when recipes are scattered across notes, social media, or memory. This is even more common with Filipino dishes that are often passed down informally. Lutowl was created as a web-based solution to centralize these recipes into one platform where users can discover, manage, and preserve Filipino meals while also exploring new ideas in a more organized way.",
+
+  objectives: [
+    "Help users quickly decide what Filipino dish to cook based on their needs.",
+    "Provide a simple web-based platform for storing and managing Filipino recipes.",
+    "Allow users to explore and rediscover everyday Filipino meals.",
+    "Support interaction through saving, liking, and engaging with recipes.",
+    "Deliver a smooth experience across mobile, tablet, and desktop."
+  ],
+
+  methodology:
+    "Lutowl is developed as a web-based application using a modern approach focused on simplicity and usability. Features are built step by step, tested, and improved continuously to ensure a smooth experience. The system connects a clean interface with a secure backend to handle recipes, user data, and interactions efficiently.",
+
+  features: [
+    "Create, edit, and manage personal Filipino recipes.",
+    "Browse and search recipes by category, ingredients, or preferences.",
+    "Save and bookmark favorite dishes for later.",
+    "Like and interact with recipes from other users.",
+    "View estimated calories and nutrition information.",
+    "Upload and manage recipe images.",
+    "Secure login and user account system.",
+    "Personal dashboard for managing recipes and activity.",
+    "Responsive design for all screen sizes.",
+    "AI-powered cooking assistant for meal suggestions, questions, and ingredient substitutions."
+  ],
+
+  challenges:
+    "One of the main challenges was keeping the app simple while supporting multiple features like recipe creation, discovery, and user interaction. It was also important to present Filipino recipes in a clear and structured way while still keeping their traditional and flexible nature. Ensuring a smooth experience across different devices required continuous testing and refinement.",
+
+  conclusion:
+    "Lutowl shows how everyday Filipino cooking can be transformed into a simple and meaningful digital experience. As a web-based platform, it makes recipe discovery accessible anytime without downloads. By combining easy-to-use features with practical recipe discovery, the system helps users make faster cooking decisions while preserving and sharing Filipino cuisine. The project continues to evolve with new improvements and features.",
+
+  logo: "/images/Lutowl/lutowl-logo-light-purple.png",
+  github: "https://github.com/DevKennySoriano/lutowl",
+  live: "https://lutowl.site/",
+
+  tags: [
+    "Vue 3",
+    "Vite",
+    "JavaScript",
+    "CSS3",
+    "Supabase",
+    "PostgreSQL",
+    "Google API",
+    "AI Integration"
+  ],
+
+  project: "/images/Lutowl/System-Overview.png",
+
+  screenshots: [
+    {
+      image: "/images/Lutowl/Lutowl-1.png",
+      caption:
+        "Homepage highlighting Filipino dishes, categories, and featured recipes."
+    },
+    {
+      image: "/images/Lutowl/Lutowl-2.png",
+      caption:
+        "Recipe browsing section with filters and an organized grid of Filipino meals."
+    },
+    {
+      image: "/images/Lutowl/Lutowl-3.png",
+      caption:
+        "Detailed recipe view showing ingredients, steps, and cooking instructions."
+    },
+    {
+      image: "/images/Lutowl/Lutowl-4.png",
+      caption:
+        "Recipe creation form for adding new Filipino dishes with structured details."
+    },
+    {
+      image: "/images/Lutowl/Lutowl-5.png",
+      caption:
+        "User dashboard for managing recipes, saved dishes, and activity."
+    },
+    {
+      image: "/images/Lutowl/Lutowl-6.png",
+      caption:
+        "AI-powered cooking assistant that provides instant meal suggestions, answers cooking questions, and suggests ingredient substitutions based on user needs."
+    },
+    {
+      image: "/images/Lutowl/Lutowl-7.png",
+      caption:
+        "Mobile-responsive layout optimized for cooking and browsing on any device."
+    }
+  ],
+
+  footer:
+    "Designed and developed by Kenny Soriano. Lutowl is an evolving web-based platform dedicated to making Filipino cooking easier, more accessible, and more meaningful."
+}
 ]
