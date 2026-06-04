@@ -62,6 +62,18 @@ const routes = [
       title: 'Contact | Kenny Soriano',
       description: 'Get in touch with Kenny Soriano for internships, freelance projects, collaborations, and frontend development opportunities.'
     }
+  },
+
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: () => import('../views/NotFound.vue'),
+    meta: {
+      hideLayout: true,
+      flushTop: true,
+      title: 'Page Not Found | Kenny Soriano',
+      description: 'The requested page could not be found. Return to the homepage or explore other sections.'
+    }
   }
 ]
 
