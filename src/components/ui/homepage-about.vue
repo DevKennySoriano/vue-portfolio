@@ -43,6 +43,20 @@ const {
     >
       {{ description }}
     </p>
+
+        <div
+                class="buttons"
+                data-aos="fade-up"
+                data-aos-once="true"
+                data-aos-delay="420"
+        >
+                <router-link to="/projects" class="btn primary routerProjects">
+                        View Projects
+                </router-link>
+                <a href="/resume/Kenny_Soriano_Resume_04252026.pdf" class="btn outline routerProjects secondary-link" download>
+                  Download Resume
+                </a>
+        </div>
   </div>
 
   <div
@@ -73,19 +87,6 @@ const {
     </div>
   </div>
 
-        <div
-                class="buttons"
-                data-aos="fade-up"
-                data-aos-once="true"
-                data-aos-delay="420"
-        >
-                <router-link to="/projects" class="btn primary routerProjects">
-                        View Projects
-                </router-link>
-                <a href="/resume/Kenny_Soriano_Resume_04252026.pdf" class="btn outline routerProjects secondary-link" download>
-                  Download Resume
-                </a>
-        </div>
 </section>
 </template>
 
