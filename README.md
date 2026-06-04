@@ -18,6 +18,7 @@ The app is organized so visual styling lives in `src/css` and reusable page logi
 
 ## Project Structure
 
+
 ```
 public/
 ├── images/                 # Portfolio assets and project media
