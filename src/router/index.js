@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Projects from '../views/Projects.vue'
 import Contactpage from '../views/Contactpage.vue'
-import Testimonials from '../views/Testimonials.vue'
 
 const DEFAULT_META = {
   title: 'Kenny Soriano | Portfolio',
@@ -40,15 +39,7 @@ const routes = [
     }
   },
 
-  {
-    path: '/testimonials',
-    name: 'Testimonials',
-    component: Testimonials,
-    meta: {
-      title: 'Testimonials | Kenny Soriano',
-      description: 'Read feedback from mentors, teachers, and teammates about working with Kenny Soriano on academic and development projects.'
-    }
-  },
+  
 
 
  {

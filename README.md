@@ -40,8 +40,7 @@ src/
 │   ├── Home.vue
 │   ├── Projects.vue
 │   ├── projects-view.vue
-│   ├── Contactpage.vue
-│   └── Testimonials.vue
+│   └── Contactpage.vue
 ├── App.vue                 # Root shell and preloader
 └── main.js                 # App bootstrap
 ```
