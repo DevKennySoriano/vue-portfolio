@@ -53,7 +53,7 @@ const {
                 <router-link to="/projects" class="btn primary routerProjects">
                         View Projects
                 </router-link>
-                <a href="/resume/Kenny_Soriano_Resume_04252026.pdf" class="btn outline routerProjects secondary-link" download>
+                <a href="/resume/Kenny_Soriano_Resume_06062026.pdf" class="btn outline routerProjects secondary-link" download>
                   Download Resume
                 </a>
         </div>
