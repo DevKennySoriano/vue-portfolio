@@ -5,7 +5,7 @@ export function useExperienceTimeline() {
 
   const timeline = [
     {
-      period: 'Present',
+      period: '2026',
       title: 'OJT Intern - Product Development',
       company: 'Wizzard Technologies Inc.',
       duration: 'Completed 300 hours',
