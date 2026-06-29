@@ -145,7 +145,7 @@
 
 .profile-cube {
   width: 280px;
-  height: 280px;
+  height: 360px;
   border-radius: 14px;
   overflow: hidden;
   background: color-mix(in srgb, var(--bg-elevated) 85%, transparent);
@@ -223,8 +223,8 @@
   }
 
   .profile-cube {
-    width: 220px;
-    height: 220px;
+    width: 280px;
+    height: 360px;
   }
 }
 
@@ -275,7 +275,7 @@
 
   .profile-cube {
     width: 180px;
-    height: 180px;
+    height: 280px;
   }
 
   .tag {
