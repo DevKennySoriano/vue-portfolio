@@ -50,8 +50,8 @@ const {
                 data-aos-once="true"
                 data-aos-delay="420"
         >
-                <router-link to="/projects" class="btn primary routerProjects">
-                        View Projects
+                <router-link to="/contact" class="btn primary routerProjects">
+                        Contact
                 </router-link>
                 <router-link to="/resources" class="btn outline routerProjects secondary-link">
                   Download Resume
