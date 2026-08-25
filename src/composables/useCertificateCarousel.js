@@ -1,5 +1,3 @@
-import { onMounted, onUnmounted, ref } from 'vue'
-
 export function useCertificateCarousel() {
   const certificates = [
     {
@@ -22,34 +20,5 @@ export function useCertificateCarousel() {
     },
   ]
 
-  const currentIndex = ref(0)
-  let interval = null
-
-  const next = () => {
-    currentIndex.value = (currentIndex.value + 1) % certificates.length
-  }
-
-  const prev = () => {
-    currentIndex.value = (currentIndex.value - 1 + certificates.length) % certificates.length
-  }
-
-  const startAutoSlide = () => {
-    interval = setInterval(next, 4000)
-  }
-
-  const stopAutoSlide = () => {
-    clearInterval(interval)
-  }
-
-  onMounted(startAutoSlide)
-  onUnmounted(stopAutoSlide)
-
-  return {
-    certificates,
-    currentIndex,
-    next,
-    prev,
-    startAutoSlide,
-    stopAutoSlide,
-  }
+  return { certificates }
 }

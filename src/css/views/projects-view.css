@@ -109,6 +109,10 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
 }
 
 .back-btn:hover {

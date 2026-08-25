@@ -202,6 +202,14 @@
   color: color-mix(in srgb, var(--text) 80%, var(--text-muted));
 }
 
+.coming-soon-text {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  opacity: 0.65;
+  font-style: italic;
+}
+
 .tech-stack {
   display: flex;
   flex-wrap: wrap;

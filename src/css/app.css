@@ -19,6 +19,7 @@ body {
 }
 
 :root {
+  --sidebar-width: 272px;
   --bg: #f4f7f5;
   --bg-elevated: #ffffff;
   --bg-soft: #e9f1ec;
@@ -67,13 +68,29 @@ h6 {
 
 .page {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+}
+
+.page--with-layout {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  column-gap: 1rem;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.page-main {
+  min-width: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding-right: 0.9rem;
 }
 
 .content {
-  flex: 1;
-  padding-top: 104px;
+  min-height: auto;
+  overflow: visible;
+  padding-top: 1.2rem;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .content--flush-top {
@@ -137,9 +154,24 @@ h6 {
 }
 
 @media (max-width: 1024px) {
+  .page--with-layout {
+    display: block;
+    height: auto;
+    overflow: visible;
+  }
+
+  .page-main {
+    height: auto;
+    overflow: visible;
+    padding-right: 0;
+  }
+
   .content {
-    padding-top: 1rem;
-    padding-bottom: 86px;
+    overflow: visible;
+    padding-top: 74px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
   }
 
   .content--flush-top {

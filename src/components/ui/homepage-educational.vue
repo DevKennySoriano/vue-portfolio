@@ -5,10 +5,7 @@ const { education } = useEducationTimeline()
 </script>
 <template>
 <section class="education">
-  <h2
-    class="section-title"
-    data-aos="fade-up"
-  >
+  <h2 class="section-title animate-fade-up">
     Educational Background
   </h2>
 
@@ -20,8 +17,8 @@ const { education } = useEducationTimeline()
       :class="{ reverse: index % 2 !== 0 }"
     >
       <div
-        class="timeline-image"
-        :data-aos="index % 2 === 0 ? 'fade-right' : 'fade-left'"
+        class="timeline-image animate-fade-up"
+        :style="{ animationDelay: `${index * 0.2 + 0.15}s` }"
       >
         <div class="image-wrapper">
           <img :src="item.image" alt="Education image" />
@@ -29,9 +26,8 @@ const { education } = useEducationTimeline()
       </div>
 
       <div
-        class="timeline-content"
-        :data-aos="index % 2 === 0 ? 'fade-left' : 'fade-right'"
-        data-aos-delay="100"
+        class="timeline-content animate-fade-up"
+        :style="{ animationDelay: `${index * 0.2 + 0.3}s` }"
       >
         <div class="content-card">
           <span class="date">{{ item.date }}</span>

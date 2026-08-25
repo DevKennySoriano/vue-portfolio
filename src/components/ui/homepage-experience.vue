@@ -68,6 +68,11 @@ const { expandedIndex, timeline, toggleExpand } = useExperienceTimeline()
                     </div>
                   </div>
 
+                  <div v-if="item.tech && item.tech.length === 0 && item.comingSoon" class="full-section">
+                    <p class="block-title">Core Competencies</p>
+                    <p class="coming-soon-text">Tech stack coming soon</p>
+                  </div>
+
                   <div v-if="item.facebook || item.maps || item.freecodecamp || item.sti || item.w3schools" class="full-section">
                     <p class="block-title">Links</p>
                     <div class="brand-row">
@@ -146,6 +151,11 @@ const { expandedIndex, timeline, toggleExpand } = useExperienceTimeline()
                         <span>W3Schools</span>
                       </a>
                     </div>
+                  </div>
+
+                  <div v-if="item.comingSoon && !item.facebook && !item.maps && !item.freecodecamp && !item.sti && !item.w3schools" class="full-section">
+                    <p class="block-title">Links</p>
+                    <p class="coming-soon-text">Links coming soon</p>
                   </div>
                 </div>
               </transition>

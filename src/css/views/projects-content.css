@@ -1,20 +1,19 @@
 .projects {
   margin-top: 0;
   padding: 3rem 2.5rem;
-  background-color: var(--surface-strong);
 }
 
 .section-title {
   font-size: 2.4rem;
   text-align: center;
   margin-bottom: 3rem;
-  color: var(--text-inverse);
+  color: var(--text);
 }
 
 .sub-title {
   font-size: 1.4rem;
   margin: 2.5rem 0 1.5rem;
-  color: var(--text-inverse);
+  color: var(--text);
 }
 
 .web-grid {
@@ -211,11 +210,11 @@
 
 .view-btn {
   margin-top: 1.2rem;
-  align-self: flex-start;
+  align-self: flex-end;
   padding: 0.45rem 1.2rem;
   font-size: 0.8rem;
   border-radius: 999px;
-  background: var(--surface-strong);
+  background: linear-gradient(180deg, var(--surface-strong), var(--surface-strong-2));
   color: var(--text-inverse);
   text-decoration: none;
   transition: all 0.3s ease;

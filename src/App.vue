@@ -1,7 +1,6 @@
 <script setup>
 import { useRoute } from 'vue-router'
 import Navbar from '@/components/layout/Navbar.vue'
-import Footer from '@/components/layout/Footer.vue'
 import { useAppLoader } from '@/composables/useAppLoader'
 
 const route = useRoute()
@@ -18,14 +17,14 @@ const { isLoading } = useAppLoader()
     </div>
   </transition>
 
-  <div class="page">
+  <div class="page" :class="{ 'page--with-layout': !route.meta.hideLayout }">
     <Navbar v-if="!route.meta.hideLayout" />
 
-    <main :class="['content', { 'content--flush-top': route.meta.flushTop }]">
-      <router-view />
-    </main>
-
-    <Footer v-if="!route.meta.hideLayout && !route.meta.hideFooter" />
+    <div class="page-main">
+      <main :class="['content', { 'content--flush-top': route.meta.flushTop }]">
+        <router-view />
+      </main>
+    </div>
   </div>
 </template>
 

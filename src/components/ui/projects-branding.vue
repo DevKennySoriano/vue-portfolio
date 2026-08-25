@@ -2,64 +2,41 @@
 import { useProjectsBranding } from '@/composables/useProjectsBranding'
 
 const {
-  track,
-  groups,
+  brandingWorks,
   loadedImages,
-  previewSrc,
-  openPreview,
-  closePreview,
 } = useProjectsBranding()
 </script>
 
 <template>
-  <section class="branding">
-    <h3 class="sub-title">Layout & Styling</h3>
+  <section class="branding-page">
+    <div class="branding-shell">
+      <header class="branding-hero">
+        <p class="eyebrow">Visual Projects</p>
+        <h1>Layout & Styling</h1>
+        <p class="subtitle">
+          Brand styling and layout design work across various projects.
+        </p>
+      </header>
 
-    <div class="marquee">
-      <div class="marquee-track" ref="track">
-        <div
-          v-for="(group, gi) in groups"
-          :key="gi"
-          class="group"
+      <div class="branding-grid">
+        <article
+          v-for="(img, i) in brandingWorks"
+          :key="i"
+          class="branding-card"
         >
-          <button
-            v-for="(img, i) in group"
-            :key="gi + '-' + i"
-            class="branding-card"
-            type="button"
-            :aria-label="`Preview layout ${i + 1}`"
-            @click="openPreview(img)"
-          >
+          <div class="branding-image">
             <div
               class="image-skeleton"
-              :class="{ hidden: loadedImages[gi + '-' + i] }"
+              :class="{ hidden: loadedImages[i] }"
             ></div>
-
             <img
               :src="img"
               loading="lazy"
-              @load="loadedImages[gi + '-' + i] = true"
-              :class="{ loaded: loadedImages[gi + '-' + i] }"
+              @load="loadedImages[i] = true"
+              :class="{ loaded: loadedImages[i] }"
             />
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div
-      v-if="previewSrc"
-      class="preview-overlay"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Layout preview"
-      @click.self="closePreview"
-    >
-      <div class="preview-frame">
-        <div class="preview-watermark" aria-hidden="true">
-          <img src="/images/icons/K.png" alt="" class="watermark-logo" />
-        </div>
-        <button type="button" class="preview-close" aria-label="Close preview" @click="closePreview">x</button>
-        <img :src="previewSrc" alt="Layout preview" class="preview-image" />
+          </div>
+        </article>
       </div>
     </div>
   </section>

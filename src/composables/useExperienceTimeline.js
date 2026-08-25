@@ -6,6 +6,18 @@ export function useExperienceTimeline() {
   const timeline = [
     {
       period: '2026',
+      title: 'Junior Software Developer',
+      company: 'Millennium Business Services, Inc.',
+      duration: 'Currently Active',
+      dateRange: 'September 2026 - Present',
+      description:
+        'Currently undergoing the provisionary phase at Millennium Business Services, Inc. This period focuses on onboarding, system orientation, and initial integration into the company\'s development workflow. Further details regarding responsibilities, tech stack, and project involvement will be updated as the role progresses.',
+      tech: [],
+      isSimple: true,
+      comingSoon: true,
+    },
+    {
+      period: '2026',
       title: 'OJT Intern - Product Development',
       company: 'Wizzard Technologies Inc.',
       duration: 'Completed 300 hours',

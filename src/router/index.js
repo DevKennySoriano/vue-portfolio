@@ -1,6 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import About from '../views/About.vue'
+import Experience from '../views/Experience.vue'
+import Education from '../views/Education.vue'
+import Certifications from '../views/Certifications.vue'
+import TechStack from '../views/TechStack.vue'
 import Projects from '../views/Projects.vue'
+import WebProjects from '../views/WebProjects.vue'
+import VisualProjects from '../views/VisualProjects.vue'
+import Resources from '../views/Resources.vue'
 import Contactpage from '../views/Contactpage.vue'
 
 const DEFAULT_META = {
@@ -21,14 +28,53 @@ const upsertMeta = (attribute, key, content) => {
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
+    redirect: '/about'
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: About,
     meta: {
-      title: 'Kenny Soriano |  Portfolio',
-      description: 'Explore the portfolio of Kenny Soriano featuring web projects, UI/UX work, technical skills, and growth as a frontend developer.'
+      title: 'About | Kenny Soriano',
+      description: 'Learn about Kenny Soriano, frontend-focused Computer Science student and portfolio creator.'
     }
   },
-
+  {
+    path: '/about/experience',
+    name: 'Experience',
+    component: Experience,
+    meta: {
+      title: 'Experience | Kenny Soriano',
+      description: 'Review Kenny Soriano\'s professional and project experience highlights.'
+    }
+  },
+  {
+    path: '/about/education',
+    name: 'Education',
+    component: Education,
+    meta: {
+      title: 'Education | Kenny Soriano',
+      description: 'Explore the educational background and academic timeline of Kenny Soriano.'
+    }
+  },
+  {
+    path: '/certifications',
+    name: 'Certifications',
+    component: Certifications,
+    meta: {
+      title: 'Certifications | Kenny Soriano',
+      description: 'View Kenny Soriano\'s certifications and completed learning milestones.'
+    }
+  },
+  {
+    path: '/tech-stack',
+    name: 'TechStack',
+    component: TechStack,
+    meta: {
+      title: 'Tech Stack | Kenny Soriano',
+      description: 'Discover the tools, frameworks, and technologies used by Kenny Soriano.'
+    }
+  },
   {
     path: '/projects',
     name: 'Projects',
@@ -38,15 +84,40 @@ const routes = [
       description: 'Browse selected projects by Kenny Soriano including web systems, interface design work, and practical development case studies.'
     }
   },
-
-  
-
+  {
+    path: '/projects/web',
+    name: 'WebProjects',
+    component: WebProjects,
+    meta: {
+      title: 'Web Projects | Kenny Soriano',
+      description: 'Explore web application projects built by Kenny Soriano.'
+    }
+  },
+  {
+    path: '/projects/visual',
+    name: 'VisualProjects',
+    component: VisualProjects,
+    meta: {
+      title: 'Visual Projects | Kenny Soriano',
+      description: 'Browse visual design, layout, and styling projects by Kenny Soriano.'
+    }
+  },
+  {
+    path: '/resources',
+    name: 'Resources',
+    component: Resources,
+    meta: {
+      title: 'Resources | Kenny Soriano',
+      description: 'Download resume files and useful portfolio resources from Kenny Soriano.'
+    }
+  },
 
  {
   path: '/projects/:slug',
   name: 'ProjectsView',
   component: () => import('../views/projects-view.vue'),
   meta: {
+    hideLayout: true,
     flushTop: true,
     hideFooter: true,
     title: 'Project Details | Kenny Soriano',

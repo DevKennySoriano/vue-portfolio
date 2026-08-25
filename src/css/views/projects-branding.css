@@ -1,42 +1,88 @@
-.branding {
-  padding: 1rem 2.5rem;
-  overflow: hidden;
-  margin-top: 1.2rem;
+.branding-page {
+  min-height: calc(100vh - 80px);
+  padding: 1.4rem 1.2rem 2rem;
 }
 
-.sub-title {
-  margin-bottom: 1.5rem;
+.branding-shell {
+  width: min(1040px, 100%);
+  margin: 0 auto;
+}
+
+.branding-hero {
+  margin-bottom: 1rem;
+}
+
+.branding-hero .eyebrow {
+  margin: 0;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.branding-hero h1 {
+  margin: 0.55rem 0 0;
+  font-size: clamp(1.8rem, 2.6vw, 2.6rem);
   color: var(--text);
 }
 
-.marquee {
-  width: 100%;
-  overflow: hidden;
+.branding-hero .subtitle {
+  margin: 0.55rem 0 0;
+  color: var(--text-muted);
+  max-width: 58ch;
 }
 
-.marquee-track {
-  display: flex;
-  gap: 2rem;
-  width: max-content;
-  will-change: transform;
-}
-
-.group {
-  display: flex;
-  gap: 30px;
+.branding-grid {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
+  justify-content: start;
 }
 
 .branding-card {
   position: relative;
-  width: 220px;
-  height: auto;
-  flex: 0 0 auto;
-  border-radius: 14px;
   overflow: hidden;
-  background: color-mix(in srgb, var(--bg-elevated) 85%, var(--bg-soft));
-  border: 0;
-  padding: 0;
-  cursor: zoom-in;
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--bg-elevated) 92%, var(--bg-soft));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.branding-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--border) 70%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--border) 70%, transparent) 1px, transparent 1px);
+  background-size: 33.333% 33.333%;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.branding-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.branding-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.branding-image {
+  width: 100%;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--surface-strong-2) 90%, black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .image-skeleton {
@@ -49,6 +95,11 @@
   z-index: 1;
 }
 
+:root[data-theme='dark'] .image-skeleton {
+  background: linear-gradient(90deg, #24352d 30%, #31463c 50%, #24352d 70%);
+  background-size: 600% 100%;
+}
+
 .image-skeleton.hidden {
   opacity: 0;
   pointer-events: none;
@@ -56,8 +107,8 @@
 
 .branding-card img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   display: block;
   opacity: 0;
   transition: opacity 0.45s ease;
@@ -65,67 +116,6 @@
 
 .branding-card img.loaded {
   opacity: 1;
-}
-
-.preview-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 2000;
-  background: rgba(0, 0, 0, 0.72);
-  display: grid;
-  place-items: center;
-  padding: 1rem;
-}
-
-.preview-frame {
-  position: relative;
-  width: min(920px, 96vw);
-  max-height: 90vh;
-  border-radius: 14px;
-  overflow: hidden;
-  background: color-mix(in srgb, var(--surface-strong) 88%, #052e1f);
-}
-
-.preview-image {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-height: 90vh;
-  object-fit: contain;
-  display: block;
-}
-
-.preview-watermark {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  display: grid;
-  place-items: center;
-  opacity: 0.18;
-}
-
-.watermark-logo {
-  width: min(240px, 40vw);
-  aspect-ratio: 1;
-  object-fit: contain;
-  filter: brightness(1.25) contrast(1.05);
-}
-
-.preview-close {
-  position: absolute;
-  z-index: 3;
-  top: 0.6rem;
-  right: 0.6rem;
-  width: 32px;
-  height: 32px;
-  border-radius: 999px;
-  border: 0;
-  font-size: 1rem;
-  line-height: 1;
-  background: color-mix(in srgb, var(--surface-strong) 75%, #052e1f);
-  color: #fff;
-  cursor: pointer;
 }
 
 @keyframes shimmer {
@@ -138,18 +128,18 @@
   }
 }
 
-@media (max-width: 768px) {
-  .branding {
-    margin-top: 0.6rem;
-    padding: 1rem;
-  }
-
-  .marquee-track,
-  .group {
-    gap: 14px;
+@media (max-width: 1024px) {
+  .branding-grid {
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   }
 
   .branding-card {
-    width: 160px;
+    max-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .branding-grid {
+    grid-template-columns: 1fr;
   }
 }

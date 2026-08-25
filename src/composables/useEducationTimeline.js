@@ -1,6 +1,3 @@
-import { nextTick, onMounted } from 'vue'
-import AOS from 'aos'
-
 export function useEducationTimeline() {
   const education = [
     {
@@ -28,11 +25,6 @@ export function useEducationTimeline() {
       image: '/images/edu/shs.jpeg',
     },
   ]
-
-  onMounted(async () => {
-    await nextTick()
-    AOS.refresh()
-  })
 
   return {
     education,
