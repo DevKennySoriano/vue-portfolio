@@ -1,19 +1,36 @@
 .projects {
   margin-top: 0;
-  padding: 3rem 2.5rem;
+  padding: 1.4rem 1.2rem 2rem;
 }
 
-.section-title {
-  font-size: 2.4rem;
-  text-align: center;
-  margin-bottom: 3rem;
+.projects-shell {
+  width: min(1040px, 100%);
+  margin: 0 auto;
+}
+
+.projects-hero {
+  margin-bottom: 1rem;
+}
+
+.projects-hero .eyebrow {
+  margin: 0;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.projects-hero h1 {
+  margin: 0.55rem 0 0;
+  font-size: clamp(1.8rem, 2.6vw, 2.6rem);
   color: var(--text);
 }
 
-.sub-title {
-  font-size: 1.4rem;
-  margin: 2.5rem 0 1.5rem;
-  color: var(--text);
+.projects-hero .subtitle {
+  margin: 0.55rem 0 0;
+  color: var(--text-muted);
+  max-width: 58ch;
 }
 
 .web-grid {
@@ -255,16 +272,6 @@
 @media (max-width: 768px) {
   .projects {
     padding: 2.2rem 1rem;
-  }
-
-  .section-title {
-    font-size: 1.9rem;
-    margin-bottom: 2rem;
-  }
-
-  .sub-title {
-    font-size: 1.1rem;
-    margin: 1.6rem 0 1rem;
   }
 
   .view-btn {

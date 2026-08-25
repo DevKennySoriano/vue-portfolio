@@ -14,10 +14,16 @@ const {
 
 <template>
 <section class="projects">
-  <h2 class="section-title fade-up">Projects</h2>
+  <div class="projects-shell">
+    <header class="projects-hero">
+      <p class="eyebrow">Web Projects</p>
+      <h1>Programming</h1>
+      <p class="subtitle">
+        Web applications and systems built across various projects.
+      </p>
+    </header>
 
-  <h3 class="sub-title">Web Projects</h3>
-  <div class="web-grid">
+    <div class="web-grid">
     <div
       v-for="(project, i) in webProjects"
       :key="project.title"
@@ -78,6 +84,7 @@ const {
           View
         </router-link>
       </div>
+    </div>
     </div>
   </div>
 </section>

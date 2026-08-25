@@ -10,7 +10,7 @@
 
   position: relative;
   min-height: calc(100vh - 140px);
-  padding: clamp(2rem, 4vw, 4.5rem) 1.2rem;
+  padding: 1.4rem 1.2rem 2rem;
   color: var(--text-main);
 }
 

@@ -4,7 +4,7 @@
   grid-template-areas: 'left right';
   column-gap: 1rem;
   row-gap: 1.2rem;
-  padding: 2.75rem;
+  padding: 1.4rem 1.2rem 2rem;
   margin: 120px auto 80px;
   max-width: 1080px;
   width: 100%;
