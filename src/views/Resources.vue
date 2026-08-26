@@ -39,15 +39,27 @@ const latestResume = {
             <p class="resource-date">{{ latestResume.date }}</p>
           </div>
 
-          <a
-            class="resource-download"
-            :href="latestResume.href"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
-            Download
-          </a>
+          <div class="resource-actions">
+            <a
+              class="resource-btn preview"
+              :href="latestResume.href"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              Preview
+            </a>
+            <a
+              class="resource-btn download"
+              :href="latestResume.href"
+              target="_blank"
+              rel="noopener noreferrer"
+              download
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+              Download
+            </a>
+          </div>
         </article>
 
         <article class="resource-card">
@@ -69,15 +81,27 @@ const latestResume = {
             <p class="resource-date">August 26, 2026</p>
           </div>
 
-          <a
-            class="resource-download"
-            href="/resources/free_template_brandstyle_guide.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
-            Download
-          </a>
+          <div class="resource-actions">
+            <a
+              class="resource-btn preview"
+              href="/resources/free_template_brandstyle_guide.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              Preview
+            </a>
+            <a
+              class="resource-btn download"
+              href="/resources/free_template_brandstyle_guide.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+              Download
+            </a>
+          </div>
         </article>
       </div>
     </div>
