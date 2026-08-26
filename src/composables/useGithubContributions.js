@@ -19,7 +19,7 @@ export function useGithubContributions(username = 'DevKennySoriano') {
         const html = await res.text()
         data = parseGitHubHTML(html)
       } else {
-        const res = await fetch(`/api/github-contributions?username=${username}`)
+        const res = await fetch(`/api/github-contributions?username=${username}`, { cache: 'no-store' })
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
         data = await res.json()
       }
@@ -41,24 +41,38 @@ function parseGitHubHTML(html) {
   const countMatch = html.match(/(\d[\d,]*)\s*contributions/)
   const contribCount = countMatch ? parseInt(countMatch[1].replace(/,/g, '')) : 0
 
-  const monthRegex = /<td class="ContributionCalendar-label"[^>]*>[\s\S]*?<span[^>]*>(\w+)<\/span>/g
-  const months = []
+  const monthLabels = []
+  const monthRegex = /<td class="ContributionCalendar-label"[^>]*>\s*<span class="sr-only">(\w+)<\/span>/g
   let m
   while ((m = monthRegex.exec(html)) !== null) {
-    months.push(m[1])
+    monthLabels.push(m[1])
   }
 
-  const dayRegex = /data-level="(\d)"/g
-  const levels = []
-  let d
-  while ((d = dayRegex.exec(html)) !== null) {
-    levels.push(parseInt(d[1]))
+  const tbodyMatch = html.match(/<tbody>([\s\S]*?)<\/tbody>/)
+  if (!tbodyMatch) return { weeks: [], months: monthLabels, contribCount }
+
+  const rows = []
+  const trRegex = /<tr[^>]*>([\s\S]*?)<\/tr>/g
+  let tr
+  while ((tr = trRegex.exec(tbodyMatch[1])) !== null) {
+    const cellRegex = /data-level="(\d)"/g
+    const cells = []
+    let cell
+    while ((cell = cellRegex.exec(tr[1])) !== null) {
+      cells.push(parseInt(cell[1]))
+    }
+    if (cells.length > 0) rows.push(cells)
   }
 
+  const numWeeks = rows[0] ? rows[0].length : 0
   const weeks = []
-  for (let i = 0; i < levels.length; i += 7) {
-    weeks.push(levels.slice(i, i + 7))
+  for (let w = 0; w < numWeeks; w++) {
+    const week = []
+    for (let d = 0; d < 7; d++) {
+      week.push(rows[d] ? rows[d][w] || 0 : 0)
+    }
+    weeks.push(week)
   }
 
-  return { weeks, months, contribCount }
+  return { weeks, months: monthLabels, contribCount }
 }
