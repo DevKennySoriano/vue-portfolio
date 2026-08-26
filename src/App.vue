@@ -3,10 +3,12 @@ import { useRoute } from 'vue-router'
 import Navbar from '@/components/layout/Navbar.vue'
 import { useAppLoader } from '@/composables/useAppLoader'
 import { useVisitorCounter } from '@/composables/useVisitorCounter'
+import { useSound } from '@/composables/useSound'
 
 const route = useRoute()
 const { isLoading } = useAppLoader()
 useVisitorCounter()
+useSound()
 </script>
 
 <template>

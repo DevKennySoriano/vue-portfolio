@@ -84,16 +84,20 @@
       </li>
     </ul>
 
-    <button class="sidebar-theme-toggle" @click="toggleTheme" :aria-label="`Switch to ${isDark ? 'light' : 'dark'} mode`">
-      <span class="icon" aria-hidden="true">
-        <svg v-if="isDark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+    <div class="sidebar-toggles">
+      <button class="sidebar-toggle-btn has-tooltip" :data-tip="soundEnabled ? 'Sound On' : 'Sound Off'" @click="toggleSound" :aria-label="`Turn sound ${soundEnabled ? 'off' : 'on'}`">
+        <svg v-if="soundEnabled" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+        <svg v-else xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><line x1="23" x2="17" y1="9" y2="15"/><line x1="17" x2="23" y1="9" y2="15"/></svg>
+      </button>
+      <button class="sidebar-toggle-btn has-tooltip" :data-tip="isDark ? 'Light Mode' : 'Dark Mode'" @click="toggleTheme" :aria-label="`Switch to ${isDark ? 'light' : 'dark'} mode`">
+        <svg v-if="isDark" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
           <path d="M6.76 4.84 5.34 3.42l-1.4 1.4 1.42 1.42 1.4-1.4zm10.5 0 1.42-1.42 1.4 1.4-1.42 1.42-1.4-1.4zM12 5a1 1 0 0 0 1-1V2h-2v2a1 1 0 0 0 1 1zm7 8a1 1 0 0 0 1-1h2v-2h-2a1 1 0 0 0-1 1v2zM4 11a1 1 0 0 0-1-1H1v2h2a1 1 0 0 0 1-1zm1.34 9.58 1.42-1.42-1.4-1.4-1.42 1.42 1.4 1.4zm13.32 0 1.4-1.4-1.42-1.42-1.4 1.4 1.42 1.42zM12 19a1 1 0 0 0-1 1v2h2v-2a1 1 0 0 0-1-1zm0-12a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/>
         </svg>
-        <svg v-else xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+        <svg v-else xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
           <path d="M21.75 15.5A9 9 0 0 1 11.5 2.25 9 9 0 1 0 21.75 15.5z"/>
         </svg>
-      </span>
-    </button>
+      </button>
+    </div>
 
     <p class="sidebar-updated">Last Updated: {{ formattedLastUpdated }}</p>
   </nav>
@@ -204,16 +208,20 @@
       </li>
     </ul>
 
-    <button class="sidebar-theme-toggle mobile-sidebar-theme-toggle" @click="toggleTheme" :aria-label="`Switch to ${isDark ? 'light' : 'dark'} mode`">
-      <span class="icon" aria-hidden="true">
-        <svg v-if="isDark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+    <div class="sidebar-toggles mobile-sidebar-toggles">
+      <button class="sidebar-toggle-btn has-tooltip" :data-tip="soundEnabled ? 'Sound On' : 'Sound Off'" @click="toggleSound" :aria-label="`Turn sound ${soundEnabled ? 'off' : 'on'}`">
+        <svg v-if="soundEnabled" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+        <svg v-else xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><line x1="23" x2="17" y1="9" y2="15"/><line x1="17" x2="23" y1="9" y2="15"/></svg>
+      </button>
+      <button class="sidebar-toggle-btn has-tooltip" :data-tip="isDark ? 'Light Mode' : 'Dark Mode'" @click="toggleTheme" :aria-label="`Switch to ${isDark ? 'light' : 'dark'} mode`">
+        <svg v-if="isDark" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
           <path d="M6.76 4.84 5.34 3.42l-1.4 1.4 1.42 1.42 1.4-1.4zm10.5 0 1.42-1.42 1.4 1.4-1.42 1.42-1.4-1.4zM12 5a1 1 0 0 0 1-1V2h-2v2a1 1 0 0 0 1 1zm7 8a1 1 0 0 0 1-1h2v-2h-2a1 1 0 0 0-1 1v2zM4 11a1 1 0 0 0-1-1H1v2h2a1 1 0 0 0 1-1zm1.34 9.58 1.42-1.42-1.4-1.4-1.42 1.42 1.4 1.4zm13.32 0 1.4-1.4-1.42-1.42-1.4 1.4 1.42 1.42zM12 19a1 1 0 0 0-1 1v2h2v-2a1 1 0 0 0-1-1zm0-12a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/>
         </svg>
-        <svg v-else xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+        <svg v-else xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
           <path d="M21.75 15.5A9 9 0 0 1 11.5 2.25 9 9 0 1 0 21.75 15.5z"/>
         </svg>
-      </span>
-    </button>
+      </button>
+    </div>
 
     <p class="sidebar-updated mobile-sidebar-updated">Last Updated: {{ formattedLastUpdated }}</p>
   </aside>
@@ -224,10 +232,12 @@ import { reactive, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useTheme } from '@/composables/useTheme'
 import { useFooterMeta } from '@/composables/useFooterMeta'
+import { useSound } from '@/composables/useSound'
 
 const route = useRoute()
 const { isDark, toggleTheme } = useTheme()
 const { formattedLastUpdated } = useFooterMeta()
+const { soundEnabled, toggleSound } = useSound()
 const isMobileMenuOpen = ref(false)
 
 const openGroups = reactive({

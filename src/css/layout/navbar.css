@@ -144,9 +144,14 @@
   letter-spacing: 0.02em;
 }
 
-.sidebar-theme-toggle {
+.sidebar-toggles {
   margin-top: auto;
-  width: 100%;
+  display: flex;
+  gap: 0.4rem;
+}
+
+.sidebar-toggle-btn {
+  flex: 1;
   border: 1px solid color-mix(in srgb, var(--text-inverse) 28%, transparent);
   border-radius: 999px;
   background: transparent;
@@ -157,10 +162,53 @@
   align-items: center;
   justify-content: center;
   padding: 0;
+  transition: background 0.15s ease;
 }
 
-.sidebar-theme-toggle:hover {
+.sidebar-toggle-btn:hover {
   background: color-mix(in srgb, var(--text-inverse) 14%, transparent);
+}
+
+.has-tooltip {
+  position: relative;
+}
+
+.has-tooltip::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  background: #1a1a1a;
+  color: #f0f0f0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 10;
+}
+
+.has-tooltip::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #1a1a1a;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 10;
+}
+
+.has-tooltip:hover::after,
+.has-tooltip:hover::before {
+  opacity: 1;
 }
 
 .mobile-sidebar-top,
@@ -267,7 +315,7 @@
     text-align: center;
   }
 
-  .mobile-sidebar-theme-toggle {
+  .mobile-sidebar-toggles {
     margin-top: auto;
   }
 }
