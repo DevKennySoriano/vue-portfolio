@@ -2,9 +2,11 @@
 import { useRoute } from 'vue-router'
 import Navbar from '@/components/layout/Navbar.vue'
 import { useAppLoader } from '@/composables/useAppLoader'
+import { useVisitorCounter } from '@/composables/useVisitorCounter'
 
 const route = useRoute()
 const { isLoading } = useAppLoader()
+useVisitorCounter()
 </script>
 
 <template>
