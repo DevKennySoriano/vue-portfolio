@@ -13,13 +13,13 @@ export function useGithubContributions(username = 'DevKennySoriano') {
 
       if (isDev) {
         const url = `https://github.com/users/${username}/contributions`
-        const proxyUrl = `https://corsproxy.io/?url=${encodeURIComponent(url)}`
+        const proxyUrl = `https://corsproxy.io/?url=${encodeURIComponent(url)}&t=${Date.now()}`
         const res = await fetch(proxyUrl)
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
         const html = await res.text()
         data = parseGitHubHTML(html)
       } else {
-        const res = await fetch(`/api/github-contributions?username=${username}`, { cache: 'no-store' })
+        const res = await fetch(`/api/github-contributions?username=${username}&t=${Date.now()}`)
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
         data = await res.json()
       }
