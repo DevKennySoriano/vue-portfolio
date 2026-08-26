@@ -22,7 +22,8 @@ The app is organized so visual styling lives in `src/css` and reusable page logi
 
 ```
 ├── api/
-│   └── github-contributions.js   # Vercel serverless function for GitHub data
+│   ├── github-contributions.js   # Vercel serverless function for GitHub data
+│   └── viewers.js                # Vercel serverless function for live viewer tracking
 ├── public/
 │   ├── images/                   # Portfolio assets and project media
 │   ├── resources/                # Downloadable files (brand style guide)

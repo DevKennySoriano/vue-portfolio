@@ -2,7 +2,6 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 const STORAGE_KEY_VIEWER_ID = 'portfolio_viewer_id'
 const STORAGE_KEY_COUNTED = 'portfolio_counted'
-const STORAGE_KEY_VIEWERS = 'viewers'
 
 export function useVisitorCounter() {
   const totalVisitors = ref(0)
@@ -12,9 +11,10 @@ export function useVisitorCounter() {
   const WORKSPACE = 'dev-kennysorianos-team-5252'
   const COUNTER_NAME = 'visitorsdevkennysoriano'
   const BASE = `https://api.counterapi.dev/v2/${WORKSPACE}/${COUNTER_NAME}`
+  const VIEWER_API = '/api/viewers'
 
-  let channel = null
-  let isInitialMount = true
+  let heartbeatTimer = null
+  let leaveSent = false
 
   const getViewerId = () => {
     let id = sessionStorage.getItem(STORAGE_KEY_VIEWER_ID)
@@ -27,33 +27,39 @@ export function useVisitorCounter() {
 
   const viewerId = getViewerId()
 
-  const getViewers = () => JSON.parse(sessionStorage.getItem(STORAGE_KEY_VIEWERS) || '{}')
-  const setViewers = (obj) => sessionStorage.setItem(STORAGE_KEY_VIEWERS, JSON.stringify(obj))
-  const broadcast = (msg) => { if (channel) channel.postMessage(msg) }
-  const recalcViewers = () => { viewingNow.value = Object.keys(getViewers()).length }
-
-  const addViewer = () => {
-    const active = getViewers()
-    active[viewerId] = Date.now()
-    setViewers(active)
-    recalcViewers()
+  const sendHeartbeat = async () => {
+    try {
+      const res = await fetch(VIEWER_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: viewerId })
+      })
+      if (res.ok) {
+        const data = await res.json()
+        viewingNow.value = data.count
+      }
+    } catch {}
   }
 
-  const removeViewer = () => {
-    const active = getViewers()
-    delete active[viewerId]
-    setViewers(active)
-    recalcViewers()
+  const sendLeave = async () => {
+    if (leaveSent) return
+    leaveSent = true
+    try {
+      await fetch(VIEWER_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: viewerId, action: 'leave' })
+      })
+    } catch {}
   }
 
   onMounted(async () => {
     const alreadyCounted = sessionStorage.getItem(STORAGE_KEY_COUNTED)
-    const url = alreadyCounted ? `${BASE}` : `${BASE}/up`
+    const url = alreadyCounted ? BASE : `${BASE}/up`
 
     try {
       const res = await fetch(url)
       const data = await res.json()
-
       if (res.ok) {
         totalVisitors.value = data.data?.up_count || 0
         if (!alreadyCounted) {
@@ -66,43 +72,18 @@ export function useVisitorCounter() {
       loading.value = false
     }
 
-    try {
-      channel = new BroadcastChannel('portfolio-viewers')
-      addViewer()
-      broadcast({ type: 'join', id: viewerId })
+    await sendHeartbeat()
+    heartbeatTimer = setInterval(sendHeartbeat, 15000)
 
-      channel.onmessage = (e) => {
-        if (e.data.type === 'join' && e.data.id !== viewerId) {
-          addViewer()
-          broadcast({ type: 'sync', viewers: getViewers() })
-        }
-        if (e.data.type === 'sync' && e.data.viewers) {
-          setViewers(e.data.viewers)
-          recalcViewers()
-        }
-        if (e.data.type === 'leave') {
-          const active = getViewers()
-          delete active[e.data.id]
-          setViewers(active)
-          recalcViewers()
-        }
-      }
-
-      window.addEventListener('beforeunload', () => {
-        broadcast({ type: 'leave', id: viewerId })
-        removeViewer()
-      })
-
-      isInitialMount = false
-    } catch (e) {
-      viewingNow.value = 1
-    }
+    window.addEventListener('pagehide', sendLeave)
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') sendLeave()
+    })
   })
 
   onUnmounted(() => {
-    if (!isInitialMount && channel) {
-      channel.close()
-    }
+    clearInterval(heartbeatTimer)
+    sendLeave()
   })
 
   return { totalVisitors, viewingNow, loading }
