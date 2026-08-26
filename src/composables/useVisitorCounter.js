@@ -22,6 +22,12 @@ function getViewerId() {
   return id
 }
 
+async function fetchCount() {
+  const res = await fetch(`${BASE}/stats`)
+  const data = await res.json()
+  return data.data?.up_count || 0
+}
+
 export function useVisitorCounter() {
   const totalVisitors = ref(cachedCount)
   const viewingNow = ref(0)
@@ -57,13 +63,10 @@ export function useVisitorCounter() {
     if (!hasIncremented) {
       try {
         await fetch(`${BASE}/up`)
-        const res = await fetch(`${BASE}`)
-        const data = await res.json()
-        if (res.ok) {
-          cachedCount = data.data?.up_count || 0
-          totalVisitors.value = cachedCount
-          hasIncremented = true
-        }
+        await new Promise(r => setTimeout(r, 500))
+        cachedCount = await fetchCount()
+        totalVisitors.value = cachedCount
+        hasIncremented = true
       } catch (e) {
         console.error('[VisitorCounter]', e)
       } finally {
@@ -85,9 +88,7 @@ export function useVisitorCounter() {
     })
   })
 
-  onUnmounted(() => {
-    // Don't kill heartbeat or send leave on route change
-  })
+  onUnmounted(() => {})
 
   return { totalVisitors, viewingNow, loading }
 }
