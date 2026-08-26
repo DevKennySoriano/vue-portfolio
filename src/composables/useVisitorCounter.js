@@ -56,7 +56,8 @@ export function useVisitorCounter() {
   onMounted(async () => {
     if (!hasIncremented) {
       try {
-        const res = await fetch(`${BASE}/up`)
+        await fetch(`${BASE}/up`)
+        const res = await fetch(`${BASE}`)
         const data = await res.json()
         if (res.ok) {
           cachedCount = data.data?.up_count || 0
