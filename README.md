@@ -13,36 +13,96 @@ The app is organized so visual styling lives in `src/css` and reusable page logi
 * Routed project detail pages
 * Project showcase with images, status, and progress indicators
 * Education, experience, tech stack, and certificate sections
+* Live GitHub contribution graph (auto-fetching)
 * Contact and social links
 * Loader and image preview interactions
+* Downloadable resources (resume, brand style guide template)
 
 ## Project Structure
 
-
 ```
-public/
-├── images/                 # Portfolio assets and project media
-src/
-├── components/
-│   ├── layout/             # Navbar and footer
-│   └── ui/                 # Home, project, contact, and shared sections
-├── composables/            # Reusable state and behavior
-├── css/
-│   ├── app.css             # Global app shell and theme variables
-│   ├── layout/             # Layout-specific styles
-│   ├── home/               # Home page section styles
-│   └── views/              # View-specific styles
-├── data/
-│   └── projects.js         # Project detail data
-├── router/
-│   └── index.js            # Vue Router configuration
-├── views/
-│   ├── Home.vue
-│   ├── Projects.vue
-│   ├── projects-view.vue
-│   └── Contactpage.vue
-├── App.vue                 # Root shell and preloader
-└── main.js                 # App bootstrap
+├── api/
+│   └── github-contributions.js   # Vercel serverless function for GitHub data
+├── public/
+│   ├── images/                   # Portfolio assets and project media
+│   ├── resources/                # Downloadable files (brand style guide)
+│   └── resume/                   # Resume PDFs and thumbnail
+├── src/
+│   ├── components/
+│   │   ├── layout/
+│   │   │   ├── Footer.vue
+│   │   │   └── Navbar.vue
+│   │   └── ui/
+│   │       ├── contactpage-end.vue
+│   │       ├── homepage-about.vue
+│   │       ├── homepage-card.vue
+│   │       ├── homepage-certificates.vue
+│   │       ├── homepage-educational.vue
+│   │       ├── homepage-end.vue
+│   │       ├── homepage-experience.vue
+│   │       ├── homepage-techstack.vue
+│   │       ├── projects-branding.vue
+│   │       ├── projects-content.vue
+│   │       └── projects-end.vue
+│   ├── composables/
+│   │   ├── useAppLoader.js
+│   │   ├── useCertificateCarousel.js
+│   │   ├── useEducationTimeline.js
+│   │   ├── useExperienceTimeline.js
+│   │   ├── useFooterMeta.js
+│   │   ├── useGithubContributions.js
+│   │   ├── useHomepageAbout.js
+│   │   ├── useHomepageCards.js
+│   │   ├── useHomepageTechStack.js
+│   │   ├── useProjectsBranding.js
+│   │   ├── useProjectsContent.js
+│   │   ├── useProjectView.js
+│   │   └── useTheme.js
+│   ├── css/
+│   │   ├── app.css
+│   │   ├── home/
+│   │   │   ├── homepage-about.css
+│   │   │   ├── homepage-card.css
+│   │   │   ├── homepage-certificates.css
+│   │   │   ├── homepage-educational.css
+│   │   │   ├── homepage-end.css
+│   │   │   ├── homepage-experience.css
+│   │   │   └── homepage-techstack.css
+│   │   ├── layout/
+│   │   │   ├── footer.css
+│   │   │   └── navbar.css
+│   │   └── views/
+│   │       ├── contactpage.css
+│   │       ├── contactpage-end.css
+│   │       ├── not-found.css
+│   │       ├── projects-branding.css
+│   │       ├── projects-content.css
+│   │       ├── projects-end.css
+│   │       ├── projects-view.css
+│   │       └── resources.css
+│   ├── data/
+│   │   └── projects.js
+│   ├── router/
+│   │   └── index.js
+│   ├── views/
+│   │   ├── About.vue
+│   │   ├── Certifications.vue
+│   │   ├── Contactpage.vue
+│   │   ├── Education.vue
+│   │   ├── Experience.vue
+│   │   ├── Home.vue
+│   │   ├── NotFound.vue
+│   │   ├── Projects.vue
+│   │   ├── projects-view.vue
+│   │   ├── Resources.vue
+│   │   ├── TechStack.vue
+│   │   ├── VisualProjects.vue
+│   │   └── WebProjects.vue
+│   ├── App.vue
+│   ├── main.js
+│   └── style.css
+├── vercel.json
+└── package.json
 ```
 
 ## Setup
@@ -68,10 +128,11 @@ The portfolio currently includes these projects:
 2. HomeHive
 3. Kape't Bahala Na
 4. SWAK-CART
+5. Lutowl
 
 ## Deployment
 
-The app can be deployed to Vercel or GitHub Pages after running:
+The app is deployed on Vercel with serverless API routes:
 
 ```bash
 npm run build
