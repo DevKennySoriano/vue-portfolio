@@ -261,6 +261,58 @@
   padding: 1rem 0;
 }
 
+.visitor-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.visitor-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--bg-elevated) 90%, var(--bg-soft));
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.visitor-card svg {
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+
+.viewing-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #22c55e;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55);
+  animation: pulseStatus 1.8s infinite;
+  margin-left: 6px;
+}
+
+.visitor-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.visitor-count {
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text);
+}
+
+.visitor-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
 .explore-section {
   margin-top: 0.5rem;
 }
@@ -382,6 +434,10 @@
   }
 
   .explore-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .visitor-stats {
     grid-template-columns: 1fr;
   }
 

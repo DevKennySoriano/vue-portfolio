@@ -1,6 +1,7 @@
 <script setup>
 import { useHomepageAbout } from '@/composables/useHomepageAbout'
 import { useGithubContributions } from '@/composables/useGithubContributions'
+import { useVisitorCounter } from '@/composables/useVisitorCounter'
 
 const {
   status,
@@ -11,6 +12,7 @@ const {
 } = useHomepageAbout()
 
 const { weeks, months, contribCount, loading } = useGithubContributions()
+const { totalVisitors, viewingNow, loading: visitorLoading } = useVisitorCounter()
 
 const exploreLinks = [
   {
@@ -91,6 +93,23 @@ const exploreLinks = [
             </div>
           </template>
         </a>
+      </div>
+
+      <div class="visitor-stats">
+        <div class="visitor-card">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <div class="visitor-info">
+            <span class="visitor-count">{{ visitorLoading ? '—' : totalVisitors.toLocaleString() }}</span>
+            <span class="visitor-label">Total Visitors</span>
+          </div>
+        </div>
+        <div class="visitor-card">
+          <div class="viewing-dot"></div>
+          <div class="visitor-info">
+            <span class="visitor-count">{{ viewingNow }}</span>
+            <span class="visitor-label">is viewing now</span>
+          </div>
+        </div>
       </div>
 
       <div class="explore-section">

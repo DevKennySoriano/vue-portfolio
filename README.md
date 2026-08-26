@@ -57,7 +57,8 @@ The app is organized so visual styling lives in `src/css` and reusable page logi
 │   │   ├── useProjectsBranding.js
 │   │   ├── useProjectsContent.js
 │   │   ├── useProjectView.js
-│   │   └── useTheme.js
+│   │   ├── useTheme.js
+│   │   └── useVisitorCounter.js
 │   ├── css/
 │   │   ├── app.css
 │   │   ├── home/
@@ -102,7 +103,9 @@ The app is organized so visual styling lives in `src/css` and reusable page logi
 │   ├── main.js
 │   └── style.css
 ├── vercel.json
-└── package.json
+├── package.json
+├── .env.example
+└── .env (gitignored)
 ```
 
 ## Setup
@@ -110,6 +113,7 @@ The app is organized so visual styling lives in `src/css` and reusable page logi
 ```bash
 git clone https://github.com/DevKennySoriano/vue-portfolio
 cd vue-portfolio
+cp .env.example .env   # Add your CounterAPI key
 npm install
 npm run dev
 ```
