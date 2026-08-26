@@ -9,9 +9,9 @@ export function useVisitorCounter() {
   const viewingNow = ref(0)
   const loading = ref(true)
 
-  const API_KEY = import.meta.env.VITE_COUNTER_API_KEY
   const WORKSPACE = 'dev-kennysorianos-team-5252'
   const COUNTER_NAME = 'visitorsdevkennysoriano'
+  const BASE = `https://api.counterapi.dev/v2/${WORKSPACE}/${COUNTER_NAME}`
 
   let channel = null
   let isInitialMount = true
@@ -28,16 +28,9 @@ export function useVisitorCounter() {
   const viewerId = getViewerId()
 
   const getViewers = () => JSON.parse(sessionStorage.getItem(STORAGE_KEY_VIEWERS) || '{}')
-
   const setViewers = (obj) => sessionStorage.setItem(STORAGE_KEY_VIEWERS, JSON.stringify(obj))
-
-  const broadcast = (msg) => {
-    if (channel) channel.postMessage(msg)
-  }
-
-  const recalcViewers = () => {
-    viewingNow.value = Object.keys(getViewers()).length
-  }
+  const broadcast = (msg) => { if (channel) channel.postMessage(msg) }
+  const recalcViewers = () => { viewingNow.value = Object.keys(getViewers()).length }
 
   const addViewer = () => {
     const active = getViewers()
@@ -55,46 +48,28 @@ export function useVisitorCounter() {
 
   onMounted(async () => {
     const alreadyCounted = sessionStorage.getItem(STORAGE_KEY_COUNTED)
+    const url = alreadyCounted ? `${BASE}` : `${BASE}/up`
 
-    if (!alreadyCounted) {
-      try {
-        const res = await fetch(
-          `https://api.counterapi.dev/v2/${WORKSPACE}/${COUNTER_NAME}/up`,
-          { headers: { Authorization: `Bearer ${API_KEY}` } }
-        )
-        if (res.ok) {
-          const data = await res.json()
-          totalVisitors.value = data.data?.up_count || data.value || 0
+    try {
+      const res = await fetch(url)
+      const data = await res.json()
+
+      if (res.ok) {
+        totalVisitors.value = data.data?.up_count || 0
+        if (!alreadyCounted) {
           sessionStorage.setItem(STORAGE_KEY_COUNTED, '1')
         }
-      } catch (e) {
-        console.error('Visitor count error:', e)
-      } finally {
-        loading.value = false
       }
-    } else {
-      try {
-        const res = await fetch(
-          `https://api.counterapi.dev/v2/${WORKSPACE}/${COUNTER_NAME}`,
-          { headers: { Authorization: `Bearer ${API_KEY}` } }
-        )
-        if (res.ok) {
-          const data = await res.json()
-          totalVisitors.value = data.data?.up_count || data.value || 0
-        }
-      } catch (e) {
-        console.error('Visitor count fetch error:', e)
-      } finally {
-        loading.value = false
-      }
+    } catch (e) {
+      console.error('[VisitorCounter]', e)
+    } finally {
+      loading.value = false
     }
 
     try {
       channel = new BroadcastChannel('portfolio-viewers')
-
       addViewer()
-
-      channel.postMessage({ type: 'join', id: viewerId })
+      broadcast({ type: 'join', id: viewerId })
 
       channel.onmessage = (e) => {
         if (e.data.type === 'join' && e.data.id !== viewerId) {
