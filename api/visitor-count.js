@@ -1,6 +1,11 @@
-const WORKSPACE = 'dev-kennysorianos-team-5252'
-const COUNTER_NAME = 'visitorsdevkennysoriano'
-const BASE = `https://api.counterapi.dev/v2/${WORKSPACE}/${COUNTER_NAME}`
+import { Redis } from '@upstash/redis'
+
+const redis = new Redis({
+  url: process.env.KV_REST_API_URL,
+  token: process.env.KV_REST_API_TOKEN,
+})
+
+const TOTAL_KEY = 'portfolio:total-visitors'
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
@@ -10,22 +15,10 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end()
 
   if (req.method === 'POST') {
-    try {
-      await fetch(`${BASE}/up`)
-      await new Promise(r => setTimeout(r, 1000))
-      const statsRes = await fetch(`${BASE}/stats`)
-      const stats = await statsRes.json()
-      return res.status(200).json({ count: stats.data?.up_count || 0 })
-    } catch (e) {
-      return res.status(500).json({ error: e.message })
-    }
+    const count = await redis.incr(TOTAL_KEY)
+    return res.status(200).json({ count })
   }
 
-  try {
-    const statsRes = await fetch(`${BASE}/stats`)
-    const stats = await statsRes.json()
-    return res.status(200).json({ count: stats.data?.up_count || 0 })
-  } catch (e) {
-    return res.status(500).json({ error: e.message })
-  }
+  const count = await redis.get(TOTAL_KEY)
+  return res.status(200).json({ count: count || 0 })
 }

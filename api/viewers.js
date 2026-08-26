@@ -1,30 +1,37 @@
-const viewers = new Map()
-const TIMEOUT = 30000
+import { Redis } from '@upstash/redis'
 
-export default function handler(req, res) {
+const redis = new Redis({
+  url: process.env.KV_REST_API_URL,
+  token: process.env.KV_REST_API_TOKEN,
+})
+
+const TIMEOUT = 30
+
+export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS')
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
 
   if (req.method === 'OPTIONS') return res.status(200).end()
 
-  const now = Date.now()
-
-  for (const [id, ts] of viewers) {
-    if (now - ts > TIMEOUT) viewers.delete(id)
-  }
+  const now = Math.floor(Date.now() / 1000)
 
   if (req.method === 'POST') {
     const { id, action } = req.body || {}
-    if (id) {
-      if (action === 'leave') {
-        viewers.delete(id)
-      } else {
-        viewers.set(id, now)
-      }
+    if (!id) return res.status(400).json({ error: 'Missing id' })
+
+    const key = `viewer:${id}`
+
+    if (action === 'leave') {
+      await redis.del(key)
+    } else {
+      await redis.set(key, now, { ex: TIMEOUT })
     }
-    return res.status(200).json({ count: viewers.size })
+
+    const keys = await redis.keys('viewer:*')
+    return res.status(200).json({ count: keys.length })
   }
 
-  return res.status(200).json({ count: viewers.size })
+  const keys = await redis.keys('viewer:*')
+  return res.status(200).json({ count: keys.length })
 }

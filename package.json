@@ -12,6 +12,7 @@
     "node": ">=18"
   },
   "dependencies": {
+    "@upstash/redis": "^1.38.2",
     "@vitejs/plugin-vue": "^6.0.1",
     "aos": "^2.3.4",
     "swiper": "^12.1.0",
