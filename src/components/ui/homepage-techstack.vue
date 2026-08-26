@@ -4,44 +4,39 @@ import { useHomepageTechStack } from '@/composables/useHomepageTechStack'
 const { techStacks } = useHomepageTechStack()
 </script>
 <template>
-<section class="tech">
-  <h2
-    class="section-title"
-    data-aos="fade-up"
-    data-aos-once="true"
-  >
-    Tech Stack
-  </h2>
+  <section class="tools-page">
+    <div class="tools-shell">
+      <header class="tools-hero">
+        <p class="eyebrow">Tools & Tech</p>
+        <h1>Skills & Software</h1>
+        <p class="subtitle">
+          Technologies, frameworks, and tools used across development and design projects.
+        </p>
+      </header>
 
-  <div class="tech-grid">
-    <div
-      v-for="(stack, index) in techStacks"
-      :key="stack.title"
-      class="tech-card"
-      data-aos="fade-up"
-      data-aos-once="true"
-      :data-aos-delay="index * 150"
-    >
-      <h3 class="tech-title">{{ stack.title }}</h3>
-
-      <div class="icon-grid">
-        <div
-          v-for="(item, i) in stack.items"
-          :key="item.name"
-          class="icon-item"
-          data-aos="fade-up"
-          data-aos-once="true"
-          :data-aos-delay="i * 80 + index * 150"
+      <div class="tools-grid">
+        <article
+          v-for="(stack, index) in techStacks"
+          :key="stack.title"
+          class="tools-card"
         >
-          <div class="icon-box">
-            <img :src="item.icon" :alt="item.name" />
+          <h2 class="tools-card-title">{{ stack.title }}</h2>
+          <div class="tools-items">
+            <div
+              v-for="item in stack.items"
+              :key="item.name"
+              class="tool-item"
+            >
+              <div class="tool-icon">
+                <img :src="item.icon" :alt="item.name" loading="lazy" />
+              </div>
+              <span class="tool-name">{{ item.name }}</span>
+            </div>
           </div>
-          <span>{{ item.name }}</span>
-        </div>
+        </article>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 </template>
 
 <style scoped src="@/css/home/homepage-techstack.css"></style>

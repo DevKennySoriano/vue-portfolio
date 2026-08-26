@@ -71,7 +71,7 @@ const routes = [
     name: 'TechStack',
     component: TechStack,
     meta: {
-      title: 'Tech Stack | Kenny Soriano',
+      title: 'Tools & Tech | Kenny Soriano',
       description: 'Discover the tools, frameworks, and technologies used by Kenny Soriano.'
     }
   },
