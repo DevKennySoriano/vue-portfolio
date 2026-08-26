@@ -1,10 +1,8 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const STORAGE_KEY_VIEWER_ID = 'portfolio_viewer_id'
-const WORKSPACE = 'dev-kennysorianos-team-5252'
-const COUNTER_NAME = 'visitorsdevkennysoriano'
-const BASE = `https://api.counterapi.dev/v2/${WORKSPACE}/${COUNTER_NAME}`
 const VIEWER_API = '/api/viewers'
+const COUNT_API = '/api/visitor-count'
 
 let hasIncremented = false
 let cachedCount = 0
@@ -20,12 +18,6 @@ function getViewerId() {
   }
   currentViewerId = id
   return id
-}
-
-async function fetchCount() {
-  const res = await fetch(`${BASE}/stats`)
-  const data = await res.json()
-  return data.data?.up_count || 0
 }
 
 export function useVisitorCounter() {
@@ -62,9 +54,9 @@ export function useVisitorCounter() {
   onMounted(async () => {
     if (!hasIncremented) {
       try {
-        await fetch(`${BASE}/up`)
-        await new Promise(r => setTimeout(r, 500))
-        cachedCount = await fetchCount()
+        const res = await fetch(COUNT_API, { method: 'POST' })
+        const data = await res.json()
+        cachedCount = data.count || 0
         totalVisitors.value = cachedCount
         hasIncremented = true
       } catch (e) {
