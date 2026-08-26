@@ -1,11 +1,10 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const STORAGE_KEY_VIEWER_ID = 'portfolio_viewer_id'
+const STORAGE_KEY_COUNTED = 'portfolio_counted'
 const VIEWER_API = '/api/viewers'
 const COUNT_API = '/api/visitor-count'
 
-let hasIncremented = false
-let cachedCount = 0
 let heartbeatTimer = null
 let currentViewerId = null
 
@@ -21,7 +20,7 @@ function getViewerId() {
 }
 
 export function useVisitorCounter() {
-  const totalVisitors = ref(cachedCount)
+  const totalVisitors = ref(0)
   const viewingNow = ref(0)
   const loading = ref(true)
 
@@ -52,20 +51,25 @@ export function useVisitorCounter() {
   }
 
   onMounted(async () => {
-    if (!hasIncremented) {
+    const alreadyCounted = sessionStorage.getItem(STORAGE_KEY_COUNTED)
+
+    if (!alreadyCounted) {
       try {
         const res = await fetch(COUNT_API, { method: 'POST' })
         const data = await res.json()
-        cachedCount = data.count || 0
-        totalVisitors.value = cachedCount
-        hasIncremented = true
+        totalVisitors.value = data.count || 0
+        sessionStorage.setItem(STORAGE_KEY_COUNTED, '1')
       } catch (e) {
         console.error('[VisitorCounter]', e)
       } finally {
         loading.value = false
       }
     } else {
-      totalVisitors.value = cachedCount
+      try {
+        const res = await fetch(COUNT_API)
+        const data = await res.json()
+        totalVisitors.value = data.count || 0
+      } catch {}
       loading.value = false
     }
 
