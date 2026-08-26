@@ -9,7 +9,7 @@ import ContactpageEnd from '@/components/ui/contactpage-end.vue'
         <p class="eyebrow">Contact</p>
         <h1>Let's connect.</h1>
         <p class="subtitle">
-          Open to internships, freelance projects, and full-time opportunities.
+          Open to full-time opportunities, freelance projects, and collaborations. Feel free to reach out through any of the channels below.
         </p>
       </header>
 
@@ -21,17 +21,6 @@ import ContactpageEnd from '@/components/ui/contactpage-end.vue'
           <div class="contact-info">
             <span class="contact-label">Email</span>
             <span class="contact-value">devkennysoriano@gmail.com</span>
-          </div>
-          <svg class="contact-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-        </a>
-
-        <a class="contact-link" href="https://www.facebook.com/soriano.kenny" target="_blank" rel="noopener noreferrer">
-          <span class="contact-icon facebook-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07c0 6.03 4.39 11.03 10.13 11.93v-8.43H7.08V12.1h3.05V9.42c0-3.02 1.8-4.7 4.55-4.7 1.32 0 2.7.24 2.7.24v2.97h-1.52c-1.5 0-1.97.93-1.97 1.89v2.28h3.35l-.54 3.47h-2.8V24C19.62 23.1 24 18.1 24 12.07Z"/></svg>
-          </span>
-          <div class="contact-info">
-            <span class="contact-label">Facebook</span>
-            <span class="contact-value">soriano.kenny</span>
           </div>
           <svg class="contact-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         </a>
@@ -54,6 +43,17 @@ import ContactpageEnd from '@/components/ui/contactpage-end.vue'
           <div class="contact-info">
             <span class="contact-label">GitHub</span>
             <span class="contact-value">DevKennySoriano</span>
+          </div>
+          <svg class="contact-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+
+        <a class="contact-link" href="https://www.facebook.com/soriano.kenny" target="_blank" rel="noopener noreferrer">
+          <span class="contact-icon facebook-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07c0 6.03 4.39 11.03 10.13 11.93v-8.43H7.08V12.1h3.05V9.42c0-3.02 1.8-4.7 4.55-4.7 1.32 0 2.7.24 2.7.24v2.97h-1.52c-1.5 0-1.97.93-1.97 1.89v2.28h3.35l-.54 3.47h-2.8V24C19.62 23.1 24 18.1 24 12.07Z"/></svg>
+          </span>
+          <div class="contact-info">
+            <span class="contact-label">Facebook</span>
+            <span class="contact-value">soriano.kenny</span>
           </div>
           <svg class="contact-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         </a>

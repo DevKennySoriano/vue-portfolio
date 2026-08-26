@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <section class="collab" data-aos="fade-up" data-aos-duration="900" data-aos-once="true">
+  <section class="collab">
     <h2 class="title"></h2>
     <p class="text">
     

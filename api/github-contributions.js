@@ -34,11 +34,19 @@ export default async function handler(req, res) {
     const trRegex = /<tr[^>]*>([\s\S]*?)<\/tr>/g
     let tr
     while ((tr = trRegex.exec(tbodyMatch[1])) !== null) {
-      const cellRegex = /data-level="(\d)"/g
+      const trContent = tr[1]
       const cells = []
+      const cellRegex = /data-date="([^"]+)"[^>]*data-level="(\d)"[^>]*class="ContributionCalendar-day"[^>]*>[\s\S]*?<tool-tip[^>]*>([\s\S]*?)<\/tool-tip>/g
       let cell
-      while ((cell = cellRegex.exec(tr[1])) !== null) {
-        cells.push(parseInt(cell[1]))
+      while ((cell = cellRegex.exec(trContent)) !== null) {
+        const level = parseInt(cell[2])
+        const tipText = cell[3].replace(/<[^>]*>/g, '').trim()
+        let count = 0
+        if (level > 0) {
+          const tipCountMatch = tipText.match(/^(\d+)\s+contribution/)
+          if (tipCountMatch) count = parseInt(tipCountMatch[1])
+        }
+        cells.push({ level, count, date: cell[1] })
       }
       if (cells.length > 0) rows.push(cells)
     }
@@ -48,7 +56,7 @@ export default async function handler(req, res) {
     for (let w = 0; w < numWeeks; w++) {
       const week = []
       for (let d = 0; d < 7; d++) {
-        week.push(rows[d] ? rows[d][w] || 0 : 0)
+        week.push(rows[d] ? rows[d][w] || { level: 0, count: 0, date: '' } : { level: 0, count: 0, date: '' })
       }
       weeks.push(week)
     }

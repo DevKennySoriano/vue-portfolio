@@ -1,203 +1,235 @@
 .education {
   padding: 1.4rem 1.2rem 2rem;
-  width: auto;
-  box-sizing: border-box;
 }
 
-.animate-fade-up {
-  opacity: 0;
-  transform: translateY(24px);
-  animation: fadeUp 0.6s ease-out forwards;
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.edu-shell {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .section-title {
-  text-align: center;
-  font-size: 2.4rem;
-  margin-bottom: 3.5rem;
+  margin: 0 0 0.55rem;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
   color: var(--text);
 }
 
-.timeline {
-  max-width: 1000px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
+.section-subtitle {
+  margin: 0 0 2.5rem;
+  max-width: 760px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-muted);
 }
 
-.timeline-item {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
+.edu-timeline {
+  position: relative;
+  padding: 0 0 1rem;
 }
 
-.timeline-item.reverse {
+.edu-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--border);
+  transform: translateX(-50%);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.edu-line-fill {
+  width: 100%;
+  height: 0%;
+  background: var(--surface-strong);
+  border-radius: 3px;
+  transition: height 1.5s ease-out;
+}
+
+.edu-timeline:has(.edu-entry.visible) .edu-line-fill {
+  height: 100%;
+}
+
+.edu-entry {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  margin-bottom: 2rem;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.edu-entry.left {
+  flex-direction: row;
+  padding-right: calc(50% + 28px);
+  transform: translateX(-30px);
+}
+
+.edu-entry.right {
   flex-direction: row-reverse;
+  padding-left: calc(50% + 28px);
+  transform: translateX(30px);
 }
 
-.timeline-image {
+.edu-entry.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.edu-dot {
+  position: absolute;
+  left: 50%;
+  top: 18px;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.dot-inner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--surface-strong);
+  border: 3px solid var(--bg);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.edu-entry.visible .dot-inner {
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--surface-strong) 20%, transparent);
+  animation: dotPulse 2s ease-out;
+}
+
+@keyframes dotPulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.15); }
+  70% { box-shadow: 0 0 0 10px rgba(0, 0, 0, 0); }
+  100% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--surface-strong) 20%, transparent); }
+}
+
+.edu-card {
   flex: 1;
+  background: color-mix(in srgb, var(--bg-elevated) 92%, var(--bg-soft));
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.image-wrapper {
+.edu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.edu-image {
+  overflow: hidden;
+}
+
+.edu-image img {
   width: 100%;
   aspect-ratio: 16 / 9;
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: color-mix(in srgb, var(--surface-strong-2) 90%, black);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.image-wrapper img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
 }
 
-.image-wrapper:hover {
-  transform: scale(1.02);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+.edu-card:hover .edu-image img {
+  transform: scale(1.03);
 }
 
-.timeline-content {
-  flex: 1;
+.edu-body {
+  padding: 1.2rem 1.4rem;
 }
 
-.content-card {
-  background: color-mix(in srgb, var(--bg-elevated) 92%, var(--bg-soft));
-  border-radius: 16px;
-  padding: 1.8rem 1.8rem;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.content-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-}
-
-.date {
+.edu-date {
   display: inline-block;
-  margin-bottom: 0.7rem;
-  padding: 0.35rem 0.9rem;
-  background: var(--bg-elevated);
-  color: var(--text);
+  padding: 0.3rem 0.75rem;
   border-radius: 999px;
-  font-size: 0.85rem;
+  background: color-mix(in srgb, var(--surface-strong) 12%, transparent);
+  color: var(--text);
+  font-size: 0.78rem;
+  font-weight: 700;
 }
 
-.title {
-  font-size: 1.6rem;
-  margin: 0.6rem 0;
+.edu-title {
+  margin: 0.6rem 0 0;
+  font-size: 1.3rem;
+  font-weight: 700;
   color: var(--text);
 }
 
-.school {
-  font-size: 1.05rem;
-  font-weight: 500;
-  opacity: 0.9;
-  margin-bottom: 0.9rem;
+.edu-school {
+  margin: 0.3rem 0 0.7rem;
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--text-muted);
 }
 
-.description {
-  font-size: 1rem;
-  line-height: 1.75;
-  opacity: 0.95;
+.edu-desc {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
   color: var(--text-muted);
 }
 
-@media (max-width: 1024px) {
-  .education {
-    padding: 3rem 1.25rem;
+@media (max-width: 768px) {
+  .section-subtitle {
+    text-align: center;
+    max-width: 34rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .section-title {
-    font-size: 2rem;
-    margin-bottom: 2.25rem;
+  .edu-line {
+    left: 20px;
   }
 
-  .timeline {
-    gap: 2rem;
+  .edu-entry.left,
+  .edu-entry.right {
+    flex-direction: row;
+    padding-right: 0;
+    padding-left: 52px;
+    transform: translateX(-20px);
   }
 
-  .timeline-item,
-  .timeline-item.reverse {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 1rem;
+  .edu-entry.visible {
+    transform: translateX(0);
   }
 
-  .timeline-image,
-  .timeline-content {
-    width: 100%;
+  .edu-dot {
+    left: 20px;
   }
 
-  .content-card {
-    padding: 1.35rem;
+  .edu-body {
+    padding: 1rem;
   }
 
-  .title {
-    font-size: 1.35rem;
-  }
-
-  .description {
-    line-height: 1.65;
-  }
-}
-
-@media (max-width: 640px) {
-  .education {
-    padding: 2.5rem 1rem;
-  }
-
-  .section-title {
-    font-size: 1.7rem;
-    margin-bottom: 1.75rem;
-  }
-
-  .timeline {
-    gap: 1.5rem;
-  }
-
-  .timeline-item,
-  .timeline-item.reverse {
-    gap: 0.85rem;
-  }
-
-  .content-card {
-    border-radius: 12px;
-    padding: 1.1rem;
-  }
-
-  .date {
-    font-size: 0.78rem;
-    padding: 0.3rem 0.75rem;
-    margin-bottom: 0.55rem;
-  }
-
-  .title {
+  .edu-title {
     font-size: 1.15rem;
-    margin: 0.45rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    text-align: center;
   }
 
-  .school {
-    font-size: 0.92rem;
-    margin-bottom: 0.7rem;
-    overflow-wrap: anywhere;
+  .edu-card {
+    border-radius: 12px;
   }
 
-  .description {
-    font-size: 0.95rem;
-    line-height: 1.55;
+  .edu-body {
+    padding: 0.85rem;
+  }
+
+  .edu-title {
+    font-size: 1.05rem;
+  }
+
+  .edu-school {
+    font-size: 0.82rem;
+  }
+
+  .edu-desc {
+    font-size: 0.85rem;
+    line-height: 1.6;
   }
 }

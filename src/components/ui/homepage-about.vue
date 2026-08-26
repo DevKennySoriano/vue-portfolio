@@ -9,10 +9,17 @@ const {
   profileImg,
   description,
   tags,
+  info,
 } = useHomepageAbout()
 
 const { weeks, months, contribCount, loading } = useGithubContributions()
 const { totalVisitors, viewingNow, loading: visitorLoading } = useVisitorCounter()
+
+function formatDate(dateStr) {
+  if (!dateStr) return ''
+  const d = new Date(dateStr + 'T00:00:00')
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+}
 
 const exploreLinks = [
   {
@@ -76,23 +83,14 @@ const exploreLinks = [
         </div>
       </header>
 
-      <div class="about-github">
-        <a href="https://github.com/DevKennySoriano" target="_blank" rel="noopener noreferrer" class="github-link">
-          <div v-if="loading" class="github-loading">Loading contributions...</div>
-          <template v-else>
-            <div class="github-calendar">
-              <div class="cal-grid">
-                <div v-for="(week, wi) in weeks" :key="wi" class="cal-week">
-                  <span v-for="(lvl, di) in week" :key="di" class="cal-dot" :class="'level-' + lvl"></span>
-                </div>
-              </div>
-            </div>
-            <div class="github-footer">
-              <span class="github-count">{{ contribCount }} contributions in the last year</span>
-              <span class="github-label">@DevKennySoriano</span>
-            </div>
-          </template>
-        </a>
+      <div class="info-grid">
+        <div v-for="item in info" :key="item.label" class="info-card">
+          <div class="info-icon" v-html="item.icon"></div>
+          <div class="info-text">
+            <span class="info-label">{{ item.label }}</span>
+            <span class="info-value">{{ item.value }}</span>
+          </div>
+        </div>
       </div>
 
       <div class="visitor-stats">
@@ -110,6 +108,31 @@ const exploreLinks = [
             <span class="visitor-label">is viewing now</span>
           </div>
         </div>
+      </div>
+
+      <div class="about-github">
+        <a href="https://github.com/DevKennySoriano" target="_blank" rel="noopener noreferrer" class="github-link">
+          <div v-if="loading" class="github-loading">Loading contributions...</div>
+          <template v-else>
+            <div class="github-calendar">
+              <div class="cal-grid">
+                <div v-for="(week, wi) in weeks" :key="wi" class="cal-week">
+                  <span
+                    v-for="(day, di) in week"
+                    :key="di"
+                    class="cal-dot"
+                    :class="'level-' + day.level"
+                    :data-tip="day.date ? day.count + ' contribution' + (day.count !== 1 ? 's' : '') + ' on ' + formatDate(day.date) : ''"
+                  ></span>
+                </div>
+              </div>
+            </div>
+            <div class="github-footer">
+              <span class="github-count">{{ contribCount }} contributions in the last year</span>
+              <span class="github-label">@DevKennySoriano</span>
+            </div>
+          </template>
+        </a>
       </div>
 
       <div class="explore-section">

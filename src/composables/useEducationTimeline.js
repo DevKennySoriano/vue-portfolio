@@ -5,7 +5,7 @@ export function useEducationTimeline() {
       title: 'Bachelor of Science in Computer Science',
       school: 'STI College - Novaliches, Quezon City',
       description:
-        'Currently pursuing a degree in Computer Science with studies covering software development, cybersecurity fundamentals, ISO standards awareness, system design principles, and modern web technologies.',
+        'Completed a degree in Computer Science with studies covering software development, cybersecurity fundamentals, ISO standards awareness, system design principles, and modern web technologies.',
       image: '/images/edu/stinova.jpeg',
     },
     {

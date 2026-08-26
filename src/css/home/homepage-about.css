@@ -90,15 +90,15 @@
   font-size: 0.85rem;
   padding: 0.35rem 0.75rem;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--surface-strong) 15%, transparent);
-  color: var(--text-muted);
-  border: 1px solid var(--border);
+  background: rgba(34, 197, 94, 0.12);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.25);
   transition: all 0.3s ease;
 }
 
 .tag:hover {
-  background: var(--surface-strong);
-  color: var(--text-inverse);
+  background: #22c55e;
+  color: #fff;
   transform: translateY(-1px);
 }
 
@@ -175,6 +175,60 @@
   margin-bottom: 1.5rem;
 }
 
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.info-card {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--bg-elevated) 90%, var(--bg-soft));
+  border: 1px solid var(--border);
+}
+
+.info-icon {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--surface-strong) 10%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+}
+
+.info-icon :deep(svg) {
+  width: 16px;
+  height: 16px;
+}
+
+.info-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.info-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.info-value {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
 .github-link {
   display: flex;
   flex-direction: column;
@@ -187,9 +241,9 @@
   text-decoration: none;
   color: var(--text-muted);
   transition: all 0.3s ease;
-  overflow: hidden;
   width: 100%;
   box-sizing: border-box;
+  position: relative;
 }
 
 .github-link:hover {
@@ -202,6 +256,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  overflow: visible;
 }
 
 .cal-grid {
@@ -211,6 +266,7 @@
   justify-content: space-between;
   width: 100%;
   box-sizing: border-box;
+  overflow: visible;
 }
 
 .cal-week {
@@ -226,6 +282,45 @@
   max-width: 13px;
   border-radius: 3px;
   background: rgba(34, 197, 94, 0.08);
+  position: relative;
+}
+
+.cal-dot::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  background: #1a1a1a;
+  color: #f0f0f0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 10;
+}
+
+.cal-dot::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #1a1a1a;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 10;
+}
+
+.cal-dot[data-tip]:hover::after,
+.cal-dot[data-tip]:hover::before {
+  opacity: 1;
 }
 
 .cal-dot.level-1 { background: rgba(34, 197, 94, 0.25); }
@@ -441,6 +536,10 @@
     grid-template-columns: 1fr;
   }
 
+  .info-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .github-link {
     overflow-x: auto;
   }
@@ -478,6 +577,10 @@
   .profile-cube {
     width: 160px;
     height: 220px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
   }
 
   .github-link {

@@ -84,7 +84,8 @@
   transition: transform 0.2s ease;
 }
 
-.sidebar-link--active .sidebar-chevron {
+.sidebar-link--active .sidebar-chevron,
+.sidebar-item--open .sidebar-chevron {
   transform: rotate(180deg);
 }
 
