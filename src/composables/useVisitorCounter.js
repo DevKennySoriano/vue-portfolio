@@ -10,8 +10,8 @@ export function useVisitorCounter() {
   const loading = ref(true)
 
   const API_KEY = import.meta.env.VITE_COUNTER_API_KEY
-  const WORKSPACE = 'kenny-portfolio'
-  const COUNTER_NAME = 'visitors'
+  const WORKSPACE = 'dev-kennysorianos-team-5252'
+  const COUNTER_NAME = 'visitorsdevkennysoriano'
 
   let channel = null
   let isInitialMount = true
@@ -80,7 +80,7 @@ export function useVisitorCounter() {
         )
         if (res.ok) {
           const data = await res.json()
-          totalVisitors.value = data.data?.count || data.value || 0
+          totalVisitors.value = data.data?.up_count || data.value || 0
         }
       } catch (e) {
         console.error('Visitor count fetch error:', e)
