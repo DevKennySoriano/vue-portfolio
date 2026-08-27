@@ -1,15 +1,42 @@
 <script setup>
-const latestResume = {
-  title: 'Resume',
-  subTitle: 'ATS Resume',
-  date: 'July 11, 2026',
-  href: '/resume/Kenny_Soriano_Resume_07112026_A4.pdf',
-  thumbnail: '/resume/resume_thumbnail_sorianokenny.png',
+import { ref } from 'vue'
+
+const showVersions = ref(false)
+
+const allVersions = [
+  {
+    label: 'July 11, 2026',
+    tag: 'Latest',
+    href: '/resume/Kenny_Soriano_Resume_07112026_A4.pdf',
+  },
+  {
+    label: 'June 7, 2026',
+    tag: '',
+    href: '/resume/Kenny_Soriano_Resume_06072026_A4.pdf',
+  },
+  {
+    label: 'June 6, 2026',
+    tag: '',
+    href: '/resume/Kenny_Soriano_Resume_06062026.pdf',
+  },
+  {
+    label: 'April 25, 2026',
+    tag: '',
+    href: '/resume/Kenny_Soriano_Resume_04252026.pdf',
+  },
+]
+
+function toggleVersions() {
+  showVersions.value = !showVersions.value
+}
+
+function closeVersions() {
+  showVersions.value = false
 }
 </script>
 
 <template>
-  <section class="resources-page">
+  <section class="resources-page" @click.self="closeVersions">
     <div class="resources-shell">
       <header class="resources-hero">
         <p class="eyebrow">Resources</p>
@@ -22,7 +49,7 @@ const latestResume = {
       <div class="resources-grid">
         <article class="resource-card">
           <div class="resource-preview">
-            <img :src="latestResume.thumbnail" alt="Resume preview" />
+            <img src="/resume/resume_thumbnail_sorianokenny.png" alt="Resume preview" />
           </div>
 
           <div class="resource-head">
@@ -33,25 +60,42 @@ const latestResume = {
           </div>
 
           <div class="resource-info">
-            <h2>{{ latestResume.title }}</h2>
-            <p class="resource-subtitle">{{ latestResume.subTitle }}</p>
+            <h2>Resume</h2>
+            <p class="resource-subtitle">ATS Resume</p>
             <p class="resource-label">Date</p>
-            <p class="resource-date">{{ latestResume.date }}</p>
+            <p class="resource-date">July 11, 2026</p>
           </div>
 
           <div class="resource-actions">
-            <a
-              class="resource-btn preview"
-              :href="latestResume.href"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-              Preview
-            </a>
+            <div class="versions-wrapper">
+              <button class="resource-btn preview" @click="toggleVersions">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                Preview
+              </button>
+
+              <div v-if="showVersions" class="versions-popover">
+                <p class="versions-popover-title">Resume Versions</p>
+                <ul class="versions-popover-list">
+                  <li v-for="v in allVersions" :key="v.href" class="versions-popover-item">
+                    <a
+                      class="versions-popover-link"
+                      :href="v.href"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <svg class="versions-popover-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7l-5-5Zm0 2.5L16.5 7H14V4.5Z"/></svg>
+                      <span class="versions-popover-label">{{ v.label }}</span>
+                      <span v-if="v.tag" class="versions-popover-tag">{{ v.tag }}</span>
+                      <svg class="versions-popover-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
             <a
               class="resource-btn download"
-              :href="latestResume.href"
+              href="/resume/Kenny_Soriano_Resume_07112026_A4.pdf"
               target="_blank"
               rel="noopener noreferrer"
               download

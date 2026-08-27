@@ -12,7 +12,7 @@ const {
   info,
 } = useHomepageAbout()
 
-const { weeks, months, contribCount, loading } = useGithubContributions()
+const { weeks, contribCount, loading } = useGithubContributions()
 const { totalVisitors, viewingNow, loading: visitorLoading } = useVisitorCounter()
 
 function formatDate(dateStr) {

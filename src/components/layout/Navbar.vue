@@ -249,8 +249,6 @@ const toggleGroup = (group) => {
   openGroups[group] = !openGroups[group]
 }
 
-const isGroupActive = (pathPrefix) => route.path.startsWith(pathPrefix)
-
 watch(
   () => route.path,
   (path) => {
