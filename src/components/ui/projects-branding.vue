@@ -1,10 +1,18 @@
 <script setup>
+import { ref } from 'vue'
 import { useProjectsBranding } from '@/composables/useProjectsBranding'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Navigation, Pagination } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 
-const {
-  brandingWorks,
-  loadedImages,
-} = useProjectsBranding()
+const { brandingWorks, loadedImages } = useProjectsBranding()
+const activeIndex = ref(0)
+
+function onSlideChange(swiper) {
+  activeIndex.value = swiper.activeIndex
+}
 </script>
 
 <template>
@@ -18,25 +26,45 @@ const {
         </p>
       </header>
 
-      <div class="branding-grid">
-        <article
-          v-for="(img, i) in brandingWorks"
-          :key="i"
-          class="branding-card"
+      <div class="branding-swiper-wrap">
+        <Swiper
+          :modules="[Navigation, Pagination]"
+          :slides-per-view="1"
+          :space-between="16"
+          :navigation="true"
+          :pagination="{ clickable: true }"
+          :breakpoints="{
+            640: { slidesPerView: 2, spaceBetween: 20 },
+            1024: { slidesPerView: 3, spaceBetween: 24 }
+          }"
+          class="branding-swiper"
+          @slide-change="onSlideChange"
         >
-          <div class="branding-image">
-            <div
-              class="image-skeleton"
-              :class="{ hidden: loadedImages[i] }"
-            ></div>
-            <img
-              :src="img"
-              loading="lazy"
-              @load="loadedImages[i] = true"
-              :class="{ loaded: loadedImages[i] }"
-            />
-          </div>
-        </article>
+          <SwiperSlide
+            v-for="(img, i) in brandingWorks"
+            :key="i"
+            class="branding-slide"
+          >
+            <div class="branding-card">
+              <div class="branding-image">
+                <div
+                  class="image-skeleton"
+                  :class="{ hidden: loadedImages[i] }"
+                ></div>
+                <img
+                  :src="img"
+                  loading="lazy"
+                  @load="loadedImages[i] = true"
+                  :class="{ loaded: loadedImages[i] }"
+                />
+              </div>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+
+        <div class="branding-counter">
+          {{ activeIndex + 1 }} / {{ brandingWorks.length }}
+        </div>
       </div>
     </div>
   </section>

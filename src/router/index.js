@@ -9,6 +9,9 @@ import WebProjects from '../views/WebProjects.vue'
 import VisualProjects from '../views/VisualProjects.vue'
 import Resources from '../views/Resources.vue'
 import Contactpage from '../views/Contactpage.vue'
+import { webProjects } from '../data/projects'
+
+const projectSlugs = Object.fromEntries(webProjects.map((p) => [p.slug, p.title]))
 
 const DEFAULT_META = {
   title: 'Kenny Soriano | Portfolio',
@@ -157,15 +160,45 @@ const router = createRouter({
 })
 
 router.afterEach((to) => {
-  const title = to.meta?.title || DEFAULT_META.title
+  const slug = to.params?.slug
+  const projectTitle = slug && projectSlugs[slug] ? projectSlugs[slug] : null
+
+  const title = projectTitle
+    ? `${projectTitle} | Kenny Soriano`
+    : to.meta?.title || DEFAULT_META.title
+
   const description = to.meta?.description || DEFAULT_META.description
+  const url = window.location.href
+  const imageUrl = projectTitle
+    ? `${window.location.origin}/images/banners/${slug === 'kapet-bahala-na' ? 'KapeBanner' : slug === 'all-about-pets' ? 'PetsBanner' : slug === 'homehive' ? 'HomeHiveBanner' : slug === 'swak-cart' ? 'swak-cart-banner' : slug === 'Lutowl' ? 'Lutowl-Banner' : 'PetsBanner'}.png`
+    : `${window.location.origin}/images/icons/K.png`
 
   document.title = title
   upsertMeta('name', 'description', description)
   upsertMeta('property', 'og:title', title)
   upsertMeta('property', 'og:description', description)
   upsertMeta('property', 'og:type', 'website')
-  upsertMeta('property', 'og:url', window.location.href)
+  upsertMeta('property', 'og:url', url)
+  upsertMeta('property', 'og:image', imageUrl)
+  upsertMeta('name', 'twitter:card', 'summary_large_image')
+  upsertMeta('name', 'twitter:title', title)
+  upsertMeta('name', 'twitter:description', description)
+  upsertMeta('name', 'twitter:image', imageUrl)
 })
 
+const prefetchRoutes = new Set()
+function prefetchRoute(path) {
+  if (prefetchRoutes.has(path)) return
+  const route = router.resolve(path)
+  if (route.matched?.length) {
+    route.matched.forEach((m) => {
+      if (typeof m.components?.default === 'function') {
+        m.components.default()
+      }
+    })
+  }
+  prefetchRoutes.add(path)
+}
+
+export { prefetchRoute }
 export default router

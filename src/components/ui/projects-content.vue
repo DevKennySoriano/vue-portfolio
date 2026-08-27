@@ -1,4 +1,5 @@
 <script setup>
+import { ref, computed } from 'vue'
 import { useProjectsContent } from '@/composables/useProjectsContent'
 
 const {
@@ -10,10 +11,45 @@ const {
   statusDasharray,
   statusValue,
 } = useProjectsContent()
+
+const showFilter = ref(false)
+const selectedTags = ref(new Set())
+
+const allTags = computed(() => {
+  const tags = new Set()
+  webProjects.forEach((p) => p.tags.forEach((t) => tags.add(t)))
+  return [...tags].sort()
+})
+
+const selectedCount = computed(() => selectedTags.value.size)
+
+const filteredProjects = computed(() => {
+  if (selectedTags.value.size === 0) return webProjects
+  return webProjects.filter((p) =>
+    [...selectedTags.value].some((t) => p.tags.includes(t))
+  )
+})
+
+function toggleTag(tag) {
+  if (selectedTags.value.has(tag)) {
+    selectedTags.value.delete(tag)
+  } else {
+    selectedTags.value.add(tag)
+  }
+  selectedTags.value = new Set(selectedTags.value)
+}
+
+function clearAll() {
+  selectedTags.value = new Set()
+}
+
+function closeFilter() {
+  showFilter.value = false
+}
 </script>
 
 <template>
-<section class="projects">
+<section class="projects" @click.self="closeFilter">
   <div class="projects-shell">
     <header class="projects-hero">
       <p class="eyebrow">Web Projects</p>
@@ -23,9 +59,44 @@ const {
       </p>
     </header>
 
+    <div class="filter-bar">
+      <div class="filter-wrapper">
+        <button class="filter-btn" @click="showFilter = !showFilter">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+          Filter
+          <span v-if="selectedCount > 0" class="filter-badge">{{ selectedCount }}</span>
+        </button>
+
+        <div v-if="showFilter" class="filter-popover">
+          <div class="filter-popover-header">
+            <p class="filter-popover-title">Technologies</p>
+            <button v-if="selectedCount > 0" class="filter-clear" @click="clearAll">Clear</button>
+          </div>
+          <ul class="filter-popover-list">
+            <li v-for="tag in allTags" :key="tag">
+              <label class="filter-option">
+                <input
+                  type="checkbox"
+                  :checked="selectedTags.has(tag)"
+                  @change="toggleTag(tag)"
+                  class="filter-checkbox"
+                />
+                <span class="filter-checkmark"></span>
+                <span class="filter-label">{{ tag }}</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <p v-if="selectedCount > 0" class="filter-result-count">
+        {{ filteredProjects.length }} project{{ filteredProjects.length !== 1 ? 's' : '' }}
+      </p>
+    </div>
+
     <div class="web-grid">
     <div
-      v-for="(project, i) in webProjects"
+      v-for="(project, i) in filteredProjects"
       :key="project.title"
       class="web-card fade-card"
       :style="{ animationDelay: `${i * 0.08}s` }"
@@ -33,15 +104,15 @@ const {
       <div class="web-image">
         <div
           class="image-skeleton"
-          :class="{ hidden: loadedImages[i] }"
+          :class="{ hidden: loadedImages[project.slug] }"
         ></div>
 
         <img
           :src="project.image"
           :alt="project.title"
           loading="lazy"
-          @load="onImageLoad(i)"
-          :class="{ loaded: loadedImages[i] }"
+          @load="onImageLoad(project.slug)"
+          :class="{ loaded: loadedImages[project.slug] }"
         />
       </div>
 
@@ -55,7 +126,7 @@ const {
               <span
                 v-for="tag in project.tags"
                 :key="tag"
-                :class="['tag', tag.toLowerCase().replace(/\s+/g, '')]"
+                :class="['tag', tag.toLowerCase().replace(/\s+/g, ''), { 'tag--active': selectedTags.has(tag) }]"
               >
                 {{ tag }}
               </span>
@@ -86,6 +157,10 @@ const {
       </div>
     </div>
     </div>
+
+    <p v-if="filteredProjects.length === 0" class="no-results">
+      No projects match this filter.
+    </p>
   </div>
 </section>
 </template>

@@ -1,10 +1,12 @@
 import { ref, onMounted } from 'vue'
+import { useToast } from '@/composables/useToast'
 
 export function useGithubContributions(username = 'DevKennySoriano') {
   const weeks = ref([])
   const months = ref([])
   const contribCount = ref(0)
   const loading = ref(true)
+  const { error: toastError } = useToast()
 
   onMounted(async () => {
     try {
@@ -29,6 +31,7 @@ export function useGithubContributions(username = 'DevKennySoriano') {
       contribCount.value = data.contribCount || 0
     } catch (e) {
       console.error('Failed to fetch GitHub contributions:', e)
+      toastError('Could not load GitHub contributions')
     } finally {
       loading.value = false
     }

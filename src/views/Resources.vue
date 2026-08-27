@@ -1,28 +1,49 @@
 <script setup>
 import { ref } from 'vue'
+import { useToast } from '@/composables/useToast'
+
+const { success } = useToast()
 
 const showVersions = ref(false)
+const showDownloadConfirm = ref(false)
+const downloadTarget = ref(null)
 
 const allVersions = [
   {
     label: 'July 11, 2026',
     tag: 'Latest',
     href: '/resume/Kenny_Soriano_Resume_07112026_A4.pdf',
+    name: 'Kenny Soriano Resume (July 11, 2026)',
   },
   {
     label: 'June 7, 2026',
     tag: '',
     href: '/resume/Kenny_Soriano_Resume_06072026_A4.pdf',
+    name: 'Kenny Soriano Resume (June 7, 2026)',
   },
   {
     label: 'June 6, 2026',
     tag: '',
     href: '/resume/Kenny_Soriano_Resume_06062026.pdf',
+    name: 'Kenny Soriano Resume (June 6, 2026)',
   },
   {
     label: 'April 25, 2026',
     tag: '',
     href: '/resume/Kenny_Soriano_Resume_04252026.pdf',
+    name: 'Kenny Soriano Resume (April 25, 2026)',
+  },
+]
+
+const resources = [
+  {
+    title: 'Brand Style Guide',
+    subtitle: 'Brandstyle Template Example',
+    date: 'August 26, 2026',
+    thumbnail: '/resources/brandstyle_thumbnail_sorianokenny.png',
+    previewHref: '/resources/free_template_brandstyle_guide.pdf',
+    downloadHref: '/resources/free_template_brandstyle_guide.pdf',
+    downloadName: 'Brand Style Guide Template',
   },
 ]
 
@@ -32,6 +53,29 @@ function toggleVersions() {
 
 function closeVersions() {
   showVersions.value = false
+}
+
+function requestDownload(href, name) {
+  downloadTarget.value = { href, name }
+  showDownloadConfirm.value = true
+}
+
+function confirmDownload() {
+  const { href, name } = downloadTarget.value
+  const a = document.createElement('a')
+  a.href = href
+  a.download = ''
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
+  showDownloadConfirm.value = false
+  downloadTarget.value = null
+  success(`Downloading ${name}`)
+}
+
+function cancelDownload() {
+  showDownloadConfirm.value = false
+  downloadTarget.value = null
 }
 </script>
 
@@ -93,22 +137,19 @@ function closeVersions() {
               </div>
             </div>
 
-            <a
+            <button
               class="resource-btn download"
-              href="/resume/Kenny_Soriano_Resume_07112026_A4.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              download
+              @click="requestDownload('/resume/Kenny_Soriano_Resume_07112026_A4.pdf', 'Kenny Soriano Resume (July 11, 2026)')"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
               Download
-            </a>
+            </button>
           </div>
         </article>
 
-        <article class="resource-card">
+        <article v-for="r in resources" :key="r.title" class="resource-card">
           <div class="resource-preview">
-            <img src="/resources/brandstyle_thumbnail_sorianokenny.png" alt="Brand Style Guide preview" />
+            <img :src="r.thumbnail" :alt="r.title + ' preview'" />
           </div>
 
           <div class="resource-head">
@@ -119,36 +160,52 @@ function closeVersions() {
           </div>
 
           <div class="resource-info">
-            <h2>Brand Style Guide</h2>
-            <p class="resource-subtitle">Brandstyle Template Example</p>
+            <h2>{{ r.title }}</h2>
+            <p class="resource-subtitle">{{ r.subtitle }}</p>
             <p class="resource-label">Date</p>
-            <p class="resource-date">August 26, 2026</p>
+            <p class="resource-date">{{ r.date }}</p>
           </div>
 
           <div class="resource-actions">
             <a
               class="resource-btn preview"
-              href="/resources/free_template_brandstyle_guide.pdf"
+              :href="r.previewHref"
               target="_blank"
               rel="noopener noreferrer"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
               Preview
             </a>
-            <a
+            <button
               class="resource-btn download"
-              href="/resources/free_template_brandstyle_guide.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              download
+              @click="requestDownload(r.downloadHref, r.downloadName)"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
               Download
-            </a>
+            </button>
           </div>
         </article>
       </div>
     </div>
+
+    <transition name="modal-fade">
+      <div v-if="showDownloadConfirm" class="download-modal" @click.self="cancelDownload">
+        <div class="download-modal-box">
+          <div class="download-modal-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+          </div>
+          <h3 class="download-modal-title">Download File?</h3>
+          <p class="download-modal-name">{{ downloadTarget?.name }}</p>
+          <div class="download-modal-actions">
+            <button class="download-modal-btn cancel" @click="cancelDownload">Cancel</button>
+            <button class="download-modal-btn confirm" @click="confirmDownload">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+              Download
+            </button>
+          </div>
+        </div>
+      </div>
+    </transition>
   </section>
 </template>
 

@@ -1,4 +1,5 @@
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useToast } from '@/composables/useToast'
 
 const STORAGE_KEY_VIEWER_ID = 'portfolio_viewer_id'
 const VIEWER_API = '/api/viewers'
@@ -50,6 +51,8 @@ async function sendLeave() {
 }
 
 export function useVisitorCounter() {
+  const { error: toastError } = useToast()
+
   onMounted(async () => {
     if (!initialized) {
       initialized = true
@@ -60,6 +63,7 @@ export function useVisitorCounter() {
         totalVisitors.value = data.count || 0
       } catch (e) {
         console.error('[VisitorCounter]', e)
+        toastError('Visitor count unavailable')
       } finally {
         loading.value = false
       }

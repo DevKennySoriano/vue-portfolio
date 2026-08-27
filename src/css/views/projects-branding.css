@@ -33,11 +33,64 @@
   max-width: 58ch;
 }
 
-.branding-grid {
-  display: grid;
-  gap: 0.85rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
-  justify-content: start;
+.branding-swiper-wrap {
+  position: relative;
+}
+
+.branding-swiper {
+  padding-bottom: 3rem;
+}
+
+.branding-swiper :deep(.swiper-button-next),
+.branding-swiper :deep(.swiper-button-prev) {
+  color: #fff;
+  background: var(--surface-strong);
+  border-radius: 14px;
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  transition: all 0.2s ease;
+}
+
+.branding-swiper :deep(.swiper-button-next):after,
+.branding-swiper :deep(.swiper-button-prev):after {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.branding-swiper :deep(.swiper-button-next):hover,
+.branding-swiper :deep(.swiper-button-prev):hover {
+  background: var(--surface-strong-2);
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+}
+
+.branding-swiper :deep(.swiper-button-disabled) {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.branding-swiper :deep(.swiper-pagination-bullet) {
+  background: var(--text-muted);
+  opacity: 0.4;
+}
+
+.branding-swiper :deep(.swiper-pagination-bullet-active) {
+  background: var(--surface-strong);
+  opacity: 1;
+}
+
+.branding-counter {
+  text-align: center;
+  margin-top: 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.branding-slide {
+  height: auto;
 }
 
 .branding-card {
@@ -48,7 +101,6 @@
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
   width: 100%;
-  max-width: 300px;
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -128,18 +180,9 @@
   }
 }
 
-@media (max-width: 1024px) {
-  .branding-grid {
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  }
-
-  .branding-card {
-    max-width: none;
-  }
-}
-
 @media (max-width: 640px) {
-  .branding-grid {
-    grid-template-columns: 1fr;
+  .branding-swiper :deep(.swiper-button-next),
+  .branding-swiper :deep(.swiper-button-prev) {
+    display: none;
   }
 }

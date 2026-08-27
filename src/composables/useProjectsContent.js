@@ -46,10 +46,10 @@ export function useProjectsContent() {
     },
   ]
 
-  const loadedImages = ref([])
+  const loadedImages = ref({})
 
-  const onImageLoad = (index) => {
-    loadedImages.value[index] = true
+  const onImageLoad = (slug) => {
+    loadedImages.value[slug] = true
   }
 
   const statusText = (project) => {
