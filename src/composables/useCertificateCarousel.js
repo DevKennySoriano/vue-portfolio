@@ -1,14 +1,20 @@
 export function useCertificateCarousel() {
   const certificates = [
     {
+      title: 'JavaScript Essentials 1',
+      issuer: 'Cisco Networking Academy',
+      date: '2026',
+      image: '/images/certs/cisco_javascript_essentials1_sorianokenny_certificate.png',
+    },
+    {
       title: 'Front End Development Libraries Certification',
       issuer: 'freeCodeCamp',
       date: '2025',
       image: '/images/certs/freeCodeCamp.jpg',
     },
     {
-      title: 'Java Fundamentals Course - STI College',
-      issuer: 'Oracale Academy',
+      title: 'Java Fundamentals Course',
+      issuer: 'Oracle Academy',
       date: '2023',
       image: '/images/certs/JavaFundamentals.jpg',
     },
