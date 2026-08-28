@@ -5,7 +5,6 @@ export function useHomepageAbout() {
     profileImg: '/images/ken/about-img.jpeg',
     description:
       'Bachelor of Science in Computer Science graduate focused on building modern web applications, improving user experience, and continuously growing through real-world development projects.',
-    tags: [],
     info: [
       {
         label: 'Nationality',

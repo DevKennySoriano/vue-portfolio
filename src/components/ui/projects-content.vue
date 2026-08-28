@@ -1,6 +1,7 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useProjectsContent } from '@/composables/useProjectsContent'
+import { useProjectViews } from '@/composables/useProjectViews'
 
 const {
   webProjects,
@@ -11,6 +12,16 @@ const {
   statusDasharray,
   statusValue,
 } = useProjectsContent()
+
+const { views, fetchAll, increment } = useProjectViews()
+
+onMounted(async () => {
+  await fetchAll(webProjects.map((p) => p.slug))
+})
+
+function onViewProject(project) {
+  increment(project.slug)
+}
 
 const showFilter = ref(false)
 const selectedTags = ref(new Set())
@@ -147,13 +158,20 @@ function closeFilter() {
           </div>
         </div>
 
-        <router-link
-          :to="{ name: 'ProjectsView', params: { slug: project.slug } }"
-          class="view-btn"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
-          View
-        </router-link>
+        <div class="web-footer">
+          <div class="project-views">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+            {{ views[project.slug] ?? '—' }} views
+          </div>
+          <router-link
+            :to="{ name: 'ProjectsView', params: { slug: project.slug } }"
+            class="view-btn"
+            @click="onViewProject(project)"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+            View
+          </router-link>
+        </div>
       </div>
     </div>
     </div>
