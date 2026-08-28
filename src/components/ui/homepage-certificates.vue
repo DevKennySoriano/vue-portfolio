@@ -37,7 +37,6 @@ function closePreview() {
         data-aos="fade-up"
         data-aos-once="true"
         :data-aos-delay="index * 100"
-        @click="openPreview(cert)"
       >
         <div class="cert-head">
           <span class="cert-type-icon" aria-hidden="true">
@@ -48,9 +47,6 @@ function closePreview() {
 
         <div class="cert-image">
           <img :src="cert.image" :alt="cert.title" />
-          <div class="cert-overlay">
-            <span class="cert-overlay-text">Click to View</span>
-          </div>
         </div>
 
         <div class="cert-info">
