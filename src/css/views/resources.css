@@ -169,6 +169,21 @@
   font-weight: 500;
 }
 
+.resource-downloads {
+  margin: 0.55rem 0 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.resource-downloads svg {
+  flex-shrink: 0;
+}
+
 .resource-actions {
   display: flex;
   gap: 0.5rem;

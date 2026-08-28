@@ -1,8 +1,10 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useToast } from '@/composables/useToast'
+import { useDownloadCounter } from '@/composables/useDownloadCounter'
 
 const { success } = useToast()
+const { counts, fetchCount, increment } = useDownloadCounter()
 
 const showVersions = ref(false)
 const showDownloadConfirm = ref(false)
@@ -37,6 +39,7 @@ const allVersions = [
 
 const resources = [
   {
+    id: 'brand-style-guide',
     title: 'Brand Style Guide',
     subtitle: 'Brandstyle Template Example',
     date: 'August 26, 2026',
@@ -46,6 +49,15 @@ const resources = [
     downloadName: 'Brand Style Guide Template',
   },
 ]
+
+const resourceGroups = [
+  { id: 'resume', name: 'Kenny Soriano Resume (July 11, 2026)' },
+  ...resources.map((r) => ({ id: r.id, name: r.downloadName })),
+]
+
+onMounted(() => {
+  resourceGroups.forEach((g) => fetchCount(g.id))
+})
 
 function toggleVersions() {
   showVersions.value = !showVersions.value
@@ -69,8 +81,11 @@ function confirmDownload() {
   a.click()
   document.body.removeChild(a)
   showDownloadConfirm.value = false
+  const matched = resourceGroups.find((g) => g.name === name)
+  if (matched) increment(matched.id)
+  const cleaned = name.replace(/ \([^)]*\)$/, '').replace(/\([^)]*\)$/, '').trim()
   downloadTarget.value = null
-  success(`Downloading ${name}`)
+  success(`Downloading ${cleaned}`)
 }
 
 function cancelDownload() {
@@ -108,6 +123,10 @@ function cancelDownload() {
             <p class="resource-subtitle">ATS Resume</p>
             <p class="resource-label">Date</p>
             <p class="resource-date">July 11, 2026</p>
+            <p class="resource-downloads">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+              {{ counts['resume'] ?? '—' }} downloads
+            </p>
           </div>
 
           <div class="resource-actions">
@@ -164,6 +183,10 @@ function cancelDownload() {
             <p class="resource-subtitle">{{ r.subtitle }}</p>
             <p class="resource-label">Date</p>
             <p class="resource-date">{{ r.date }}</p>
+            <p class="resource-downloads">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+              {{ counts[r.id] ?? '—' }} downloads
+            </p>
           </div>
 
           <div class="resource-actions">
