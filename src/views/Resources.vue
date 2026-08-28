@@ -48,6 +48,16 @@ const resources = [
     downloadHref: '/resources/free_template_brandstyle_guide.pdf',
     downloadName: 'Brand Style Guide Template',
   },
+  {
+    id: 'cover-letter',
+    title: 'Cover Letter',
+    subtitle: 'Cover Letter Example - Template',
+    date: 'August 28, 2026',
+    thumbnail: '/coverletter/coverletter_thumnail.png',
+    previewHref: '/coverletter/CoverLetter_v1_template.pdf',
+    downloadHref: '/coverletter/CoverLetter_v1_template.pdf',
+    downloadName: 'Cover Letter Template',
+  },
 ]
 
 const resourceGroups = [
@@ -173,7 +183,7 @@ function cancelDownload() {
 
           <div class="resource-head">
             <span class="resource-type-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10Zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm-4-6a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm-4 2a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7l-5-5Zm0 2.5L16.5 7H14V4.5ZM7 20V4h5v4a1 1 0 0 0 1 1h4v11H7Zm2-8h6v1.5H9V12Zm0 3h6v1.5H9V15Z"/></svg>
             </span>
             <span class="resource-tag">Free</span>
           </div>
