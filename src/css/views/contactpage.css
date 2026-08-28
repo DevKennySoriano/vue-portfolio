@@ -418,8 +418,4 @@
     grid-template-columns: 1fr;
     gap: 1.2rem;
   }
-
-  .contact-side {
-    order: -1;
-  }
 }
