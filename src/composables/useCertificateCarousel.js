@@ -1,6 +1,12 @@
 export function useCertificateCarousel() {
   const certificates = [
     {
+      title: 'HTML Essentials',
+      issuer: 'Cisco Networking Academy',
+      date: '2026',
+      image: '/images/certs/cisco_html_essentials_sorianokenny_certificate.png',
+    },
+    {
       title: 'JavaScript Essentials 1',
       issuer: 'Cisco Networking Academy',
       date: '2026',
