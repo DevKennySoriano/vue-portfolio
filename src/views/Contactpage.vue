@@ -109,6 +109,7 @@ async function submitForm() {
     toastError('Please complete the captcha')
     return
   }
+  const captchaToken = hCaptcha.value
   submitting.value = true
   try {
     const res = await fetch('https://api.web3forms.com/submit', {
@@ -122,6 +123,7 @@ async function submitForm() {
         message: form.message,
         from_name: form.name,
         replyto: form.email,
+        'h-captcha-response': captchaToken,
       }),
     })
     const data = await res.json()
@@ -131,6 +133,9 @@ async function submitForm() {
       form.email = ''
       form.subject = ''
       form.message = ''
+      if (captchaWidgetId !== null && typeof hcaptcha !== 'undefined') {
+        hcaptcha.reset(captchaWidgetId)
+      }
     } else {
       throw new Error(data.message || 'Submission failed')
     }
