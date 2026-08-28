@@ -48,6 +48,9 @@ function closePreview() {
 
         <div class="cert-image">
           <img :src="cert.image" :alt="cert.title" />
+          <div class="cert-overlay">
+            <span class="cert-overlay-text">Click to View</span>
+          </div>
         </div>
 
         <div class="cert-info">
