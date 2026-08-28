@@ -112,19 +112,19 @@ async function submitForm() {
   const captchaToken = hCaptcha.value
   submitting.value = true
   try {
+    const payload = new FormData()
+    payload.append('access_key', accessKey)
+    payload.append('name', form.name)
+    payload.append('email', form.email)
+    payload.append('subject', form.subject || 'New message from portfolio')
+    payload.append('message', form.message)
+    payload.append('from_name', form.name)
+    payload.append('replyto', form.email)
+    payload.append('h-captcha-response', captchaToken)
+
     const res = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({
-        access_key: accessKey,
-        name: form.name,
-        email: form.email,
-        subject: form.subject || 'New message from portfolio',
-        message: form.message,
-        from_name: form.name,
-        replyto: form.email,
-        'h-captcha-response': captchaToken,
-      }),
+      body: payload,
     })
     const data = await res.json()
     if (data.success) {
