@@ -1,4 +1,146 @@
 <script setup>
+import { reactive, ref, onMounted, onBeforeUnmount } from 'vue'
+import { useToast } from '@/composables/useToast'
+
+const { success, error: toastError } = useToast()
+const email = 'devkennysoriano@gmail.com'
+const copied = ref(false)
+const submitting = ref(false)
+let copyTimer
+
+const CAPTCHA_SITEKEY = '50b2fe65-b00b-4b9e-ad62-3ba471098be2'
+let captchaWidgetId = null
+
+function loadHCaptchaScript() {
+  return new Promise((resolve, reject) => {
+    window._hcaptchaOnload = () => {
+      renderCaptcha()
+      resolve()
+    }
+    const existing = document.querySelector('script[src*="hcaptcha.com/api.js"]')
+    if (existing) {
+      if (typeof hcaptcha !== 'undefined' && hcaptcha.render) {
+        renderCaptcha()
+        resolve()
+      } else {
+        existing.addEventListener('load', () => {
+          renderCaptcha()
+          resolve()
+        })
+        existing.addEventListener('error', reject)
+      }
+      return
+    }
+    const script = document.createElement('script')
+    script.src =
+      'https://js.hcaptcha.com/1/api.js?recaptchacompat=off&render=explicit&onload=_hcaptchaOnload'
+    script.async = true
+    script.defer = true
+    script.onerror = reject
+    document.body.appendChild(script)
+  })
+}
+
+function renderCaptcha() {
+  const container = document.querySelector('#contact-captcha')
+  if (!container || typeof hcaptcha === 'undefined') return
+  if (container.getAttribute('data-rendered')) return
+  container.setAttribute('data-rendered', 'true')
+  captchaWidgetId = hcaptcha.render(container, {
+    sitekey: CAPTCHA_SITEKEY,
+    size: 'normal',
+  })
+}
+
+onMounted(async () => {
+  try {
+    await loadHCaptchaScript()
+  } catch (e) {
+    console.error('hCaptcha failed to load:', e)
+  }
+})
+
+onBeforeUnmount(() => {
+  if (captchaWidgetId !== null && typeof hcaptcha !== 'undefined' && hcaptcha.reset) {
+    try {
+      hcaptcha.remove(captchaWidgetId)
+    } catch (e) {
+      hcaptcha.reset(captchaWidgetId)
+    }
+  }
+  captchaWidgetId = null
+})
+
+const form = reactive({
+  name: '',
+  email: '',
+  subject: '',
+  message: '',
+})
+
+const accessKey = import.meta.env.VITE_WEB3FORMS_KEY || ''
+
+async function copyEmail() {
+  try {
+    await navigator.clipboard.writeText(email)
+    copied.value = true
+    success('Email copied to clipboard')
+    window.clearTimeout(copyTimer)
+    copyTimer = window.setTimeout(() => {
+      copied.value = false
+    }, 2500)
+  } catch (e) {
+    toastError('Could not copy email')
+  }
+}
+
+async function submitForm() {
+  if (!accessKey) {
+    toastError('Contact form is not configured yet')
+    return
+  }
+  if (!form.name || !form.email || !form.message) {
+    toastError('Please fill in your name, email, and message')
+    return
+  }
+  const container = document.querySelector('#contact-captcha')
+  const hCaptcha = container && container.querySelector('textarea[name="h-captcha-response"]')
+  if (!hCaptcha || !hCaptcha.value) {
+    toastError('Please complete the captcha')
+    return
+  }
+  submitting.value = true
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        access_key: accessKey,
+        name: form.name,
+        email: form.email,
+        subject: form.subject || 'New message from portfolio',
+        message: form.message,
+        from_name: form.name,
+        replyto: form.email,
+      }),
+    })
+    const data = await res.json()
+    if (data.success) {
+      success('Message sent successfully')
+      form.name = ''
+      form.email = ''
+      form.subject = ''
+      form.message = ''
+    } else {
+      throw new Error(data.message || 'Submission failed')
+    }
+  } catch (e) {
+    console.error('Contact form error:', e)
+    toastError('Could not send message')
+  } finally {
+    submitting.value = false
+  }
+}
 </script>
 
 <template>
@@ -12,17 +154,88 @@
         </p>
       </header>
 
-      <div class="contact-grid">
-        <a class="contact-link" href="mailto:devkennysoriano@gmail.com">
+      <div class="contact-layout">
+      <div class="contact-form-wrap">
+        <h2 class="contact-form-title">Send me a message</h2>
+        <form class="contact-form" @submit.prevent="submitForm">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="cf-name">Name <span class="req">*</span></label>
+              <input
+                id="cf-name"
+                v-model="form.name"
+                type="text"
+                placeholder="Your name"
+                autocomplete="name"
+                required
+              />
+            </div>
+            <div class="form-field">
+              <label for="cf-email">Email <span class="req">*</span></label>
+              <input
+                id="cf-email"
+                v-model="form.email"
+                type="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+              />
+              <p class="field-note">Please use an active email so I can reach you back.</p>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="cf-subject">Subject</label>
+            <input
+              id="cf-subject"
+              v-model="form.subject"
+              type="text"
+              placeholder="What is this about?"
+            />
+          </div>
+          <div class="form-field">
+            <label for="cf-message">Message <span class="req">*</span></label>
+            <textarea
+              id="cf-message"
+              v-model="form.message"
+              rows="4"
+              maxlength="1000"
+              placeholder="Write your message here..."
+              required
+            ></textarea>
+            <p class="field-count">{{ form.message.length }}/1000</p>
+          </div>
+          <div id="contact-captcha" class="h-captcha"></div>
+          <div class="form-actions">
+            <button class="form-submit" type="submit" :disabled="submitting">
+              <svg v-if="!submitting" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7Z"/></svg>
+              <svg v-else class="form-spinner" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+              {{ submitting ? 'Sending...' : 'Send Message' }}
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="contact-side">
+        <p class="contact-links-hint">Or reach out via the links below</p>
+        <div class="contact-grid">
+        <div class="contact-link email-card">
           <span class="contact-icon email-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
           </span>
           <div class="contact-info">
             <span class="contact-label">Email</span>
-            <span class="contact-value">devkennysoriano@gmail.com</span>
+            <span class="contact-value">{{ email }}</span>
           </div>
-          <svg class="contact-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-        </a>
+          <div class="email-actions">
+            <a class="email-mailto" href="mailto:devkennysoriano@gmail.com" aria-label="Open email app">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <button class="email-copy" @click="copyEmail" :aria-label="copied ? 'Copied' : 'Copy email'">
+              <svg v-if="copied" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+              <svg v-else xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            </button>
+          </div>
+        </div>
 
         <a class="contact-link" href="https://www.linkedin.com/in/kennysoriano/" target="_blank" rel="noopener noreferrer">
           <span class="contact-icon linkedin-icon">
@@ -56,6 +269,8 @@
           </div>
           <svg class="contact-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         </a>
+        </div>
+      </div>
       </div>
     </div>
   </section>
