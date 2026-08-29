@@ -56,6 +56,30 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Global scrollbar styling */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--surface-strong) 45%, var(--bg-elevated));
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--surface-strong) 65%, var(--bg-elevated));
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--surface-strong) 45%, var(--bg-elevated)) transparent;
+}
+
 h1,
 h2,
 h3,
