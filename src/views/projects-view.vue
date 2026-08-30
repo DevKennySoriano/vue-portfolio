@@ -135,7 +135,7 @@ onBeforeUnmount(() => {
     <transition name="page-loader-fade">
       <div v-if="isPageLoading" class="page-loader" aria-label="Loading project details" role="status">
         <div class="page-loader-box">
-          <img :src="project?.logo || '/images/icons/K.png'" alt="" class="page-loader-logo" />
+          <img :src="project?.logo || '/images/icons/K-128.png'" alt="" class="page-loader-logo" />
           <p class="page-loader-text">Loading project details...</p>
         </div>
       </div>
@@ -152,7 +152,7 @@ onBeforeUnmount(() => {
       </router-link>
 
       <div class="logo-wrapper">
-        <img :src="project.logo" :alt="project.title" />
+        <img :src="project.logo" :alt="project.title" decoding="async" />
       </div>
 
       <div class="meta">
@@ -218,7 +218,7 @@ onBeforeUnmount(() => {
           <h2>System Overview</h2>
           <figure class="system-overview-wrap">
             <div class="ratio-16x9 system-overview-image">
-              <img :src="project.project" :alt="project.title + ' system overview'" />
+              <img :src="project.project" :alt="project.title + ' system overview'" decoding="async" />
             </div>
             <figcaption>A look at the {{ project.title }} interface.</figcaption>
           </figure>
@@ -284,7 +284,7 @@ onBeforeUnmount(() => {
               @click="openPreview(shot)"
             >
               <div class="ratio-16x9 image-wrapper">
-                <img :src="shot.image" :alt="shot.caption" loading="lazy" />
+                <img :src="shot.image" :alt="shot.caption" loading="lazy" decoding="async" />
                 <div class="overlay">
                   <span>Click to View</span>
                 </div>

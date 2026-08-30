@@ -54,6 +54,7 @@ function onSlideChange(swiper) {
                 <img
                   :src="img"
                   loading="lazy"
+                  decoding="async"
                   @load="loadedImages[i] = true"
                   :class="{ loaded: loadedImages[i] }"
                 />

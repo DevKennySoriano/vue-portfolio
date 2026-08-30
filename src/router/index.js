@@ -1,14 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import About from '../views/About.vue'
-import Experience from '../views/Experience.vue'
-import Education from '../views/Education.vue'
-import Certifications from '../views/Certifications.vue'
-import TechStack from '../views/TechStack.vue'
-import Projects from '../views/Projects.vue'
-import WebProjects from '../views/WebProjects.vue'
-import VisualProjects from '../views/VisualProjects.vue'
-import Resources from '../views/Resources.vue'
-import Contactpage from '../views/Contactpage.vue'
 import { webProjects } from '../data/projects'
 
 const projectSlugs = Object.fromEntries(webProjects.map((p) => [p.slug, p.title]))
@@ -36,7 +26,7 @@ const routes = [
   {
     path: '/about',
     name: 'About',
-    component: About,
+    component: () => import('../views/About.vue'),
     meta: {
       title: 'About | Kenny Soriano',
       description: 'Learn about Kenny Soriano, frontend-focused Computer Science student and portfolio creator.'
@@ -45,7 +35,7 @@ const routes = [
   {
     path: '/about/experience',
     name: 'Experience',
-    component: Experience,
+    component: () => import('../views/Experience.vue'),
     meta: {
       title: 'Experience | Kenny Soriano',
       description: 'Review Kenny Soriano\'s professional and project experience highlights.'
@@ -54,7 +44,7 @@ const routes = [
   {
     path: '/about/education',
     name: 'Education',
-    component: Education,
+    component: () => import('../views/Education.vue'),
     meta: {
       title: 'Education | Kenny Soriano',
       description: 'Explore the educational background and academic timeline of Kenny Soriano.'
@@ -63,7 +53,7 @@ const routes = [
   {
     path: '/certifications',
     name: 'Certifications',
-    component: Certifications,
+    component: () => import('../views/Certifications.vue'),
     meta: {
       title: 'Certifications | Kenny Soriano',
       description: 'View Kenny Soriano\'s certifications and completed learning milestones.'
@@ -72,7 +62,7 @@ const routes = [
   {
     path: '/tech-stack',
     name: 'TechStack',
-    component: TechStack,
+    component: () => import('../views/TechStack.vue'),
     meta: {
       title: 'Tools & Tech | Kenny Soriano',
       description: 'Discover the tools, frameworks, and technologies used by Kenny Soriano.'
@@ -81,7 +71,7 @@ const routes = [
   {
     path: '/projects',
     name: 'Projects',
-    component: Projects,
+    component: () => import('../views/Projects.vue'),
     meta: {
       title: 'Projects | Kenny Soriano',
       description: 'Browse selected projects by Kenny Soriano including web systems, interface design work, and practical development case studies.'
@@ -90,7 +80,7 @@ const routes = [
   {
     path: '/projects/web',
     name: 'WebProjects',
-    component: WebProjects,
+    component: () => import('../views/WebProjects.vue'),
     meta: {
       title: 'Web Projects | Kenny Soriano',
       description: 'Explore web application projects built by Kenny Soriano.'
@@ -99,7 +89,7 @@ const routes = [
   {
     path: '/projects/visual',
     name: 'VisualProjects',
-    component: VisualProjects,
+    component: () => import('../views/VisualProjects.vue'),
     meta: {
       title: 'Visual Projects | Kenny Soriano',
       description: 'Browse visual design, layout, and styling projects by Kenny Soriano.'
@@ -108,7 +98,7 @@ const routes = [
   {
     path: '/resources',
     name: 'Resources',
-    component: Resources,
+    component: () => import('../views/Resources.vue'),
     meta: {
       title: 'Resources | Kenny Soriano',
       description: 'Download resume files and useful portfolio resources from Kenny Soriano.'
@@ -131,7 +121,7 @@ const routes = [
   {
     path: '/contact',
     name: 'Contactpage',
-    component: Contactpage,
+    component: () => import('../views/Contactpage.vue'),
     meta: {
       title: 'Contact | Kenny Soriano',
       description: 'Get in touch with Kenny Soriano for internships, freelance projects, collaborations, and frontend development opportunities.'
@@ -170,7 +160,7 @@ router.afterEach((to) => {
   const description = to.meta?.description || DEFAULT_META.description
   const url = window.location.href
   const imageUrl = projectTitle
-    ? `${window.location.origin}/images/banners/${slug === 'kapet-bahala-na' ? 'KapeBanner' : slug === 'all-about-pets' ? 'PetsBanner' : slug === 'homehive' ? 'HomeHiveBanner' : slug === 'swak-cart' ? 'swak-cart-banner' : slug === 'Lutowl' ? 'Lutowl-Banner' : 'PetsBanner'}.png`
+    ? `${window.location.origin}/images/banners/${slug === 'kapet-bahala-na' ? 'KapeBanner' : slug === 'all-about-pets' ? 'PetsBanner' : slug === 'homehive' ? 'HomeHiveBanner' : slug === 'swak-cart' ? 'swak-cart-banner' : slug === 'Lutowl' ? 'Lutowl-Banner' : 'PetsBanner'}.webp`
     : `${window.location.origin}/images/icons/K.png`
 
   document.title = title

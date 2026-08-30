@@ -54,7 +54,7 @@ onMounted(() => {
 
           <div class="edu-card">
             <div class="edu-image" v-if="item.image">
-              <img :src="item.image" :alt="item.school" loading="lazy" />
+              <img :src="item.image" :alt="item.school" loading="lazy" decoding="async" />
             </div>
             <div class="edu-body">
               <span class="edu-date">{{ item.date }}</span>

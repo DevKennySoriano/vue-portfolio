@@ -18,7 +18,7 @@ const { toasts } = useToast()
   <transition name="preloader-fade">
     <div v-if="isLoading" class="preloader" aria-label="Loading page" role="status">
       <div class="preloader-box">
-        <img src="/images/icons/K.png" alt="" class="preloader-logo" />
+        <img src="/images/icons/K-128.png" alt="" class="preloader-logo" />
         <p class="preloader-text">Loading...</p>
       </div>
     </div>

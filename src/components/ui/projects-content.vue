@@ -122,6 +122,7 @@ function closeFilter() {
           :src="project.image"
           :alt="project.title"
           loading="lazy"
+          decoding="async"
           @load="onImageLoad(project.slug)"
           :class="{ loaded: loadedImages[project.slug] }"
         />

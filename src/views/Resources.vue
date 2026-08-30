@@ -43,7 +43,7 @@ const resources = [
     title: 'Brand Style Guide',
     subtitle: 'Brandstyle Template Example',
     date: 'August 26, 2026',
-    thumbnail: '/resources/brandstyle_thumbnail_sorianokenny.png',
+    thumbnail: '/resources/brandstyle_thumbnail_sorianokenny.webp',
     previewHref: '/resources/free_template_brandstyle_guide.pdf',
     downloadHref: '/resources/free_template_brandstyle_guide.pdf',
     downloadName: 'Brand Style Guide Template',
@@ -53,7 +53,7 @@ const resources = [
     title: 'Cover Letter',
     subtitle: 'Cover Letter Example - Template',
     date: 'August 28, 2026',
-    thumbnail: '/coverletter/coverletter_thumnail.png',
+    thumbnail: '/coverletter/coverletter_thumnail.webp',
     previewHref: '/coverletter/CoverLetter_v1_template.pdf',
     downloadHref: '/coverletter/CoverLetter_v1_template.pdf',
     downloadName: 'Cover Letter Template',
@@ -118,7 +118,7 @@ function cancelDownload() {
       <div class="resources-grid">
         <article class="resource-card">
           <div class="resource-preview">
-            <img src="/resume/resume_thumbnail_sorianokenny.png" alt="Resume preview" />
+            <img src="/resume/resume_thumbnail_sorianokenny.webp" alt="Resume preview" decoding="async" />
           </div>
 
           <div class="resource-head">
@@ -178,7 +178,7 @@ function cancelDownload() {
 
         <article v-for="r in resources" :key="r.title" class="resource-card">
           <div class="resource-preview">
-            <img :src="r.thumbnail" :alt="r.title + ' preview'" />
+            <img :src="r.thumbnail" :alt="r.title + ' preview'" loading="lazy" decoding="async" />
           </div>
 
           <div class="resource-head">

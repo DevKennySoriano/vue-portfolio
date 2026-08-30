@@ -1,7 +1,7 @@
 <template>
   <nav class="sidebar desktop-sidebar" aria-label="Primary sidebar navigation">
     <router-link to="/about" class="sidebar-logo" aria-label="Go to About page">
-      <img src="/images/icons/K.png" alt="Ken" class="logo-img" />
+      <img src="/images/icons/K-128.png" alt="Ken" class="logo-img" />
     </router-link>
 
     <ul class="sidebar-list">
@@ -105,7 +105,7 @@
   <nav class="mobile-sidebar-top" aria-label="Mobile navigation">
     <div class="mobile-bar">
       <router-link to="/about" class="mobile-logo" aria-label="Go to About page">
-        <img src="/images/icons/K.png" alt="Ken" class="logo-img" />
+        <img src="/images/icons/K-128.png" alt="Ken" class="logo-img" />
       </router-link>
 
       <div class="mobile-actions">

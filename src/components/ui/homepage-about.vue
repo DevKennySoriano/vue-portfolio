@@ -73,7 +73,7 @@ const exploreLinks = [
           </div>
           <div class="about-hero-right">
             <div class="profile-cube">
-              <img :src="profileImg" alt="Profile picture" />
+              <img :src="profileImg" alt="Profile picture" decoding="async" fetchpriority="high" />
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 <template>
   <main class="not-found">
     <section class="not-found-hero" data-aos="fade-up" data-aos-once="true">
-      <img class="not-found-logo" src="/images/icons/K.png" alt="Ken" />
+      <img class="not-found-logo" src="/images/icons/K-128.png" alt="Ken" />
       <p class="not-found-eyebrow">404</p>
       <h1 class="not-found-title">Page not found</h1>
       <p class="not-found-copy">

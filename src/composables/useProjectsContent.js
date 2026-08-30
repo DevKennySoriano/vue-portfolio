@@ -8,7 +8,7 @@ export function useProjectsContent() {
       progress: 10,
       status: 'archived',
       description: 'A client-based mini-thesis web system built for a pet care business...',
-      image: '/images/banners/PetsBanner.png',
+      image: '/images/banners/PetsBanner.webp',
       tags: ['PHP', 'HTML', 'CSS', 'MySQL', 'JavaScript'],
     },
     {
@@ -16,7 +16,7 @@ export function useProjectsContent() {
       title: 'HomeHive',
       progress: 100,
       description: 'A long-term rental management platform developed for property owners...',
-      image: '/images/banners/HomeHiveBanner.png',
+      image: '/images/banners/HomeHiveBanner.webp',
       tags: ['PHP', 'HTML', 'CSS', 'AI', 'MySQL', 'JavaScript'],
     },
     {
@@ -25,7 +25,7 @@ export function useProjectsContent() {
       progress: 5,
       status: 'archived',
       description: 'A technical-task cafe system built during my Wizzard Technologies Inc. OJT journey, focused on Laravel, Blade components, database integration, and modern frontend tooling.',
-      image: '/images/banners/KapeBanner.png',
+      image: '/images/banners/KapeBanner.webp',
       tags: ['Laravel', 'Blade', 'PHP', 'MySQL', 'JavaScript', 'Vue', 'Vite'],
     },
     {
@@ -33,7 +33,7 @@ export function useProjectsContent() {
       title: 'SWAK-CART',
       progress: 100,
       description: 'A modern grocery companion web app focused on budget-aware shopping, real-time tracking, and receipt-ready checkout workflows.',
-      image: '/images/banners/swak-cart-banner.png',
+      image: '/images/banners/swak-cart-banner.webp',
       tags: ['Vue', 'Vite', 'JavaScript', 'CSS'],
     },
         {
@@ -41,7 +41,7 @@ export function useProjectsContent() {
       title: 'Lutowl',
       progress: 85,
       description: 'Explore, share, and celebrate traditional recipes from the Philippines',
-      image: '/images/banners/Lutowl-Banner.png',
+      image: '/images/banners/Lutowl-Banner.webp',
       tags: ['Vue', 'Vite', 'JavaScript', 'PLpgSQL', 'Supabase','Google OAuth','Tailwind CSS','AI'],
     },
   ]

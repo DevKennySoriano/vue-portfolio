@@ -26,29 +26,29 @@ export const webProjects = [
       "One of the primary challenges was aligning system features with real-world workflow practices of the client. Additionally, database normalization and ensuring data consistency required multiple refinements during development.",
     conclusion:
       "The project produced a client-aligned thesis proposal and initial prototype for digital pet care operations. However, development was not completed, and the project has been archived for possible future continuation.",
-    logo: "/images/allaboutpets/allaboutpets-logo.jpg",
+    logo: "/images/allaboutpets/allaboutpets-logo.webp",
     github: "https://github.com/DevKennySoriano/allaboutpets",
     live: "https://devkennysoriano-allaboutpets.vercel.app",
     tags: ["PHP", "HTML", "CSS", "MySQL", "JavaScript"],
-    project: "/images/allaboutpets/dashboard.png",
+    project: "/images/allaboutpets/dashboard.webp",
     screenshots: [
       {
-        image: "/images/allaboutpets/services.png",
+        image: "/images/allaboutpets/services.webp",
         caption:
           "Main page services section presenting available pet care offerings."
       },
       {
-        image: "/images/allaboutpets/nurses.png",
+        image: "/images/allaboutpets/nurses.webp",
         caption:
           "Main page nurse details placeholder section for staff information display."
       },
       {
-        image: "/images/allaboutpets/loginpage.png",
+        image: "/images/allaboutpets/loginpage.webp",
         caption:
           "Secure login page for administrator authentication and access control."
       },
       {
-        image: "/images/allaboutpets/footer-contact.png",
+        image: "/images/allaboutpets/footer-contact.webp",
         caption:
           "Footer contact section located at the bottom of the page for inquiries and support."
       }
@@ -87,45 +87,45 @@ export const webProjects = [
     github: "https://github.com/DevKennySoriano/KAPE",
     live: "",
     tags: ["Laravel", "Blade", "PHP", "MySQL", "JavaScript", "Vue", "Vite"],
-    project: "/images/kape/systemoverview.png",
+    project: "/images/kape/systemoverview.webp",
     screenshots: [
       {
-        image: "/images/kape/initial-dashboard-sample.png",
+        image: "/images/kape/initial-dashboard-sample.webp",
         caption:
           "Initial dashboard sample showing the main administration layout for the café system."
       },
       {
-        image: "/images/kape/loginpage.png",
+        image: "/images/kape/loginpage.webp",
         caption:
           "Login page used for secure access to the application."
       },
       {
-        image: "/images/kape/registerpage.png",
+        image: "/images/kape/registerpage.webp",
         caption:
           "Registration page for creating new user accounts in the system."
       },
       {
-        image: "/images/kape/register-success-modal.png",
+        image: "/images/kape/register-success-modal.webp",
         caption:
           "Success modal displayed after a successful registration submission."
       },
       {
-        image: "/images/kape/register-error-validation-sample.png",
+        image: "/images/kape/register-error-validation-sample.webp",
         caption:
           "Validation example showing form feedback when registration input is incomplete or invalid."
       },
       {
-        image: "/images/kape/mustrycoffeedrinks.png",
+        image: "/images/kape/mustrycoffeedrinks.webp",
         caption:
           "Coffee drinks section for browsing available menu items and product offerings."
       },
       {
-        image: "/images/kape/ratingsection.png",
+        image: "/images/kape/ratingsection.webp",
         caption:
           "Customer rating section for collecting feedback and user impressions."
       },
       {
-        image: "/images/kape/systemoverview.png",
+        image: "/images/kape/systemoverview.webp",
         caption:
           "System overview image presenting the overall Kapet Bahala Na interface and workflow."
       }
@@ -167,49 +167,49 @@ export const webProjects = [
       `Developing HomeHive was both challenging and rewarding. One of the main challenges was organizing the system to manage properties, tenants, payments, and contracts in one platform. We had to make sure the data was secure and accurate, especially for user accounts and payment tracking. Connecting the frontend and backend properly also required careful testing to avoid errors. Another challenge was building the analytics and maintenance features in a way that was easy to understand and useful for users. Through this project, we improved our skills in full-stack development, database management, and problem-solving. We also learned the importance of clean code, proper planning, and teamwork when building a complete system.`,
     conclusion:
   "HomeHive shows how a digital platform can improve and simplify rental property management. The system combines important features such as contract management, payment tracking, tenant records, and property analytics in one centralized platform. By integrating secure authentication and AI-powered insights, HomeHive helps property owners make better decisions and maintain their properties more efficiently. Overall, the system creates a more organized, transparent, and secure environment for property owners, tenants, and administrators.",
-    logo: "/images/homehive/homehive-logo.jpeg",
+    logo: "/images/homehive/homehive-logo.webp",
     github: "",
     live: "",
     tags: ["PHP", "HTML", "CSS", "JavaScript", "MySQL", "AI Integration", "Payment Gateway"],
-    project: "/images/homehive/homehive-landing-page-sample.png",
+    project: "/images/homehive/homehive-landing-page-sample.webp",
     screenshots: [
   {
-    image: "/images/homehive/homehive-userdashboard-sample.png",
+    image: "/images/homehive/homehive-userdashboard-sample.webp",
     caption:
       "Main dashboard displaying property occupancy rates, revenue metrics, and overall performance insights."
   },
   {
-    image: "/images/homehive/homehive-receipt-sample.png",
+    image: "/images/homehive/homehive-receipt-sample.webp",
     caption:
       "Secure payment tracking interface with automated rent collection and digital receipt management."
   },
   {
-    image: "/images/homehive/homehive-sign-in-sample.png",
+    image: "/images/homehive/homehive-sign-in-sample.webp",
     caption:
       "User authentication page with secure sign-in and access control."
   },
   {
-    image: "/images/homehive/homehive-property-analytics-sample.png",
+    image: "/images/homehive/homehive-property-analytics-sample.webp",
     caption:
       "Property analytics dashboard with AI-powered insights and predictive maintenance recommendations."
   },
   {
-    image: "/images/homehive/homehive-forgot-password-sample.png",
+    image: "/images/homehive/homehive-forgot-password-sample.webp",
     caption:
       "Forgot password interface with secure password reset functionality."
   },
   {
-    image: "/images/homehive/homehive-analytics-report-sample.png",
+    image: "/images/homehive/homehive-analytics-report-sample.webp",
     caption:
       "Generate report interface with detailed property performance and financial insights with printable report."
   },
    {
-    image: "/images/homehive/homehive-ai-predictive-chat-sample.png",
+    image: "/images/homehive/homehive-ai-predictive-chat-sample.webp",
     caption:
       "AI-powered predictive assistant providing maintenance recommendations and property insights."
   },
   {
-    image: "/images/homehive/homehive-map-sample.png",
+    image: "/images/homehive/homehive-map-sample.webp",
     caption:
       "Interactive property map view showing locations, listings, and geospatial insights."
   }
@@ -261,54 +261,54 @@ Bee Smart. Bee Secure. Bee Home with HomeHive.
       "One key challenge was balancing multiple shopping states in real time: budget totals, cart edits, category breakdowns, and recommendation logic all had to remain synchronized. Designing suggestion behavior that is helpful and explainable, while still performant and intuitive on mobile screens, also required repeated tuning and UI iteration.",
     conclusion:
       "SWAK-CART demonstrates how a focused, user-centered grocery workflow can combine budgeting, product discovery, and checkout preparation in one clean web experience. The project strengthened practical frontend architecture, state orchestration, and UX thinking around everyday financial decisions.",
-    logo: "/images/swak-cart/logo.png",
+    logo: "/images/swak-cart/logo.webp",
     github: "https://github.com/DevKennySoriano/swak-cart",
     live: "https://swak-cart.vercel.app/",
     tags: ["Vue 3", "Vite", "JavaScript", "CSS3", "AOS", "SweetAlert2", "Driver.js", "jsPDF"],
-    project: "/images/swak-cart/swakcart-system-overview.png",
+    project: "/images/swak-cart/swakcart-system-overview.webp",
     screenshots: [
       {
-        image: "/images/swak-cart/product-add-to-cart-sample.png",
+        image: "/images/swak-cart/product-add-to-cart-sample.webp",
         caption:
           "Product list with add-to-cart actions, search, and category-based browsing."
       },
       {
-        image: "/images/swak-cart/category-sort-sample.png",
+        image: "/images/swak-cart/category-sort-sample.webp",
         caption:
           "Category sorting flow for quickly narrowing down grocery products."
       },
       {
-        image: "/images/swak-cart/your-cart.png",
+        image: "/images/swak-cart/your-cart.webp",
         caption:
           "Cart panel showing editable prices, quantities, and running totals."
       },
       {
-        image: "/images/swak-cart/overbudget-displayed-and-alert.png",
+        image: "/images/swak-cart/overbudget-displayed-and-alert.webp",
         caption:
           "Over-budget state with real-time alert feedback to guide user decisions."
       },
       {
-        image: "/images/swak-cart/suggested-esstentials-displayed.png",
+        image: "/images/swak-cart/suggested-esstentials-displayed.webp",
         caption:
           "Smart essentials recommendation panel displayed when budget remains."
       },
       {
-        image: "/images/swak-cart/user-guide-tutorial-manual-sample.png",
+        image: "/images/swak-cart/user-guide-tutorial-manual-sample.webp",
         caption:
           "Built-in guided tutorial for onboarding key actions on desktop and mobile."
       },
       {
-        image: "/images/swak-cart/complete-print-preview.png",
+        image: "/images/swak-cart/complete-print-preview.webp",
         caption:
           "Receipt preview shown before confirming print and cart completion."
       },
       {
-        image: "/images/swak-cart/print-receipt-sample-invoice.png",
+        image: "/images/swak-cart/print-receipt-sample-invoice.webp",
         caption:
           "PDF receipt output in a clean, print-ready invoice format."
       },
       {
-        image: "/images/swak-cart/mobile-version-responsiveness-sample.png",
+        image: "/images/swak-cart/mobile-version-responsiveness-sample.webp",
         caption:
           "Responsive mobile layout with tab-driven flow for products and cart."
       }
@@ -356,7 +356,7 @@ Bee Smart. Bee Secure. Bee Home with HomeHive.
   conclusion:
     "Lutowl shows how everyday Filipino cooking can be transformed into a simple and meaningful digital experience. As a web-based platform, it makes recipe discovery accessible anytime without downloads. By combining easy-to-use features with practical recipe discovery, the system helps users make faster cooking decisions while preserving and sharing Filipino cuisine. The project continues to evolve with new improvements and features.",
 
-  logo: "/images/Lutowl/lutowl-logo-light-purple.png",
+  logo: "/images/Lutowl/lutowl-logo-light-purple.webp",
   github: "https://github.com/DevKennySoriano/lutowl",
   live: "https://lutowl.site/",
 
@@ -371,41 +371,41 @@ Bee Smart. Bee Secure. Bee Home with HomeHive.
     "AI Integration"
   ],
 
-  project: "/images/Lutowl/System-Overview.png",
+  project: "/images/Lutowl/System-Overview.webp",
 
   screenshots: [
     {
-      image: "/images/Lutowl/Lutowl-1.png",
+      image: "/images/Lutowl/Lutowl-1.webp",
       caption:
         "Homepage highlighting Filipino dishes, categories, and featured recipes."
     },
     {
-      image: "/images/Lutowl/Lutowl-2.png",
+      image: "/images/Lutowl/Lutowl-2.webp",
       caption:
         "Recipe browsing section with filters and an organized grid of Filipino meals."
     },
     {
-      image: "/images/Lutowl/Lutowl-3.png",
+      image: "/images/Lutowl/Lutowl-3.webp",
       caption:
         "Detailed recipe view showing ingredients, steps, and cooking instructions."
     },
     {
-      image: "/images/Lutowl/Lutowl-4.png",
+      image: "/images/Lutowl/Lutowl-4.webp",
       caption:
         "Recipe creation form for adding new Filipino dishes with structured details."
     },
     {
-      image: "/images/Lutowl/Lutowl-5.png",
+      image: "/images/Lutowl/Lutowl-5.webp",
       caption:
         "User dashboard for managing recipes, saved dishes, and activity."
     },
     {
-      image: "/images/Lutowl/Lutowl-6.png",
+      image: "/images/Lutowl/Lutowl-6.webp",
       caption:
         "AI-powered cooking assistant that provides instant meal suggestions, answers cooking questions, and suggests ingredient substitutions based on user needs."
     },
     {
-      image: "/images/Lutowl/Lutowl-7.png",
+      image: "/images/Lutowl/Lutowl-7.webp",
       caption:
         "Mobile-responsive layout optimized for cooking and browsing on any device."
     }

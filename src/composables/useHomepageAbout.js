@@ -2,7 +2,7 @@ export function useHomepageAbout() {
   return {
     status: 'Open to Opportunities',
     name: 'Kenny Soriano',
-    profileImg: '/images/ken/about-img.jpeg',
+    profileImg: '/images/ken/about-img.webp',
     description:
       'Bachelor of Science in Computer Science graduate focused on building modern web applications, improving user experience, and continuously growing through real-world development projects.',
     info: [
